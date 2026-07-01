@@ -3,157 +3,166 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kauê Monteiro - Dev</title>
-
+    <title>kyxen@portfolio:~</title>
+    <meta name="description" content="dev focado em python, automação e linux." />
+    <meta property="og:title" content="kyxen@portfolio:~" />
+    <meta property="og:description" content="python / linux / automação" />
+    <meta property="og:image" content="imgs/banner.png" />
+    <link rel="icon" type="image/png" href="imgs/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <div id="loading">
-      <div class="loading-box">
-        <div class="loading-title">initializing system...</div>
-
-        <div class="loading-bar">
-          <div class="loading-progress"></div>
+    <div id="boot">
+      <div class="boot-box">
+        <div class="boot-line">[ ok ] iniciando sistema...</div>
+        <div class="boot-line boot-bar-wrap">
+          <span class="boot-bar"><span class="boot-fill"></span></span>
         </div>
-
-        <div class="loading-text" id="loading-text">loading modules</div>
       </div>
     </div>
-    <header class="header">
-      <div class="header-inner">
-        <div class="brand">
-          <img src="imgs/logo.png" class="logo" />
-          <div>
-            <div class="name">Kyxen</div>
-            <div class="role">dev • python • linux</div>
-          </div>
-        </div>
 
-        <div class="header-links">
-          <a href="https://github.com/kyxenpi">github</a>
-          <a href="mailto:kyxenpi@proton.me">email</a>
+    <div class="window">
+      <div class="titlebar">
+        <div class="titles">
+          <span class="tdot" data="close"></span>
+          <span class="tdot" data="min"></span>
+          <span class="tdot" data="max"></span>
         </div>
+        <span class="titletext">kyxen@portfolio: ~</span>
+        <span class="titleempty"></span>
       </div>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div>
-          <div class="hero-glow"></div>
-          <h1 class="hero-title">
-            código que vira <span class="accent">sistema</span>.
-          </h1>
+      <div class="term">
 
-          <p class="hero-sub">
-            desenvolvedor focado em python, automação e eficiência. tudo
-            simples, rápido e funcional.
-          </p>
-
-          <a class="cta" href="#projects">ver projetos</a>
-        </div>
-
-        <div class="terminal-card">
-          <div class="command">$ whoami</div>
-          <div class="output">kauê monteiro</div>
-
-          <div class="command">$ stack</div>
-          <div class="output">python / linux / web / automation</div>
-
-          <div class="command">$ status</div>
-          <div class="output">building...</div>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">about</h2>
-
-        <div class="card">
-          dev focado em backend e automação.<br /><br />
-          uso linux como sistema principal.<br />
-          gosto de CLI, minimalismo e performance.
-        </div>
-      </section>
-
-      <section class="section" id="projects">
-        <h2 class="section-title">projects</h2>
-
-        <div class="grid">
-          <div class="card">
-            <h3>PDFinder</h3>
-            <p>buscador de PDFs online.</p>
-            <a href="https://kyxenpi.github.io/PDF/">link →</a>
+        <!-- INTRO -->
+        <div class="section">
+          <div class="prompt-line">
+            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
           </div>
-
-          <div class="card">
-            <h3>Project Price Calculator</h3>
-            <p>tool web minimalista.</p>
-            <a href="https://propricalc.netlify.app/">github →</a>
+          <div class="prompt-line">
+            <span class="prompt">└─$</span> <span class="cmd" data-text="./start.sh"></span>
           </div>
-
-          <div class="card">
-            <h3>Serpentia</h3>
-            <p>ambiente python interativo.</p>
-            <a href="https://github.com/kyxenpi/Serpentia">github →</a>
+          <div class="output">
+            <div class="greeting">código que vira <span class="green">sistema</span>.</div>
+            <div class="desc">desenvolvedor focado em python, automação e eficiência.</div>
+          </div>
+          <div class="prompt-line" style="margin-top:16px">
+            <span class="prompt">└─$</span> <span class="cmd" data-text="./projetos.sh" data-delay="1800"></span>
           </div>
         </div>
-      </section>
 
-      <section class="section">
-        <h2 class="section-title">skills</h2>
-
-        <div class="grid">
-          <div class="chip">python</div>
-          <div class="chip">linux</div>
-          <div class="chip">html</div>
-          <div class="chip">css</div>
-          <div class="chip">js</div>
-          <div class="chip">git</div>
+        <!-- PROJETOS -->
+        <div class="section" id="projects">
+          <div class="prompt-line" style="margin-top:4px">
+            <span class="prompt">┌──(kyxen㉿portfolio)-[~/projetos]</span>
+          </div>
+          <div class="prompt-line">
+            <span class="prompt">└─$</span> <span class="cmd" data-text="ls -la" data-delay="1000"></span>
+          </div>
+          <div class="output project-list">
+            <div class="project">
+              <span class="project-name">PDFinder</span>
+              <span class="project-desc">buscador de PDFs online</span>
+              <a class="project-link" href="https://kyxenpi.github.io/PDF/" target="_blank" rel="noopener">visitar →</a>
+            </div>
+            <div class="project">
+              <span class="project-name">Price Calculator</span>
+              <span class="project-desc">ferramenta web minimalista</span>
+              <a class="project-link" href="https://propricalc.netlify.app/" target="_blank" rel="noopener">visitar →</a>
+            </div>
+            <div class="project">
+              <span class="project-name">Serpentia</span>
+              <span class="project-desc">ambiente python interativo</span>
+              <a class="project-link" href="https://github.com/kyxenpi/Serpentia" target="_blank" rel="noopener">visitar →</a>
+            </div>
+          </div>
         </div>
-      </section>
 
-      <section class="section">
-        <h2 class="section-title">contact</h2>
-
-        <div class="contact-grid">
-          <a
-            class="contact-card"
-            href="https://github.com/kyxenpi"
-            target="_blank"
-          >
-            <div class="contact-label">github</div>
-            <div class="contact-value">@kyxenpi</div>
-          </a>
-
-          <a class="contact-card" href="mailto:kyxenpi@proton.me">
-            <div class="contact-label">email</div>
-            <div class="contact-value">kyxenpi@proton.me</div>
-          </a>
-
-          <a
-            class="contact-card"
-            href="https://wa.me/5513974140538"
-            target="_blank"
-          >
-            <div class="contact-label">whatsapp</div>
-            <div class="contact-value">+55 (13) 97414-0538</div>
-          </a>
-
-          <a
-            class="contact-card"
-            href="https://linkedin.com/in/kauê-leandro-farias-monteiro"
-            target="_blank"
-          >
-            <div class="contact-label">linkedin</div>
-            <div class="contact-value">kauê monteiro</div>
-          </a>
+        <!-- SOBRE -->
+        <div class="section">
+          <div class="prompt-line">
+            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
+          </div>
+          <div class="prompt-line">
+            <span class="prompt">└─$</span> <span class="cmd" data-text="cat sobre.txt" data-delay="1200"></span>
+          </div>
+          <div class="output">
+            <div class="desc">dev focado em backend e automação.</div>
+            <div class="desc">linux como sistema principal.</div>
+            <div class="desc">cli, minimalismo e performance.</div>
+          </div>
         </div>
-      </section>
-    </main>
+
+        <!-- HABILIDADES -->
+        <div class="section">
+          <div class="prompt-line">
+            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
+          </div>
+          <div class="prompt-line">
+            <span class="prompt">└─$</span> <span class="cmd" data-text="cat habilidades.txt" data-delay="1200"></span>
+          </div>
+          <div class="output">
+            <span class="skill-tag">python</span>
+            <span class="skill-tag">linux</span>
+            <span class="skill-tag">html</span>
+            <span class="skill-tag">css</span>
+            <span class="skill-tag">js</span>
+            <span class="skill-tag">git</span>
+          </div>
+        </div>
+
+        <!-- CONTATO -->
+        <div class="section">
+          <div class="prompt-line">
+            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
+          </div>
+          <div class="prompt-line">
+            <span class="prompt">└─$</span> <span class="cmd" data-text="cat contato.txt" data-delay="1400"></span>
+          </div>
+          <div class="output contact-list">
+            <a class="contact-row" href="https://github.com/kyxenpi" target="_blank" rel="noopener">
+              <span class="contact-label">github</span>
+              <span class="contact-sep">→</span>
+              <span class="contact-value">@kyxenpi</span>
+            </a>
+            <a class="contact-row" href="mailto:kyxenpi@proton.me">
+              <span class="contact-label">email</span>
+              <span class="contact-sep">→</span>
+              <span class="contact-value">kyxenpi@proton.me</span>
+            </a>
+            <a class="contact-row" href="https://wa.me/5513974140538" target="_blank" rel="noopener">
+              <span class="contact-label">whatsapp</span>
+              <span class="contact-sep">→</span>
+              <span class="contact-value">+55 (13) 97414-0538</span>
+            </a>
+            <a class="contact-row" href="https://linkedin.com/in/kauê-leandro-farias-monteiro" target="_blank" rel="noopener">
+              <span class="contact-label">linkedin</span>
+              <span class="contact-sep">→</span>
+              <span class="contact-value">kauê monteiro</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- CURSOR FINAL -->
+        <div class="section last-section">
+          <div class="prompt-line"><span class="prompt">┌──(kyxen㉿portfolio)-[~]</span></div>
+          <div class="prompt-line"><span class="prompt">└─$</span> <span class="cursor-blink">▊</span></div>
+        </div>
+
+      </div>
+
+      <div class="statusbar">
+        <span id="clock">uptime: 00:00:00</span>
+        <span>© 2025 Kyxen</span>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
