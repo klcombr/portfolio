@@ -12,21 +12,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+
+    <!-- BOOT SCREEN -->
     <div id="boot">
       <div class="boot-box">
-        <div class="boot-line">[ ok ] iniciando sistema...</div>
+        <div class="boot-line">[ ok ] carregando...</div>
         <div class="boot-line boot-bar-wrap">
           <span class="boot-bar"><span class="boot-fill"></span></span>
         </div>
       </div>
     </div>
+
+    <!-- AMBIENT -->
+    <div class="ambient"></div>
 
     <div class="window">
       <div class="titlebar">
@@ -47,20 +52,20 @@
             <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
           </div>
           <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="./start.sh"></span>
+            <span class="prompt">└─$</span> <span class="cmd glitch" data-text="./start.sh"></span>
           </div>
           <div class="output">
             <div class="greeting">código que vira <span class="green">sistema</span>.</div>
             <div class="desc">desenvolvedor focado em python, automação e eficiência.</div>
           </div>
-          <div class="prompt-line" style="margin-top:16px">
+          <div class="prompt-line" style="margin-top: 20px">
             <span class="prompt">└─$</span> <span class="cmd" data-text="./projetos.sh" data-delay="1800"></span>
           </div>
         </div>
 
         <!-- PROJETOS -->
         <div class="section" id="projects">
-          <div class="prompt-line" style="margin-top:4px">
+          <div class="prompt-line" style="margin-top: 4px">
             <span class="prompt">┌──(kyxen㉿portfolio)-[~/projetos]</span>
           </div>
           <div class="prompt-line">
@@ -70,17 +75,17 @@
             <div class="project">
               <span class="project-name">PDFinder</span>
               <span class="project-desc">buscador de PDFs online</span>
-              <a class="project-link" href="https://kyxenpi.github.io/PDF/" target="_blank" rel="noopener">visitar →</a>
+              <a class="project-link glitch" data-text="visitar →" href="https://kyxenpi.github.io/PDF/" target="_blank" rel="noopener">visitar →</a>
             </div>
             <div class="project">
               <span class="project-name">Price Calculator</span>
               <span class="project-desc">ferramenta web minimalista</span>
-              <a class="project-link" href="https://propricalc.netlify.app/" target="_blank" rel="noopener">visitar →</a>
+              <a class="project-link glitch" data-text="visitar →" href="https://propricalc.netlify.app/" target="_blank" rel="noopener">visitar →</a>
             </div>
             <div class="project">
               <span class="project-name">Serpentia</span>
               <span class="project-desc">ambiente python interativo</span>
-              <a class="project-link" href="https://github.com/kyxenpi/Serpentia" target="_blank" rel="noopener">visitar →</a>
+              <a class="project-link glitch" data-text="visitar →" href="https://github.com/kyxenpi/Serpentia" target="_blank" rel="noopener">visitar →</a>
             </div>
           </div>
         </div>
@@ -127,22 +132,22 @@
             <span class="prompt">└─$</span> <span class="cmd" data-text="cat contato.txt" data-delay="1400"></span>
           </div>
           <div class="output contact-list">
-            <a class="contact-row" href="https://github.com/kyxenpi" target="_blank" rel="noopener">
+            <a class="contact-row glitch" data-text="github" href="https://github.com/kyxenpi" target="_blank" rel="noopener">
               <span class="contact-label">github</span>
               <span class="contact-sep">→</span>
               <span class="contact-value">@kyxenpi</span>
             </a>
-            <a class="contact-row" href="mailto:kyxenpi@proton.me">
+            <a class="contact-row" data-text="email" href="mailto:kyxenpi@proton.me">
               <span class="contact-label">email</span>
               <span class="contact-sep">→</span>
               <span class="contact-value">kyxenpi@proton.me</span>
             </a>
-            <a class="contact-row" href="https://wa.me/5513974140538" target="_blank" rel="noopener">
+            <a class="contact-row" data-text="whatsapp" href="https://wa.me/5513974140538" target="_blank" rel="noopener">
               <span class="contact-label">whatsapp</span>
               <span class="contact-sep">→</span>
               <span class="contact-value">+55 (13) 97414-0538</span>
             </a>
-            <a class="contact-row" href="https://linkedin.com/in/kauê-leandro-farias-monteiro" target="_blank" rel="noopener">
+            <a class="contact-row" data-text="linkedin" href="https://linkedin.com/in/kauê-leandro-farias-monteiro" target="_blank" rel="noopener">
               <span class="contact-label">linkedin</span>
               <span class="contact-sep">→</span>
               <span class="contact-value">kauê monteiro</span>
@@ -160,7 +165,7 @@
 
       <div class="statusbar">
         <span id="clock">uptime: 00:00:00</span>
-        <span>© 2025 Kyxen</span>
+        <span>© 2025 kyxen</span>
       </div>
     </div>
 

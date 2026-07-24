@@ -5,8 +5,8 @@ const boot = document.getElementById("boot");
 window.addEventListener("load", () => {
   setTimeout(() => {
     boot.style.opacity = "0";
-    boot.style.transition = "opacity .35s ease";
-    setTimeout(() => boot.remove(), 350);
+    boot.style.transition = "opacity .4s ease";
+    setTimeout(() => boot.remove(), 400);
   }, 1200);
 });
 
@@ -69,11 +69,63 @@ document.querySelectorAll("a[href^='#']").forEach((a) => {
   });
 });
 
-/* SUBTLE GREEN GLOW ON SCROLL */
+/* SUBTLE PINK GLOW ON SCROLL */
 
 const win = document.querySelector(".window");
 
 window.addEventListener("scroll", () => {
   const p = Math.min(window.scrollY / 400, 1);
-  win.style.boxShadow = `0 0 ${10 + p * 30}px rgba(51, 255, 51, ${p * 0.07})`;
+  win.style.boxShadow = `0 0 ${10 + p * 25}px rgba(232, 99, 122, ${p * 0.06})`;
 });
+
+/* RANDOM MICRO-GLITCH */
+
+function microGlitch() {
+  const term = document.querySelector(".term");
+  if (!term) return;
+
+  term.style.transform = `translate(${(Math.random() - 0.5) * 2}px, 0)`;
+  setTimeout(() => {
+    term.style.transform = "translate(0, 0)";
+  }, 50);
+
+  setTimeout(microGlitch, 4000 + Math.random() * 8000);
+}
+
+setTimeout(microGlitch, 3000);
+
+/* AMBIENT PARTICLES */
+
+const ambient = document.querySelector(".ambient");
+
+function createParticle() {
+  const p = document.createElement("div");
+  p.style.cssText = `
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    background: #e8637a;
+    opacity: 0;
+    left: ${Math.random() * 100}vw;
+    top: ${Math.random() * 100}vh;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp ${6 + Math.random() * 8}s linear forwards;
+  `;
+  ambient.appendChild(p);
+  setTimeout(() => p.remove(), 14000);
+}
+
+/* inject float animation */
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes floatUp {
+    0% { opacity: 0; transform: translateY(0); }
+    15% { opacity: 0.15; }
+    85% { opacity: 0.05; }
+    100% { opacity: 0; transform: translateY(-120px); }
+  }
+`;
+document.head.appendChild(style);
+
+setInterval(createParticle, 3000);
