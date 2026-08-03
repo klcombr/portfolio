@@ -133,16 +133,16 @@
           <div class="prompt-line">
             <span class="prompt">└─$</span> <span class="cmd" data-text="cat habilidades.txt" data-delay="1200"></span>
           </div>
-          <div class="output">
-            <span class="skill-tag">python</span>
-            <span class="skill-tag">typescript</span>
-            <span class="skill-tag">javascript</span>
-            <span class="skill-tag">linux</span>
-            <span class="skill-tag">html</span>
-            <span class="skill-tag">css</span>
-            <span class="skill-tag">git</span>
-            <span class="skill-tag">sqlite</span>
-            <span class="skill-tag">next.js</span>
+          <div class="output skill-grid">
+            <div class="skill-row"><span class="skill-name">python</span><span class="skill-bar"><span class="skill-fill" data-w="90"></span></span><span class="skill-lvl">lv 9</span></div>
+            <div class="skill-row"><span class="skill-name">typescript</span><span class="skill-bar"><span class="skill-fill" data-w="70"></span></span><span class="skill-lvl">lv 7</span></div>
+            <div class="skill-row"><span class="skill-name">javascript</span><span class="skill-bar"><span class="skill-fill" data-w="75"></span></span><span class="skill-lvl">lv 7</span></div>
+            <div class="skill-row"><span class="skill-name">linux</span><span class="skill-bar"><span class="skill-fill" data-w="85"></span></span><span class="skill-lvl">lv 8</span></div>
+            <div class="skill-row"><span class="skill-name">html</span><span class="skill-bar"><span class="skill-fill" data-w="85"></span></span><span class="skill-lvl">lv 8</span></div>
+            <div class="skill-row"><span class="skill-name">css</span><span class="skill-bar"><span class="skill-fill" data-w="80"></span></span><span class="skill-lvl">lv 8</span></div>
+            <div class="skill-row"><span class="skill-name">git</span><span class="skill-bar"><span class="skill-fill" data-w="70"></span></span><span class="skill-lvl">lv 7</span></div>
+            <div class="skill-row"><span class="skill-name">sqlite</span><span class="skill-bar"><span class="skill-fill" data-w="60"></span></span><span class="skill-lvl">lv 6</span></div>
+            <div class="skill-row"><span class="skill-name">next.js</span><span class="skill-bar"><span class="skill-fill" data-w="55"></span></span><span class="skill-lvl">lv 5</span></div>
           </div>
         </div>
 
@@ -178,19 +178,36 @@
           </div>
         </div>
 
-        <!-- CURSOR FINAL -->
-        <div class="section last-section">
+        <!-- SHELL INTERATIVO -->
+        <div class="section last-section" id="shell">
           <div class="prompt-line"><span class="prompt">┌──(kyxen㉿portfolio)-[~]</span></div>
-          <div class="prompt-line"><span class="prompt">└─$</span> <span class="cursor-blink">▊</span></div>
+          <div class="prompt-line shell-line">
+            <span class="prompt">└─$</span>
+            <input
+              id="term-input"
+              class="term-input"
+              type="text"
+              autocomplete="off"
+              autocapitalize="off"
+              autocorrect="off"
+              spellcheck="false"
+              aria-label="terminal"
+              placeholder="digite help e tecle enter"
+            />
+          </div>
+          <div id="term-out"></div>
         </div>
 
       </div>
 
       <div class="statusbar">
+        <span id="hud">lv 1 · 0 xp</span>
         <span id="clock">uptime: 00:00:00</span>
         <span>© 2026 kyxen</span>
       </div>
     </div>
+
+    <div id="toasts"></div>
 
     <script src="script.js"></script>
   </body>
