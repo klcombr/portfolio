@@ -426,10 +426,10 @@ const CMDS = {
 
   "bocchi": {
     out: () => [
-      "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
-      "█            GUITAR SOLO            █",
-      "█   https://youtu.be/_2-m2r_4iWY    █",
-      "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀",
+      "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
+      "█             GUITAR SOLO             █",
+      "█ https://www.youtube.com/watch?v=8Selo-P1Ovc █",
+      "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀",
       "",
       "sei lá, essa daqui é pra quem conhece.",
     ],
