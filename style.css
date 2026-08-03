@@ -200,6 +200,33 @@ body::after {
   line-height: 1.9;
 }
 
+/* CERTIFICATE */
+
+.cert {
+  margin-top: 16px;
+}
+
+.cert-img {
+  display: block;
+  max-width: 420px;
+  width: 100%;
+  border: 1px solid #1e1e22;
+  filter: grayscale(0.4);
+  transition: filter 0.3s, border-color 0.3s;
+}
+
+.cert:hover .cert-img {
+  filter: grayscale(0);
+  border-color: #e8637a55;
+}
+
+.cert-caption {
+  margin-top: 6px;
+  color: #3a3a40;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
 /* PROJECT LIST */
 
 .project-list {
@@ -329,8 +356,7 @@ body::after {
 
 /* CURSOR */
 
-.cursor-blink {
-  display: inline-block;
+.cursor-blink {  display: inline-block;
   color: #e8637a;
   animation: blink 1s step-end infinite;
   opacity: 0.8;
