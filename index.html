@@ -128,8 +128,13 @@
             <div class="desc">linux como sistema principal, minimalismo como estilo.</div>
             <div class="desc">quando não tô no terminal, tô ouvindo bocchi the rock.</div>
             <div class="cert">
-              <img class="cert-img" src="imgs/pythondevcertificate.png" alt="certificado python" loading="lazy" decoding="async" />
-              <div class="cert-caption">$ cat cert_python.txt</div>
+              <button class="cert-toggle" id="cert-toggle" type="button" aria-expanded="false" aria-controls="cert-body">
+                <span class="caret" aria-hidden="true">▸</span>
+                <span class="cmd">$ cat cert_python.txt</span>
+              </button>
+              <div class="cert-body" id="cert-body">
+                <img class="cert-img" src="imgs/pythondevcertificate.png" alt="certificado python" loading="lazy" decoding="async" />
+              </div>
             </div>
           </div>
         </div>

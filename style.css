@@ -283,6 +283,45 @@ button:focus-visible {
   margin-top: 16px;
 }
 
+.cert-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+.cert-toggle:hover {
+  color: var(--accent);
+}
+
+.cert-toggle .caret {
+  color: var(--accent-dim);
+  transition: transform 0.3s ease;
+}
+
+.cert.open .cert-toggle .caret {
+  transform: rotate(90deg);
+}
+
+.cert-body {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.cert.open .cert-body {
+  max-height: 800px;
+  opacity: 1;
+}
+
 .cert-img {
   display: block;
   max-width: 420px;
@@ -295,13 +334,6 @@ button:focus-visible {
 .cert:hover .cert-img {
   filter: grayscale(1) contrast(1.2);
   border-color: var(--accent);
-}
-
-.cert-caption {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 0.5px;
 }
 
 /* PROJECT LIST */

@@ -94,6 +94,18 @@ function initTheme() {
 
 initTheme();
 
+/* CERTIFICADO: abre/fecha sob demanda */
+
+const certToggle = document.getElementById("cert-toggle");
+const cert = certToggle ? certToggle.closest(".cert") : null;
+
+if (certToggle && cert) {
+  certToggle.addEventListener("click", () => {
+    const open = cert.classList.toggle("open");
+    certToggle.setAttribute("aria-expanded", String(open));
+  });
+}
+
 /* SMOOTH SCROLL FOR ANCHORS */
 
 document.querySelectorAll("a[href^='#']").forEach((a) => {
