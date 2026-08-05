@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>kyxen@portfolio:~</title>
     <meta name="description" content="kauê (kl) · dev python de praia grande/sp — automação, backend e linux." />
+    <meta name="theme-color" content="#0a0a0b" />
     <meta property="og:title" content="kyxen@portfolio:~" />
     <meta property="og:description" content="python / linux / automação / minimalismo" />
     <meta property="og:image" content="imgs/banner.png" />
+    <meta property="og:type" content="website" />
     <link rel="icon" type="image/png" href="imgs/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +43,9 @@
           <span class="tdot" data="max"></span>
         </div>
         <span class="titletext">kyxen@portfolio: ~</span>
-        <span class="titleempty"></span>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="alternar tema claro/escuro" title="alternar tema">
+          <span class="icon" aria-hidden="true">●</span>
+        </button>
       </div>
 
       <div class="term">
@@ -59,7 +63,7 @@
             <div class="desc">desenvolvedor focado em python, automação e eficiência.</div>
           </div>
           <div class="prompt-line" style="margin-top: 20px">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="./projetos.sh" data-delay="1800"></span>
+            <span class="prompt">└─$</span> <span class="cmd" data-text="./projetos.sh" data-delay="650"></span>
           </div>
         </div>
 
@@ -69,7 +73,7 @@
             <span class="prompt">┌──(kyxen㉿portfolio)-[~/projetos]</span>
           </div>
           <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="ls -la" data-delay="1000"></span>
+            <span class="prompt">└─$</span> <span class="cmd" data-text="ls -la" data-delay="450"></span>
           </div>
           <div class="output project-list">
             <div class="project">
@@ -111,12 +115,12 @@
         </div>
 
         <!-- SOBRE -->
-        <div class="section">
+        <div class="section" id="sobre">
           <div class="prompt-line">
             <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
           </div>
           <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="cat sobre.txt" data-delay="1200"></span>
+            <span class="prompt">└─$</span> <span class="cmd" data-text="cat sobre.txt" data-delay="500"></span>
           </div>
           <div class="output">
             <div class="desc">sou o kauê (kl), dev de praia grande/sp.</div>
@@ -124,19 +128,19 @@
             <div class="desc">linux como sistema principal, minimalismo como estilo.</div>
             <div class="desc">quando não tô no terminal, tô ouvindo bocchi the rock.</div>
             <div class="cert">
-              <img class="cert-img" src="imgs/pythondevcertificate.png" alt="certificado python" />
+              <img class="cert-img" src="imgs/pythondevcertificate.png" alt="certificado python" loading="lazy" decoding="async" />
               <div class="cert-caption">$ cat cert_python.txt</div>
             </div>
           </div>
         </div>
 
         <!-- HABILIDADES -->
-        <div class="section">
+        <div class="section" id="habilidades">
           <div class="prompt-line">
             <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
           </div>
           <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="cat habilidades.txt" data-delay="1200"></span>
+            <span class="prompt">└─$</span> <span class="cmd" data-text="cat habilidades.txt" data-delay="500"></span>
           </div>
           <div class="output skill-grid">
             <div class="skill-row"><span class="skill-name">python</span><span class="skill-bar"><span class="skill-fill" data-w="90"></span></span><span class="skill-lvl">lv 9</span></div>
@@ -152,12 +156,12 @@
         </div>
 
         <!-- CONTATO -->
-        <div class="section">
+        <div class="section" id="contato">
           <div class="prompt-line">
             <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
           </div>
           <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="cat contato.txt" data-delay="1400"></span>
+            <span class="prompt">└─$</span> <span class="cmd" data-text="cat contato.txt" data-delay="550"></span>
           </div>
           <div class="output contact-list">
             <a class="contact-row glitch" data-text="github" href="https://github.com/klcombr" target="_blank" rel="noopener">
@@ -175,7 +179,7 @@
               <span class="contact-sep">→</span>
               <span class="contact-value">+55 (13) 97414-0538</span>
             </a>
-            <a class="contact-row" data-text="currículo" href="https://linkedin.com/in/kauê-leandro-farias-monteiro" target="_blank" rel="noopener">
+            <a class="contact-row" data-text="currículo" href="https://www.linkedin.com/in/kau%C3%AA-leandro-farias-monteiro" target="_blank" rel="noopener">
               <span class="contact-label">currículo</span>
               <span class="contact-sep">→</span>
               <span class="contact-value">linkedin · kauê monteiro</span>
@@ -201,16 +205,20 @@
             />
           </div>
           <div id="term-out"></div>
+          <div class="term-hint">↑↓ histórico · tab completa · enter executa</div>
         </div>
 
       </div>
 
       <div class="statusbar">
-        <span id="hud">lv 1 · 0 xp</span>
+        <span id="hud">lv 1 · 0 xp<span class="hud-bar"><span class="hud-fill"></span></span></span>
+        <span class="spacer"></span>
         <span id="clock">uptime: 00:00:00</span>
         <span>© 2026 kyxen</span>
       </div>
     </div>
+
+    <noscript>ative o javascript para ver o portfólio em ação.</noscript>
 
     <div id="toasts"></div>
 

@@ -8,9 +8,14 @@ Portfólio pessoal em estilo terminal (HTML, CSS e JavaScript puro) que apresent
 - Efeito de digitação dos comandos, como em um terminal real.
 - Lista de projetos com links para visita.
 - Seções de sobre, habilidades e contato.
-- Relógio de "uptime" atualizado em tempo real.
-- Efeitos de glitch e partículas flutuantes.
-- Tema monocromático rosa/escuro com fonte JetBrains Mono.
+- Relógio de "uptime" da sessão atualizado em tempo real.
+- Tema **monocromático** (preto e branco) com alternância clara/escura persistida no navegador.
+- Terminal interativo com `help`, `cat`, `neofetch`, `xp`, `conquistas`, easter eggs e mais.
+- Histórico de comandos (setas ↑↓) e autocompletar com `tab`.
+- Gamificação: XP, níveis e conquistas salvas no `localStorage`.
+- Acessível: respeita `prefers-reduced-motion` e tem foco visível no teclado.
+- Efeitos de glitch e partículas flutuantes monocromáticas.
+- Fonte JetBrains Mono.
 
 ## Projetos
 

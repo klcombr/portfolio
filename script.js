@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
 
 /* TERMINAL TYPING (intro) */
 
-function typeLine(el, text, speed = 30) {
+function typeLine(el, text, speed = 16) {
   return new Promise((res) => {
     let i = 0;
     el.textContent = "";
@@ -37,23 +37,62 @@ async function runTerminal() {
     await typeLine(cmd, text);
     await new Promise((r) => setTimeout(r, 200));
   }
-  setupShell();
 }
 
-/* CLOCK */
+/* SHELL interativo fica disponível logo após o boot,
+   sem esperar a digitação do intro terminar. */
+setTimeout(setupShell, 1600);
+
+/* UPTIME (sessão) */
+
+const bootTime = Date.now();
+
+function pad(n) {
+  return String(n).padStart(2, "0");
+}
 
 function updateClock() {
   const clock = document.getElementById("clock");
   if (!clock) return;
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2, "0");
-  const m = String(now.getMinutes()).padStart(2, "0");
-  const s = String(now.getSeconds()).padStart(2, "0");
-  clock.textContent = `uptime: ${h}:${m}:${s}`;
+  const s = Math.floor((Date.now() - bootTime) / 1000);
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  clock.textContent = `uptime: ${pad(h)}:${pad(m)}:${pad(s % 60)}`;
 }
 
 updateClock();
 setInterval(updateClock, 1000);
+
+/* TEMA MONOCROMÁTICO (preto ↔ branco) */
+
+const THEME_KEY = "kl_portfolio_theme";
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", theme === "light" ? "#f4f4f5" : "#0a0a0b");
+}
+
+function initTheme() {
+  let theme = "dark";
+  try {
+    theme = localStorage.getItem(THEME_KEY) || "dark";
+  } catch (e) {}
+  applyTheme(theme);
+  const btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+      applyTheme(next);
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch (e) {}
+      toast(next === "light" ? "tema claro ativado" : "tema escuro ativado");
+    });
+  }
+}
+
+initTheme();
 
 /* SMOOTH SCROLL FOR ANCHORS */
 
@@ -65,13 +104,17 @@ document.querySelectorAll("a[href^='#']").forEach((a) => {
   });
 });
 
-/* SUBTLE PINK GLOW ON SCROLL */
+/* MONOCHROME GLOW ON SCROLL */
 
 const win = document.querySelector(".window");
 window.addEventListener("scroll", () => {
   const p = Math.min(window.scrollY / 400, 1);
-  win.style.boxShadow = `0 0 ${10 + p * 25}px rgba(232, 99, 122, ${p * 0.06})`;
+  const theme = document.documentElement.getAttribute("data-theme");
+  const c = theme === "light" ? "0, 0, 0" : "255, 255, 255";
+  win.style.boxShadow = `0 0 ${10 + p * 25}px rgba(${c}, ${p * 0.06})`;
 });
+
+const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* RANDOM MICRO-GLITCH */
 
@@ -84,7 +127,7 @@ function microGlitch() {
   }, 50);
   setTimeout(microGlitch, 4000 + Math.random() * 8000);
 }
-setTimeout(microGlitch, 3000);
+if (!REDUCED_MOTION) setTimeout(microGlitch, 3000);
 
 /* AMBIENT PARTICLES */
 
@@ -95,7 +138,7 @@ function createParticle() {
     position: fixed;
     width: 1px;
     height: 1px;
-    background: #e8637a;
+    background: var(--accent);
     opacity: 0;
     left: ${Math.random() * 100}vw;
     top: ${Math.random() * 100}vh;
@@ -116,7 +159,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
-setInterval(createParticle, 3000);
+if (!REDUCED_MOTION) setInterval(createParticle, 3000);
 
 /* ============================================================
    GAMIFICAÇÃO — XP, nível, conquistas, shell interativo
@@ -168,7 +211,7 @@ function updateHud() {
   const cur = xpForLevel(l);
   const next = xpForLevel(l + 1);
   const pct = next === cur ? 0 : Math.round(((game.xp - cur) / (next - cur)) * 100);
-  hud.innerHTML = `lv <b>${l}</b> · ${game.xp} xp`;
+  hud.innerHTML = `lv <b>${l}</b> · ${game.xp} xp<span class="hud-bar"><span class="hud-fill" style="width:${pct}%"></span></span>`;
   hud.title = `xp: ${game.xp} (${pct}% para o próximo nível)`;
 }
 
@@ -277,6 +320,18 @@ function animateSkills() {
 const termInput = document.getElementById("term-input");
 const termOut = document.getElementById("term-out");
 
+const FILES = ["sobre.txt", "habilidades.txt", "projetos.txt", "contato.txt", "README.md", "start.sh", "cert_python.txt"];
+
+function complete(raw) {
+  const input = raw.trim().toLowerCase();
+  const names = Object.keys(CMDS);
+  const pool = input.startsWith("cat ")
+    ? FILES.filter((f) => f.startsWith(input.slice(4)))
+    : names.filter((c) => c.startsWith(input));
+  if (pool.length === 1) return input.startsWith("cat ") ? "cat " + pool[0] : pool[0];
+  return null;
+}
+
 function printLines(lines, delay = 0) {
   const out = Array.isArray(lines) ? lines : [lines];
   const term = document.getElementById("shell");
@@ -286,7 +341,8 @@ function printLines(lines, delay = 0) {
       div.className = "term-out-line";
       div.textContent = line;
       termOut.appendChild(div);
-      if (term) term.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      if (term && typeof term.scrollIntoView === "function")
+        term.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, delay * i);
   });
 }
@@ -327,9 +383,11 @@ const CMDS = {
       "-rwxr-xr-x 1 kl kl   120 jan  3 09:12 start.sh",
       "-rw-r--r-- 1 kl kl  2.1k jan  3 09:12 sobre.txt",
       "-rw-r--r-- 1 kl kl  1.8k jan  3 09:12 habilidades.txt",
-      "-rw-r--r-- 1 kl kl   900 jan  3 09:12 projetos.txt",
+      "-rw-r--r-- 1 kl kl  1.1k jan  3 09:12 projetos.txt",
       "-rw-r--r-- 1 kl kl   512 jan  3 09:12 contato.txt",
       "-rw-r--r-- 1 kl kl  320k jan  3 09:12 cert_python.txt",
+      "",
+      "dica: tecle tab para completar comandos e arquivos.",
     ],
   },
 
@@ -358,12 +416,13 @@ const CMDS = {
 
   "cat projetos.txt": {
     out: () => [
-      "schoolflow        saas de gestão operacional para escolas",
-      "PDFinder          buscador de PDFs online",
-      "Serpentia         laboratório de código interativo",
-      "Opallium          seu workspace, sua estrutura, seu código",
-      "Price Calculator  ferramenta web minimalista",
-      "NewWay            otimizador de windows em python",
+      "FOCO             site de estudos: pomodoro, streak, xp e conquistas",
+      "schoolflow       saas de gestão operacional para escolas",
+      "PDFinder         buscador de PDFs online",
+      "Serpentia        laboratório de código interativo",
+      "Opallium         seu workspace, sua estrutura, seu código",
+      "Price Calculator ferramenta web minimalista",
+      "NewWay           otimizador de windows em python",
     ],
   },
 
@@ -543,6 +602,9 @@ function runCommand(raw) {
   }
 }
 
+const history = [];
+let histIndex = -1;
+
 function setupShell() {
   if (!termInput) return;
   termInput.disabled = false;
@@ -552,7 +614,30 @@ function setupShell() {
     if (e.key === "Enter") {
       const raw = termInput.value;
       termInput.value = "";
-      if (raw.trim()) runCommand(raw);
+      if (raw.trim()) {
+        history.push(raw.trim());
+        histIndex = history.length;
+        runCommand(raw);
+      }
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (histIndex > 0) {
+        histIndex--;
+        termInput.value = history[histIndex];
+      }
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (histIndex < history.length - 1) {
+        histIndex++;
+        termInput.value = history[histIndex];
+      } else {
+        histIndex = history.length;
+        termInput.value = "";
+      }
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      const done = complete(termInput.value);
+      if (done) termInput.value = done;
     }
   });
 
