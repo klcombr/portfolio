@@ -1,580 +1,230 @@
-/* BOOT SCREEN */
-
-const boot = document.getElementById("boot");
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    boot.style.opacity = "0";
-    boot.style.transition = "opacity .4s ease";
-    setTimeout(() => boot.remove(), 400);
-  }, 1200);
-});
-
-/* TERMINAL TYPING (intro) */
-
-function typeLine(el, text, speed = 30) {
-  return new Promise((res) => {
-    let i = 0;
-    el.textContent = "";
-    function next() {
-      if (i < text.length) {
-        el.textContent += text[i++];
-        setTimeout(next, speed + Math.random() * 20);
-      } else {
-        res();
-      }
-    }
-    next();
-  });
-}
-
-async function runTerminal() {
-  const cmds = document.querySelectorAll(".cmd");
-  for (const cmd of cmds) {
-    const text = cmd.dataset.text;
-    const delay = parseInt(cmd.dataset.delay) || 0;
-    if (delay) await new Promise((r) => setTimeout(r, delay));
-    await typeLine(cmd, text);
-    await new Promise((r) => setTimeout(r, 200));
-  }
-  setupShell();
-}
-
-/* CLOCK */
-
-function updateClock() {
-  const clock = document.getElementById("clock");
-  if (!clock) return;
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2, "0");
-  const m = String(now.getMinutes()).padStart(2, "0");
-  const s = String(now.getSeconds()).padStart(2, "0");
-  clock.textContent = `uptime: ${h}:${m}:${s}`;
-}
-
-updateClock();
-setInterval(updateClock, 1000);
-
-/* SMOOTH SCROLL FOR ANCHORS */
-
-document.querySelectorAll("a[href^='#']").forEach((a) => {
-  a.addEventListener("click", (e) => {
-    e.preventDefault();
-    const el = document.querySelector(a.getAttribute("href"));
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-});
-
-/* SUBTLE PINK GLOW ON SCROLL */
-
-const win = document.querySelector(".window");
-window.addEventListener("scroll", () => {
-  const p = Math.min(window.scrollY / 400, 1);
-  win.style.boxShadow = `0 0 ${10 + p * 25}px rgba(232, 99, 122, ${p * 0.06})`;
-});
-
-/* RANDOM MICRO-GLITCH */
-
-function microGlitch() {
-  const term = document.querySelector(".term");
-  if (!term) return;
-  term.style.transform = `translate(${(Math.random() - 0.5) * 2}px, 0)`;
-  setTimeout(() => {
-    term.style.transform = "translate(0, 0)";
-  }, 50);
-  setTimeout(microGlitch, 4000 + Math.random() * 8000);
-}
-setTimeout(microGlitch, 3000);
-
-/* AMBIENT PARTICLES */
-
-const ambient = document.querySelector(".ambient");
-function createParticle() {
-  const p = document.createElement("div");
-  p.style.cssText = `
-    position: fixed;
-    width: 1px;
-    height: 1px;
-    background: #e8637a;
-    opacity: 0;
-    left: ${Math.random() * 100}vw;
-    top: ${Math.random() * 100}vh;
-    pointer-events: none;
-    z-index: 0;
-    animation: floatUp ${6 + Math.random() * 8}s linear forwards;
-  `;
-  ambient.appendChild(p);
-  setTimeout(() => p.remove(), 14000);
-}
-const style = document.createElement("style");
-style.textContent = `
-  @keyframes floatUp {
-    0% { opacity: 0; transform: translateY(0); }
-    15% { opacity: 0.15; }
-    85% { opacity: 0.05; }
-    100% { opacity: 0; transform: translateY(-120px); }
-  }
-`;
-document.head.appendChild(style);
-setInterval(createParticle, 3000);
-
 /* ============================================================
-   GAMIFICAÇÃO — XP, nível, conquistas, shell interativo
+   O DIÁRIO DA MADRUGADA - console de visita
    ============================================================ */
 
-const LS_KEY = "kl_portfolio_v1";
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
 
-function loadGame() {
-  try {
-    return JSON.parse(localStorage.getItem(LS_KEY)) || {};
-  } catch (e) {
-    return {};
-  }
-}
-
-const game = Object.assign(
-  {
-    xp: 0,
-    commands: [],
-    achievements: [],
-    visitedProjects: [],
-    contactOpened: false,
-    skillBonus: false,
-    visited: false,
+/* ---------- reveal on scroll (IntersectionObserver) ---------- */
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        revealObserver.unobserve(e.target);
+      }
+    }
   },
-  loadGame()
+  { threshold: 0.12 }
 );
 
-function saveGame() {
-  try {
-    localStorage.setItem(LS_KEY, JSON.stringify(game));
-  } catch (e) {}
+$$(".reveal").forEach((el) => revealObserver.observe(el));
+
+/* ---------- relógio do masthead ---------- */
+function tickClock() {
+  const el = $("#mast-clock");
+  if (!el) return;
+  const d = new Date();
+  const hh = String(d.getHours()).padStart(2, "0");
+  const mm = String(d.getMinutes()).padStart(2, "0");
+  el.textContent = `${hh}:${mm} local`;
 }
+tickClock();
+setInterval(tickClock, 30000);
 
-function xpForLevel(l) {
-  return 100 * ((l * (l - 1)) / 2);
-}
+/* ============================================================
+   CONSOLE DE VISITA
+   ============================================================ */
+const termInput = $("#term-input");
+const termOut = $("#term-out");
 
-function levelFromXp(xp) {
-  let l = 1;
-  while (xp >= xpForLevel(l + 1)) l++;
-  return l;
-}
-
-function updateHud() {
-  const hud = document.getElementById("hud");
-  if (!hud) return;
-  const l = levelFromXp(game.xp);
-  const cur = xpForLevel(l);
-  const next = xpForLevel(l + 1);
-  const pct = next === cur ? 0 : Math.round(((game.xp - cur) / (next - cur)) * 100);
-  hud.innerHTML = `lv <b>${l}</b> · ${game.xp} xp`;
-  hud.title = `xp: ${game.xp} (${pct}% para o próximo nível)`;
-}
-
-function addXp(n) {
-  const before = levelFromXp(game.xp);
-  game.xp += n;
-  const after = levelFromXp(game.xp);
-  if (after > before) {
-    unlock("level2", true);
-    toast(`level up · agora lv ${after}`, "levelup");
-  }
-  updateHud();
-  saveGame();
-}
-
-/* CONQUISTAS */
-
-const ACHIEVEMENTS = {
-  first_boot: { name: "primeira visita", desc: "chegou até aqui" },
-  first_cmd: { name: "o primeiro comando", desc: "digitou um comando" },
-  helper: { name: "pediu ajuda", desc: "usou o help" },
-  explorer: { name: "explorador", desc: "visitou todos os projetos" },
-  social: { name: "falei com o dev", desc: "abriu um contato" },
-  hacker: { name: "modo hacker", desc: "invadiu o terminal" },
-  guitar: { name: "as guitarras da bocchi", desc: "soube a referência" },
-  root: { name: "root", desc: "abusou do poder" },
-  immortal: { name: "nada se cria", desc: "tentou rm -rf /" },
-  terminalista: { name: "terminalista", desc: "rodou 10 comandos" },
-  level2: { name: "subiu de nível", desc: "alcançou o lv 2" },
-};
-
-function unlock(id, silent) {
-  if (game.achievements.includes(id)) return;
-  game.achievements.push(id);
-  const a = ACHIEVEMENTS[id];
-  if (a && !silent) {
-    toast(`conquista: ${a.name}`, "ach");
-    addXp(40);
-  }
-  saveGame();
-}
-
-/* TOASTS */
-
-function toast(msg, kind = "") {
-  const box = document.getElementById("toasts");
-  if (!box) return;
-  const t = document.createElement("div");
-  t.className = "toast" + (kind ? " " + kind : "");
-  t.textContent = msg;
-  box.appendChild(t);
-  requestAnimationFrame(() => t.classList.add("show"));
-  setTimeout(() => t.classList.remove("show"), 2600);
-  setTimeout(() => t.remove(), 3000);
-}
-
-/* RASTREIO DE CLICKS */
-
-function trackActions() {
-  const totalProjects = document.querySelectorAll(".project").length;
-
-  document.querySelectorAll(".project-link").forEach((a) => {
-    a.addEventListener("click", () => {
-      addXp(20);
-      const row = a.closest(".project");
-      const name = row ? row.querySelector(".project-name").textContent : null;
-      if (name && !game.visitedProjects.includes(name)) {
-        game.visitedProjects.push(name);
-        saveGame();
-        if (game.visitedProjects.length >= totalProjects) unlock("explorer");
-      }
-    });
-  });
-
-  document.querySelectorAll(".contact-row").forEach((a) => {
-    a.addEventListener("click", () => {
-      addXp(15);
-      if (!game.contactOpened) {
-        game.contactOpened = true;
-        saveGame();
-        unlock("social");
-      }
-    });
-  });
-
-  document.querySelectorAll(".skill-fill").forEach((s) => {
-    s.addEventListener("animationend", () => {
-      if (!game.skillBonus) {
-        game.skillBonus = true;
-        saveGame();
-        addXp(25);
-      }
-    });
-  });
-}
-
-function animateSkills() {
-  document.querySelectorAll(".skill-fill").forEach((f) => {
-    const w = parseInt(f.dataset.w, 10) || 0;
-    f.style.width = w + "%";
-  });
-}
-
-/* SHELL INTERATIVO */
-
-const termInput = document.getElementById("term-input");
-const termOut = document.getElementById("term-out");
-
-function printLines(lines, delay = 0) {
-  const out = Array.isArray(lines) ? lines : [lines];
-  const term = document.getElementById("shell");
-  out.forEach((line, i) => {
-    setTimeout(() => {
-      const div = document.createElement("div");
-      div.className = "term-out-line";
+function printLines(lines) {
+  const list = Array.isArray(lines) ? lines : [lines];
+  for (const line of list) {
+    const div = document.createElement("div");
+    div.className = "term-line";
+    if (typeof line === "object" && line !== null) {
+      div.className += " " + (line.cls || "");
+      div.textContent = line.text;
+    } else {
       div.textContent = line;
-      termOut.appendChild(div);
-      if (term) term.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }, delay * i);
-  });
+    }
+    termOut.appendChild(div);
+  }
+  termOut.scrollTop = termOut.scrollHeight;
 }
-
-const SKILLS = ["python", "typescript", "javascript", "linux", "html", "css", "git", "sqlite", "next.js"];
 
 const CMDS = {
-  help: {
-    out: () => [
-      "comandos disponíveis:",
-      "  help                  mostra esta ajuda",
-      "  ls                    lista os arquivos",
-      "  cat sobre.txt         quem eu sou",
-      "  cat habilidades.txt   minhas skills",
-      "  cat projetos.txt      meus projetos",
-      "  cat contato.txt       como falar comigo",
-      "  neofetch              info do sistema",
-      "  whoami                quem é você",
-      "  xp                    seu progresso",
-      "  conquistas            suas conquistas",
-      "  sudo <cmd>            com o poder vem a responsabilidade",
-      "  rm -rf /              não faça isso",
-      "  bocchi                ...",
-      "  hack                  ativa o modo hacker",
-      "  clear                 limpa o terminal",
-      "",
-      "dica: todo comando vale xp. primeiras vezes valem mais.",
-    ],
-  },
+  help: () => [
+    "comandos disponíveis:",
+    "  help                  mostra esta ajuda",
+    "  ls                    lista os arquivos",
+    "  cat <arquivo>         lê um arquivo do diário",
+    "  neofetch              info do sistema",
+    "  whoami                quem é você",
+    "  date                  que horas são na madrugada",
+    "  bocchi                ...",
+    "  hack                  ativa o modo hacker",
+    "  sudo <cmd>            com o poder vem a responsabilidade",
+    "  rm -rf /              não faça isso",
+    "  clear                 limpa o console",
+    "",
+    "arquivos: sobre.txt · servicos.txt · habilidades.txt · projetos.txt · contato.txt · cert_python.txt",
+  ],
 
-  ls: {
-    out: () => ["README.md   start.sh   cert_python.txt", "sobre.txt   habilidades.txt   projetos.txt   contato.txt"],
-  },
+  ls: () => [
+    "README.md   cert_python.txt",
+    "sobre.txt   servicos.txt   habilidades.txt   projetos.txt   contato.txt",
+  ],
 
-  "ls -la": {
-    out: () => [
-      "-rw-r--r-- 1 kl kl   417 jan  3 09:12 README.md",
-      "-rwxr-xr-x 1 kl kl   120 jan  3 09:12 start.sh",
-      "-rw-r--r-- 1 kl kl  2.1k jan  3 09:12 sobre.txt",
-      "-rw-r--r-- 1 kl kl  1.8k jan  3 09:12 habilidades.txt",
-      "-rw-r--r-- 1 kl kl   900 jan  3 09:12 projetos.txt",
-      "-rw-r--r-- 1 kl kl   512 jan  3 09:12 contato.txt",
-      "-rw-r--r-- 1 kl kl  320k jan  3 09:12 cert_python.txt",
-    ],
-  },
+  "ls -la": () => [
+    "-rw-r--r-- 1 kl kl   417 jan  3 09:12 README.md",
+    "-rw-r--r-- 1 kl kl  2.1k jan  3 09:12 sobre.txt",
+    "-rw-r--r-- 1 kl kl  1.3k jan  3 09:12 servicos.txt",
+    "-rw-r--r-- 1 kl kl  1.8k jan  3 09:12 habilidades.txt",
+    "-rw-r--r-- 1 kl kl   900 jan  3 09:12 projetos.txt",
+    "-rw-r--r-- 1 kl kl   512 jan  3 09:12 contato.txt",
+    "-rw-r--r-- 1 kl kl  320k jan  3 09:12 cert_python.txt",
+  ],
 
-  "cat sobre.txt": {
-    out: () => [
-      "sou o kauê (kl), dev de praia grande/sp.",
-      "python, automação, backend e linha de comando.",
-      "linux como sistema principal, minimalismo como estilo.",
-      "quando não tô no terminal, tô ouvindo bocchi the rock.",
-    ],
-  },
+  "cat sobre.txt": () => [
+    "sou o kauê (kl), dev de praia grande/sp.",
+    "desenvolvo sites e sistemas completos: front, back e automação.",
+    "linux como sistema principal, minimalismo como estilo.",
+    "quando não tô no terminal, tô ouvindo bocchi the rock.",
+  ],
 
-  "cat habilidades.txt": {
-    out: () => [
-      "python ......... lv 9",
-      "linux .......... lv 8",
-      "html ........... lv 8",
-      "css ............ lv 8",
-      "javascript ..... lv 7",
-      "typescript ..... lv 7",
-      "git ............ lv 7",
-      "sqlite ......... lv 6",
-      "next.js ........ lv 5",
-    ],
-  },
+  "cat servicos.txt": () => [
+    "sites de alta qualidade, do front ao deploy.",
+    "  + front-end ....... html, css, javascript, typescript",
+    "  + back-end ........ python, apis e integrações",
+    "  + sistemas ........ da ideia à publicação",
+    "  + automação ....... scripts que economizam horas",
+    "",
+    "disponível para novos projetos.",
+  ],
 
-  "cat projetos.txt": {
-    out: () => [
-      "schoolflow        saas de gestão operacional para escolas",
-      "PDFinder          buscador de PDFs online",
-      "Serpentia         laboratório de código interativo",
-      "Opallium          seu workspace, sua estrutura, seu código",
-      "Price Calculator  ferramenta web minimalista",
-      "NewWay            otimizador de windows em python",
-    ],
-  },
+  "cat habilidades.txt": () => [
+    "python ......... lv 9",
+    "linux .......... lv 8",
+    "html ........... lv 8",
+    "css ............ lv 8",
+    "javascript ..... lv 7",
+    "typescript ..... lv 7",
+    "node.js ........ lv 6",
+    "react .......... lv 6",
+    "next.js ........ lv 6",
+    "git ............ lv 7",
+    "sqlite ......... lv 6",
+  ],
 
-  "cat contato.txt": {
-    out: () => [
-      "github   → @klcombr",
-      "email    → kyxenpi@proton.me",
-      "whatsapp → +55 (13) 97414-0538",
-      "linkedin → kauê monteiro",
-    ],
-  },
+  "cat projetos.txt": () => [
+    "schoolflow        saas de gestão operacional para escolas",
+    "VibeSec           scanner de segurança para sites criados com IA",
+    "journal           plataforma de notas: web, cli e android",
+    "QrCoder           gerador de QR code com api própria",
+    "FOCO              site de estudos com pomodoro, streak e xp",
+    "Opallium          seu workspace, sua estrutura, seu código",
+    "PDFinder          buscador de PDFs online",
+    "Price Calculator  ferramenta web minimalista",
+    "Serpentia         laboratório de código interativo",
+    "NewWay            otimizador de windows em python",
+  ],
 
-  neofetch: {
-    out: () => [
-      "        ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
-      "      ██████████████████████████████",
-      "    ██████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████   kl@portfolio",
-      "    ██████  ●  ●  ●                    --------------------",
-      "    ██████                             os ........ linux",
-      "    ██████  python >_                  shell ...... zsh",
-      "    ██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    editor ..... nvim",
-      "      ▀█████████████████████████████    foco ....... automação",
-      "        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    wm ......... minimalista",
-    ],
-  },
+  "cat contato.txt": () => [
+    "github   → @klcombr",
+    "email    → kyxenpi@proton.me",
+    "whatsapp → +55 (13) 97414-0538",
+    "linkedin → kauê monteiro",
+  ],
 
-  whoami: {
-    out: () => ["kl"],
-  },
+  "cat cert_python.txt": () => [
+    "certificado de conclusão do curso de python.",
+    "confere a foto lá na seção 'o autor'. :v",
+  ],
 
-  xp: {
-    out: () => {
-      const l = levelFromXp(game.xp);
-      const cur = xpForLevel(l);
-      const next = xpForLevel(l + 1);
-      const pct = next === cur ? 0 : Math.round(((game.xp - cur) / (next - cur)) * 100);
-      return [`lv ${l} · ${game.xp} xp (${pct}% para o lv ${l + 1})`];
-    },
-  },
+  neofetch: () => [
+    "        ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
+    "      ██████████████████████████████",
+    "    ██████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████   kl@madrugada",
+    "    ██████  ●  ●  ●                    --------------------",
+    "    ██████                             cidade ..... praia grande",
+    "    ██████  python >_                  horário ..... 3:42 am",
+    "    ██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    os .......... linux",
+    "      ▀█████████████████████████████    shell ....... zsh",
+    "        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    editor ...... nvim",
+    "                                        trilha ...... lofi beats",
+  ],
 
-  conquistas: {
-    out: () => {
-      const list = Object.keys(ACHIEVEMENTS).map(
-        (id) => `${game.achievements.includes(id) ? "[x]" : "[ ]"} ${ACHIEVEMENTS[id].name}`
-      );
-      return [...list, "", `${game.achievements.length}/${Object.keys(ACHIEVEMENTS).length} desbloqueadas`];
-    },
-  },
+  whoami: () => ["kl"],
 
-  clear: {
-    out: () => {
-      termOut.innerHTML = "";
-      return [];
-    },
-  },
+  date: () => [new Date().toLocaleString("pt-BR")],
 
-  ping: {
-    out: () => ["pong."],
-  },
+  bocchi: () => [
+    "música boa, solidão saudável e muito reverb.",
+    "quem entende, entende.",
+  ],
 
-  "bocchi": {
-    out: () => [
-      "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
-      "█             GUITAR SOLO             █",
-      "█ https://www.youtube.com/watch?v=8Selo-P1Ovc █",
-      "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀",
-      "",
-      "sei lá, essa daqui é pra quem conhece.",
-    ],
-  },
+  hack: () => [
+    { text: "ativando modo hacker...", cls: "ok" },
+    { text: "não, sério. não tem como hackear um zine. tenta um café.", cls: "dim" },
+  ],
 
-  sudo: {
-    out: () => [
-      "kl não está no arquivo de sudoers. este incidente será reportado.",
-      "(mas eu nunca apagaria seu sistema — seu progresso é salvo no navegador)",
-    ],
-  },
+  sudo: () => [
+    { text: "a senha está no papel colado no monitor.", cls: "dim" },
+  ],
 
-  "rm": {
-    out: () => [
-      "rm: não vou apagar nada. você precisa disso.",
-      "(nada se cria, nada se perde, tudo se transforma)",
-    ],
-  },
+  "rm -rf /": () => [
+    { text: "quase. mas o diário precisa de você vivo pra ler.", cls: "err" },
+  ],
 
-  hack: {
-    out: () => [
-      "acessando...",
-      "estabelecendo conexão cifrada...",
-      "contornando o firewall...",
-      "",
-      ">> acesso concedido. você é um hacker agora.",
-    ],
-  },
-
-  exit: {
-    out: () => ["não dá pra sair. você já faz parte do sistema."],
-  },
-
-  star: {
-    out: () => ["obrigado! volta sempre."],
-  },
-
-  hello: {
-    out: () => ["oi! se quiser um help, digite help."],
+  clear: () => {
+    termOut.innerHTML = "";
+    return [];
   },
 };
 
-function esc(s) {
-  const d = document.createElement("div");
-  d.textContent = s;
-  return d.innerHTML;
-}
-
-function matchCommand(raw) {
-  const input = raw.trim().toLowerCase();
-  if (CMDS[input]) return { key: input, cmd: CMDS[input] };
-  if (input.startsWith("cat ")) {
-    const rest = input.slice(4);
-    if (CMDS[rest]) return { key: input, cmd: CMDS[rest] };
-    return { key: input, cmd: { out: () => [`cat: ${rest}: arquivo não encontrado`] } };
-  }
-  if (input.startsWith("sudo")) {
-    if (input.replace("sudo", "").trim().startsWith("rm")) {
-      return {
-        key: "sudo rm",
-        cmd: { out: () => ["permissão negada. nice try.", "", "dica: um sudo não te dá superpoderes aqui."] },
-      };
-    }
-    return { key: "sudo", cmd: CMDS.sudo };
-  }
-  if (input.startsWith("rm")) return { key: "rm", cmd: CMDS.rm };
-  if (input.startsWith("clear")) return { key: "clear", cmd: CMDS.clear };
-  if (input.startsWith("bocchi")) return { key: "bocchi", cmd: CMDS.bocchi };
-  if (input.startsWith("hack") || input.startsWith("matrix")) return { key: "hack", cmd: CMDS.hack };
-  if (input.startsWith("ping")) return { key: "ping", cmd: CMDS.ping };
-  if (input.startsWith("neofetch")) return { key: "neofetch", cmd: CMDS.neofetch };
-  if (input.startsWith("whoami")) return { key: "whoami", cmd: CMDS.whoami };
-  if (input.startsWith("xp") || input.startsWith("level")) return { key: "xp", cmd: CMDS.xp };
-  if (input.startsWith("conquista") || input.startsWith("achievement")) return { key: "conquistas", cmd: CMDS.conquistas };
-  if (input === "hi" || input === "oi" || input === "hello" || input === "ola" || input === "olá") {
-    return { key: "hello", cmd: CMDS.hello };
-  }
-  if (input.startsWith("exit") || input.startsWith("quit")) return { key: "exit", cmd: CMDS.exit };
-  if (input.includes("star") || input === "obrigado") return { key: "star", cmd: CMDS.star };
-  return null;
-}
-
 function runCommand(raw) {
-  const line = document.createElement("div");
-  line.className = "prompt-line shell-cmd";
-  line.innerHTML = `<span class="prompt">└─$</span> <span class="cmd">${esc(raw)}</span>`;
-  termOut.appendChild(line);
+  const cmd = raw.trim();
 
-  if (!game.commands.length) unlock("first_cmd");
-  const matched = matchCommand(raw);
+  if (!cmd) return;
+  printLines([{ text: `└─$ ${cmd}`, cls: "dim" }]);
 
-  if (!matched) {
-    printLines([`bash: ${raw.trim().split(/\s+/)[0]}: comando não encontrado`, "digite help para ver os comandos."]);
-    addXp(2);
-  } else {
-    if (!game.commands.includes(matched.key)) {
-      game.commands.push(matched.key);
-      saveGame();
-      addXp(25);
-      if (game.commands.length >= 10) unlock("terminalista");
+  if (cmd === "clear") {
+    CMDS.clear();
+    return;
+  }
+
+  if (cmd in CMDS) {
+    printLines(CMDS[cmd]());
+    return;
+  }
+
+  if (cmd.startsWith("sudo ")) {
+    printLines(CMDS.sudo());
+    return;
+  }
+
+  if (cmd.startsWith("cat ")) {
+    const file = cmd.slice(4).trim();
+    if (file in CMDS) {
+      printLines(CMDS[file]());
     } else {
-      addXp(5);
+      printLines([{ text: `cat: ${file}: arquivo não encontrado`, cls: "err" }]);
     }
-    if (matched.key === "help") unlock("helper");
-    if (matched.key === "hack") unlock("hacker");
-    if (matched.key === "bocchi") unlock("guitar");
-    if (matched.key === "sudo" || matched.key === "sudo rm") unlock("root");
-    if (matched.key === "rm") unlock("immortal");
-    const lines = matched.cmd.out();
-    if (lines.length) printLines(lines, 60);
+    return;
   }
+
+  printLines([{ text: `comando não encontrado: ${cmd} (digite help)`, cls: "err" }]);
 }
 
-function setupShell() {
-  if (!termInput) return;
-  termInput.disabled = false;
-  termInput.focus();
+termInput.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+  runCommand(termInput.value);
+  termInput.value = "";
+});
 
-  termInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const raw = termInput.value;
-      termInput.value = "";
-      if (raw.trim()) runCommand(raw);
-    }
-  });
-
-  document.addEventListener("click", () => termInput.focus());
-  updateHud();
-}
-
-/* START */
-
-setTimeout(runTerminal, 1400);
-
-/* BOOT BÔNUS DE VISITA */
-
-setTimeout(() => {
-  if (!game.visited) {
-    game.visited = true;
-    saveGame();
-    addXp(50);
-    unlock("first_boot", true);
-    toast("bem-vindo ao terminal. +50 xp");
-  }
-  animateSkills();
-  trackActions();
-  updateHud();
-}, 1500);
+printLines([
+  { text: "diário da madrugada · console de visita", cls: "ok" },
+  { text: "digite help para ver os comandos.", cls: "dim" },
+]);

@@ -3,216 +3,385 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>kyxen@portfolio:~</title>
-    <meta name="description" content="kauê (kl) · dev python de praia grande/sp — automação, backend e linux." />
-    <meta property="og:title" content="kyxen@portfolio:~" />
-    <meta property="og:description" content="python / linux / automação / minimalismo" />
+    <title>O Diário da Madrugada - kyxen</title>
+    <meta
+      name="description"
+      content="kauê (kl) · dev de praia grande/sp. sites e sistemas completos: front-end cuidado, back-end sólido, automação. python, javascript, typescript, linux."
+    />
+    <meta property="og:title" content="O Diário da Madrugada - kyxen" />
+    <meta
+      property="og:description"
+      content="sites e sistemas de alta qualidade · front + back + automação · python / javascript / linux"
+    />
     <meta property="og:image" content="imgs/banner.png" />
     <link rel="icon" type="image/png" href="imgs/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+    <!-- cena da madrugada: luz de abajur -->
+    <div class="lamp-glow" aria-hidden="true"></div>
 
-    <!-- BOOT SCREEN -->
-    <div id="boot">
-      <div class="boot-box">
-        <div class="boot-line">[ ok ] carregando...</div>
-        <div class="boot-line boot-bar-wrap">
-          <span class="boot-bar"><span class="boot-fill"></span></span>
+    <div class="page">
+
+      <!-- CABEÇALHO DE JORNAL -->
+      <header class="masthead">
+        <div class="masthead-top">
+          <span class="mono micro">diário da madrugada · nº 01</span>
+          <span class="mono micro hide-mobile">praia grande/sp · 23.98°s 46.41°w</span>
+          <span class="mono micro" id="mast-clock">--:--</span>
         </div>
-      </div>
+        <div class="masthead-rule"></div>
+        <div class="masthead-title-wrap">
+          <h1 class="masthead-title">o diário da <em>madrugada</em></h1>
+          <p class="masthead-sub mono">edição dedicada a quem codifica depois da meia-noite</p>
+        </div>
+        <div class="masthead-rule thick"></div>
+      </header>
+
+      <main>
+
+        <!-- PRIMEIRA PÁGINA / HERO -->
+        <section class="hero reveal">
+          <span class="ghost-num" aria-hidden="true">01</span>
+          <div class="hero-body">
+            <p class="kicker mono">perfil · klcombr</p>
+            <h2 class="hero-title">
+              código que vira <em>sistema</em>,<br />
+              escrito quando a <em>cidade dorme</em>.
+            </h2>
+            <p class="hero-sub">
+              kauê monteiro, o kl. desenvolvo sites e sistemas completos: front-end
+              cuidado, back-end sólido e automação. de praia grande/sp, linux e madrugada.
+            </p>
+            <p class="mono meta">3:42 am · lofi beats / terminal aberto</p>
+            <a class="hero-cta mono" href="#colofao">abrir proposta →</a>
+          </div>
+          <aside class="hero-side">
+            <div class="now-playing" aria-label="tocando agora">
+              <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="mono micro">now playing</span>
+            </div>
+            <p class="mono micro side-line">lofi hip hop</p>
+            <p class="mono micro side-line dim">estude em silêncio</p>
+            <div class="hero-rule"></div>
+            <p class="mono micro side-line">praia grande</p>
+            <p class="mono micro side-line dim">23.98°s · 46.41°w</p>
+          </aside>
+        </section>
+
+        <hr class="section-rule" />
+
+        <!-- PRESTAÇÃO DE SERVIÇOS -->
+        <section class="column reveal" style="--index: 1">
+          <div class="section-head">
+            <h3 class="section-label mono">prestação de serviços</h3>
+            <span class="mono micro dim">classificado</span>
+          </div>
+          <div class="ad-box">
+            <div class="ad-head">
+              <p class="mono micro dim">projeto: o seu</p>
+              <span class="mono micro avail"><i class="pulse-dot" aria-hidden="true"></i>disponível para novos projetos</span>
+            </div>
+            <h4 class="ad-title">sites de alta qualidade, do front ao deploy.</h4>
+            <p class="ad-body">
+              desenvolvo sites e sistemas sob medida: interface cuidada, código limpo,
+              backend e banco de dados. front, back ou o pacote completo.
+            </p>
+            <ul class="ad-services">
+              <li class="mono"><span aria-hidden="true">+</span> front-end · html, css, javascript, typescript</li>
+              <li class="mono"><span aria-hidden="true">+</span> back-end · python, apis e integrações</li>
+              <li class="mono"><span aria-hidden="true">+</span> sistemas completos · da ideia à publicação</li>
+              <li class="mono"><span aria-hidden="true">+</span> automação · scripts que economizam horas</li>
+            </ul>
+            <p class="mono micro dim ad-foot">entrega com deploy / código versionado / suporte pós-entrega</p>
+            <a class="ad-cta mono" href="#colofao">abrir proposta →</a>
+          </div>
+        </section>
+
+        <hr class="section-rule" />
+
+        <!-- O AUTOR -->
+        <section class="column reveal" style="--index: 2">
+          <div class="section-head">
+            <h3 class="section-label mono">o autor</h3>
+            <span class="mono micro dim">sobre.txt</span>
+          </div>
+          <div class="column-grid">
+            <div class="prose">
+              <p class="pullquote">minimalismo é o meu estilo de vida e de código.</p>
+              <p>
+                sou desenvolvedor focado em python, automação e backend. escrevo scripts que
+                economizam horas, sistemas que tiram papelada do caminho e ferramentas de linha
+                de comando que fazem o trabalho em silêncio.
+              </p>
+              <p>
+                uso linux como sistema principal, editor de texto como lugar de moradia e a
+                madrugada como horário de pico. quando não estou no terminal, estou ouvindo
+                bocchi the rock ou lendo sobre sistemas que não precisam de pressa.
+              </p>
+            </div>
+            <figure class="cert">
+              <img class="cert-img" src="imgs/pythondevcertificate.png" alt="certificado de conclusão de python" loading="lazy" />
+              <figcaption class="mono micro dim">$ cat cert_python.txt</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <hr class="section-rule" />
+
+        <!-- ARQUIVO DE PROJETOS -->
+        <section class="column reveal" style="--index: 3">
+          <div class="section-head">
+            <h3 class="section-label mono">arquivo de projetos</h3>
+            <span class="mono micro dim">projetos.txt</span>
+          </div>
+          <ol class="archive">
+            <li class="arch-item">
+              <span class="arch-no mono">01</span>
+              <div class="arch-main">
+                <h4 class="arch-title">schoolflow</h4>
+                <p class="arch-desc mono">saas de gestão operacional para escolas</p>
+                <p class="arch-tags"><span class="arch-tag">web</span><span class="arch-tag">saas</span></p>
+              </div>
+              <a class="arch-link mono" href="https://github.com/klcombr/schoolflow" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">02</span>
+              <div class="arch-main">
+                <h4 class="arch-title">VibeSec</h4>
+                <p class="arch-desc mono">scanner de segurança para sites criados com IA</p>
+                <p class="arch-tags"><span class="arch-tag">web</span><span class="arch-tag">segurança</span><span class="arch-tag">full stack</span></p>
+              </div>
+              <a class="arch-link mono" href="https://klcombr.github.io/vibesec/" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">03</span>
+              <div class="arch-main">
+                <h4 class="arch-title">journal</h4>
+                <p class="arch-desc mono">plataforma de notas: web, cli, android e sincronização</p>
+                <p class="arch-tags"><span class="arch-tag">web</span><span class="arch-tag">full stack</span></p>
+              </div>
+              <a class="arch-link mono" href="https://klcombr.github.io/journal/" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">04</span>
+              <div class="arch-main">
+                <h4 class="arch-title">QrCoder</h4>
+                <p class="arch-desc mono">gerador de QR code com api própria</p>
+                <p class="arch-tags"><span class="arch-tag">web</span><span class="arch-tag">api</span></p>
+              </div>
+              <a class="arch-link mono" href="https://km-qr.netlify.app/" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">05</span>
+              <div class="arch-main">
+                <h4 class="arch-title">FOCO</h4>
+                <p class="arch-desc mono">site de estudos com pomodoro, streak, xp e conquistas</p>
+                <p class="arch-tags"><span class="arch-tag">web</span></p>
+              </div>
+              <a class="arch-link mono" href="https://klcombr.github.io/foco/" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">06</span>
+              <div class="arch-main">
+                <h4 class="arch-title">Opallium</h4>
+                <p class="arch-desc mono">seu workspace, sua estrutura, seu código</p>
+                <p class="arch-tags"><span class="arch-tag">web</span></p>
+              </div>
+              <a class="arch-link mono" href="https://klcombr.github.io/Opallium/" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">07</span>
+              <div class="arch-main">
+                <h4 class="arch-title">PDFinder</h4>
+                <p class="arch-desc mono">buscador de PDFs online</p>
+                <p class="arch-tags"><span class="arch-tag">web</span></p>
+              </div>
+              <a class="arch-link mono" href="https://klcombr.github.io/PDF/" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">08</span>
+              <div class="arch-main">
+                <h4 class="arch-title">Price Calculator</h4>
+                <p class="arch-desc mono">ferramenta web minimalista</p>
+                <p class="arch-tags"><span class="arch-tag">web</span></p>
+              </div>
+              <a class="arch-link mono" href="https://propricalc.netlify.app/" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">09</span>
+              <div class="arch-main">
+                <h4 class="arch-title">Serpentia</h4>
+                <p class="arch-desc mono">laboratório de código interativo</p>
+                <p class="arch-tags"><span class="arch-tag">app</span></p>
+              </div>
+              <a class="arch-link mono" href="https://github.com/klcombr/Serpentia" target="_blank" rel="noopener">visitar →</a>
+            </li>
+            <li class="arch-item">
+              <span class="arch-no mono">10</span>
+              <div class="arch-main">
+                <h4 class="arch-title">NewWay</h4>
+                <p class="arch-desc mono">otimizador de windows em python</p>
+                <p class="arch-tags"><span class="arch-tag">automação</span></p>
+              </div>
+              <a class="arch-link mono" href="https://github.com/klcombr/NewWay" target="_blank" rel="noopener">visitar →</a>
+            </li>
+          </ol>
+        </section>
+
+        <hr class="section-rule" />
+
+        <!-- APONTAMENTOS / HABILIDADES -->
+        <section class="column reveal" style="--index: 4">
+          <div class="section-head">
+            <h3 class="section-label mono">apontamentos</h3>
+            <span class="mono micro dim">habilidades.txt</span>
+          </div>
+          <div class="notebook">
+            <div class="note-row">
+              <span class="note-name mono">python</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 90%"></i></span>
+              <span class="note-lvl mono">lv 9</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">linux</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 85%"></i></span>
+              <span class="note-lvl mono">lv 8</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">html</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 85%"></i></span>
+              <span class="note-lvl mono">lv 8</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">css</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 80%"></i></span>
+              <span class="note-lvl mono">lv 8</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">javascript</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 75%"></i></span>
+              <span class="note-lvl mono">lv 7</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">typescript</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 70%"></i></span>
+              <span class="note-lvl mono">lv 7</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">node.js</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 65%"></i></span>
+              <span class="note-lvl mono">lv 6</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">react</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 65%"></i></span>
+              <span class="note-lvl mono">lv 6</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">next.js</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 60%"></i></span>
+              <span class="note-lvl mono">lv 6</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">git</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 70%"></i></span>
+              <span class="note-lvl mono">lv 7</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">sqlite</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 60%"></i></span>
+              <span class="note-lvl mono">lv 6</span>
+            </div>
+            <div class="note-row">
+              <span class="note-name mono">next.js</span>
+              <span class="note-bar" aria-hidden="true"><i style="--w: 55%"></i></span>
+              <span class="note-lvl mono">lv 5</span>
+            </div>
+          </div>
+        </section>
+
+        <hr class="section-rule" />
+
+        <!-- COLOPHON / CONTATO -->
+        <section class="column reveal" id="colofao" style="--index: 5">
+          <div class="section-head">
+            <h3 class="section-label mono">colofão</h3>
+            <span class="mono micro dim">contato.txt</span>
+          </div>
+          <div class="colophon">
+            <a class="colophon-item" href="https://github.com/klcombr" target="_blank" rel="noopener">
+              <span class="mono micro dim">github</span>
+              <span class="colophon-value mono">@klcombr</span>
+              <span class="mono micro arrow">visitar →</span>
+            </a>
+            <a class="colophon-item" href="mailto:kyxenpi@proton.me">
+              <span class="mono micro dim">email</span>
+              <span class="colophon-value mono">kyxenpi@proton.me</span>
+              <span class="mono micro arrow">escrever →</span>
+            </a>
+            <a class="colophon-item" href="https://wa.me/5513974140538" target="_blank" rel="noopener">
+              <span class="mono micro dim">whatsapp</span>
+              <span class="colophon-value mono">+55 (13) 97414-0538</span>
+              <span class="mono micro arrow">chamar →</span>
+            </a>
+            <a class="colophon-item" href="https://linkedin.com/in/kau%C3%AA-leandro-farias-monteiro" target="_blank" rel="noopener">
+              <span class="mono micro dim">currículo</span>
+              <span class="colophon-value mono">linkedin · kauê monteiro</span>
+              <span class="mono micro arrow">ver →</span>
+            </a>
+          </div>
+        </section>
+
+        <hr class="section-rule" />
+
+        <!-- CONSOLE DE VISITA -->
+        <section class="column reveal" style="--index: 6">
+          <div class="section-head">
+            <h3 class="section-label mono">console de visita</h3>
+            <span class="mono micro dim">interativo · digite help</span>
+          </div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="tdot tdot-a" aria-hidden="true"></span>
+              <span class="tdot tdot-b" aria-hidden="true"></span>
+              <span class="tdot tdot-c" aria-hidden="true"></span>
+              <span class="terminal-title mono micro">kyxen@madrugada: ~</span>
+            </div>
+            <div id="term-out" class="terminal-out" aria-live="polite"></div>
+            <div class="terminal-input-line">
+              <span class="terminal-prompt mono">└─$</span>
+              <input
+                id="term-input"
+                class="terminal-input mono"
+                type="text"
+                autocomplete="off"
+                autocapitalize="off"
+                autocorrect="off"
+                spellcheck="false"
+                aria-label="terminal de visita"
+                placeholder="digite help e tecle enter"
+              />
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer class="colophon-footer">
+        <div class="masthead-rule thick"></div>
+        <p class="mono micro">impresso às 3:42 am em praia grande/sp · set em newsreader &amp; jetbrains mono</p>
+        <p class="mono micro dim">© 2026 kyxen · feito de madrugada, com café e lofi</p>
+      </footer>
+
     </div>
-
-    <!-- AMBIENT -->
-    <div class="ambient"></div>
-
-    <div class="window">
-      <div class="titlebar">
-        <div class="titles">
-          <span class="tdot" data="close"></span>
-          <span class="tdot" data="min"></span>
-          <span class="tdot" data="max"></span>
-        </div>
-        <span class="titletext">kyxen@portfolio: ~</span>
-        <span class="titleempty"></span>
-      </div>
-
-      <div class="term">
-
-        <!-- INTRO -->
-        <div class="section">
-          <div class="prompt-line">
-            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
-          </div>
-          <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd glitch" data-text="./start.sh"></span>
-          </div>
-          <div class="output">
-            <div class="greeting">código que vira <span class="green">sistema</span>.</div>
-            <div class="desc">desenvolvedor focado em python, automação e eficiência.</div>
-          </div>
-          <div class="prompt-line" style="margin-top: 20px">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="./projetos.sh" data-delay="1800"></span>
-          </div>
-        </div>
-
-        <!-- PROJETOS -->
-        <div class="section" id="projects">
-          <div class="prompt-line" style="margin-top: 4px">
-            <span class="prompt">┌──(kyxen㉿portfolio)-[~/projetos]</span>
-          </div>
-          <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="ls -la" data-delay="1000"></span>
-          </div>
-          <div class="output project-list">
-            <div class="project">
-              <span class="project-name">FOCO</span>
-              <span class="project-desc">site de estudos: pomodoro, streak, xp e conquistas</span>
-              <a class="project-link glitch" data-text="visitar →" href="https://klcombr.github.io/foco/" target="_blank" rel="noopener">visitar →</a>
-            </div>
-            <div class="project">
-              <span class="project-name">schoolflow</span>
-              <span class="project-desc">saas de gestão operacional para escolas</span>
-              <a class="project-link glitch" data-text="visitar →" href="https://github.com/klcombr/schoolflow" target="_blank" rel="noopener">visitar →</a>
-            </div>
-            <div class="project">
-              <span class="project-name">PDFinder</span>
-              <span class="project-desc">buscador de PDFs online</span>
-              <a class="project-link glitch" data-text="visitar →" href="https://klcombr.github.io/PDF/" target="_blank" rel="noopener">visitar →</a>
-            </div>
-            <div class="project">
-              <span class="project-name">Serpentia</span>
-              <span class="project-desc">laboratório de código interativo</span>
-              <a class="project-link glitch" data-text="visitar →" href="https://github.com/klcombr/Serpentia" target="_blank" rel="noopener">visitar →</a>
-            </div>
-            <div class="project">
-              <span class="project-name">Opallium</span>
-              <span class="project-desc">seu workspace, sua estrutura, seu código</span>
-              <a class="project-link glitch" data-text="visitar →" href="https://klcombr.github.io/Opallium/" target="_blank" rel="noopener">visitar →</a>
-            </div>
-            <div class="project">
-              <span class="project-name">Price Calculator</span>
-              <span class="project-desc">ferramenta web minimalista</span>
-              <a class="project-link glitch" data-text="visitar →" href="https://propricalc.netlify.app/" target="_blank" rel="noopener">visitar →</a>
-            </div>
-            <div class="project">
-              <span class="project-name">NewWay</span>
-              <span class="project-desc">otimizador de windows em python</span>
-              <a class="project-link glitch" data-text="visitar →" href="https://github.com/klcombr/NewWay" target="_blank" rel="noopener">visitar →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- SOBRE -->
-        <div class="section">
-          <div class="prompt-line">
-            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
-          </div>
-          <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="cat sobre.txt" data-delay="1200"></span>
-          </div>
-          <div class="output">
-            <div class="desc">sou o kauê (kl), dev de praia grande/sp.</div>
-            <div class="desc">python, automação, backend e linha de comando.</div>
-            <div class="desc">linux como sistema principal, minimalismo como estilo.</div>
-            <div class="desc">quando não tô no terminal, tô ouvindo bocchi the rock.</div>
-            <div class="cert">
-              <img class="cert-img" src="imgs/pythondevcertificate.png" alt="certificado python" />
-              <div class="cert-caption">$ cat cert_python.txt</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- HABILIDADES -->
-        <div class="section">
-          <div class="prompt-line">
-            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
-          </div>
-          <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="cat habilidades.txt" data-delay="1200"></span>
-          </div>
-          <div class="output skill-grid">
-            <div class="skill-row"><span class="skill-name">python</span><span class="skill-bar"><span class="skill-fill" data-w="90"></span></span><span class="skill-lvl">lv 9</span></div>
-            <div class="skill-row"><span class="skill-name">typescript</span><span class="skill-bar"><span class="skill-fill" data-w="70"></span></span><span class="skill-lvl">lv 7</span></div>
-            <div class="skill-row"><span class="skill-name">javascript</span><span class="skill-bar"><span class="skill-fill" data-w="75"></span></span><span class="skill-lvl">lv 7</span></div>
-            <div class="skill-row"><span class="skill-name">linux</span><span class="skill-bar"><span class="skill-fill" data-w="85"></span></span><span class="skill-lvl">lv 8</span></div>
-            <div class="skill-row"><span class="skill-name">html</span><span class="skill-bar"><span class="skill-fill" data-w="85"></span></span><span class="skill-lvl">lv 8</span></div>
-            <div class="skill-row"><span class="skill-name">css</span><span class="skill-bar"><span class="skill-fill" data-w="80"></span></span><span class="skill-lvl">lv 8</span></div>
-            <div class="skill-row"><span class="skill-name">git</span><span class="skill-bar"><span class="skill-fill" data-w="70"></span></span><span class="skill-lvl">lv 7</span></div>
-            <div class="skill-row"><span class="skill-name">sqlite</span><span class="skill-bar"><span class="skill-fill" data-w="60"></span></span><span class="skill-lvl">lv 6</span></div>
-            <div class="skill-row"><span class="skill-name">next.js</span><span class="skill-bar"><span class="skill-fill" data-w="55"></span></span><span class="skill-lvl">lv 5</span></div>
-          </div>
-        </div>
-
-        <!-- CONTATO -->
-        <div class="section">
-          <div class="prompt-line">
-            <span class="prompt">┌──(kyxen㉿portfolio)-[~]</span>
-          </div>
-          <div class="prompt-line">
-            <span class="prompt">└─$</span> <span class="cmd" data-text="cat contato.txt" data-delay="1400"></span>
-          </div>
-          <div class="output contact-list">
-            <a class="contact-row glitch" data-text="github" href="https://github.com/klcombr" target="_blank" rel="noopener">
-              <span class="contact-label">github</span>
-              <span class="contact-sep">→</span>
-              <span class="contact-value">@klcombr</span>
-            </a>
-            <a class="contact-row" data-text="email" href="mailto:kyxenpi@proton.me">
-              <span class="contact-label">email</span>
-              <span class="contact-sep">→</span>
-              <span class="contact-value">kyxenpi@proton.me</span>
-            </a>
-            <a class="contact-row" data-text="whatsapp" href="https://wa.me/5513974140538" target="_blank" rel="noopener">
-              <span class="contact-label">whatsapp</span>
-              <span class="contact-sep">→</span>
-              <span class="contact-value">+55 (13) 97414-0538</span>
-            </a>
-            <a class="contact-row" data-text="currículo" href="https://linkedin.com/in/kauê-leandro-farias-monteiro" target="_blank" rel="noopener">
-              <span class="contact-label">currículo</span>
-              <span class="contact-sep">→</span>
-              <span class="contact-value">linkedin · kauê monteiro</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- SHELL INTERATIVO -->
-        <div class="section last-section" id="shell">
-          <div class="prompt-line"><span class="prompt">┌──(kyxen㉿portfolio)-[~]</span></div>
-          <div class="prompt-line shell-line">
-            <span class="prompt">└─$</span>
-            <input
-              id="term-input"
-              class="term-input"
-              type="text"
-              autocomplete="off"
-              autocapitalize="off"
-              autocorrect="off"
-              spellcheck="false"
-              aria-label="terminal"
-              placeholder="digite help e tecle enter"
-            />
-          </div>
-          <div id="term-out"></div>
-        </div>
-
-      </div>
-
-      <div class="statusbar">
-        <span id="hud">lv 1 · 0 xp</span>
-        <span id="clock">uptime: 00:00:00</span>
-        <span>© 2026 kyxen</span>
-      </div>
-    </div>
-
-    <div id="toasts"></div>
 
     <script src="script.js"></script>
   </body>
