@@ -105,17 +105,16 @@ const CMDS = {
   ],
 
   "cat habilidades.txt": () => [
-    "python ......... lv 9",
-    "linux .......... lv 8",
-    "html ........... lv 8",
-    "css ............ lv 8",
-    "javascript ..... lv 7",
-    "typescript ..... lv 7",
-    "node.js ........ lv 6",
-    "react .......... lv 6",
-    "next.js ........ lv 6",
-    "git ............ lv 7",
-    "sqlite ......... lv 6",
+    "o que eu sei fazer:",
+    "  python ....... apis, automação, cli e dados",
+    "  linux ........ shell, servidores, systemd",
+    "  html/css ..... sites semânticos, acessíveis e responsivos",
+    "  javascript ... interatividade, dom, apis",
+    "  typescript ... código tipado e previsível",
+    "  react/next ... componentes, rotas, ssr e deploy",
+    "  node.js ...... servidores e apis sem dependências",
+    "  git .......... fluxo de trabalho e histórico limpo",
+    "  sqlite ....... modelos de dados embarcados",
   ],
 
   "cat projetos.txt": () => [
