@@ -1,6 +1,11 @@
-/portfolio      /portfolio.html        200
-/portfolio/     /portfolio.html        200
-/portifolio     /portfolio.html        200
+/curriculo      /curriculo.html        200
+/curriculo/     /curriculo.html        200
+/curriculum     /curriculo.html        200
+/cv             /curriculo.html        200
+/portfolio      /curriculo.html        301
+/portfolio/     /curriculo.html        301
+/portfolio.html /curriculo.html        301
+/portifolio     /curriculo.html        301
 /index          /                      200
 /contato        /#contact              302
 /projetos       /#projects             302

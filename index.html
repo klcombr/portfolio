@@ -119,7 +119,7 @@ section{position:relative;width:100%;overflow:hidden}
 .hero{height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 8vw 0 8vw;position:relative}
 .hero-bg{position:absolute;inset:0;overflow:hidden}
 .hero-glow{position:absolute;top:50%;left:40%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,34,34,.06) 0%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none}
-.hero h1{font-size:clamp(60px,16vw,260px);position:relative;z-index:2}
+.hero h1{font-size:clamp(60px,16vw,200px);position:relative;z-index:2}
 .hero h1 .line{display:block;overflow:hidden}
 .hero h1 .line span{display:inline-block;transform:translateY(110%)}
 .hero h1 .dot{color:var(--red)}
@@ -157,8 +157,9 @@ section{position:relative;width:100%;overflow:hidden}
 .svc:hover{transform:scale(1.03)}
 .svc>*{position:relative;z-index:2}
 .svc-num{font-size:11px;color:var(--red);letter-spacing:.25em;opacity:.7;margin-bottom:12px}
-.svc h3{font-size:20px;margin-bottom:10px;font-weight:700;text-transform:none;letter-spacing:-.02em;line-height:1.15;color:var(--fg)}
-.svc p{font-size:13px;line-height:1.55}
+  .svc-num::before{content:"// ";opacity:.4;font-size:.85em}
+  .svc h3{font-size:20px;margin-bottom:10px;font-weight:700;text-transform:none;letter-spacing:-.02em;line-height:1.15;color:var(--fg)}
+  .svc p{font-size:13px;line-height:1.55}
 
 /* ═══ PROJECTS ═══ */
 .projects{padding:120px 8vw}
@@ -176,6 +177,7 @@ section{position:relative;width:100%;overflow:hidden}
 .proj:hover .proj-art .num{color:rgba(255,34,34,.05);-webkit-text-stroke-color:rgba(255,34,34,.1)}
 .proj-body{padding:24px}
 .proj-label{font-size:10px;color:var(--red);letter-spacing:.25em;opacity:.6;margin-bottom:8px}
+  .proj-label::before{content:"// ";opacity:.4}
 .proj h3{font-size:22px;margin-bottom:8px}
 .proj p{font-size:12px;line-height:1.5;margin-bottom:12px}
 .proj a{font-size:11px;color:var(--red);font-weight:600;letter-spacing:.08em;opacity:.7;transition:.3s;position:relative;display:inline-block}
@@ -223,7 +225,7 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
   .manifesto,.services,.projects,.contact{padding:90px 22px}
   .svc-row{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
-  #phoneCanvas{width:110vw;height:52vh;top:auto;bottom:-3vh;opacity:.3;z-index:0}
+  #phoneCanvas{width:110vw;height:52vh;top:auto;bottom:0;opacity:.3;z-index:0}
   .hero,.manifesto,.services,.projects,.contact,footer{position:relative;z-index:1}
   .proj-art{height:150px}
   .contact h2{font-size:clamp(44px,15vw,90px)}
@@ -257,7 +259,7 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
 <nav>
   <span class="brand">KL COM</span>
   <div class="nav-links">
-    <a href="portfolio.html">PORTFÓLIO</a>
+    <a href="curriculo.html">CURRÍCULO</a>
     <a href="#projects">PROJETOS</a>
     <a href="#contact" class="nav-cta">FALAR</a>
   </div>
@@ -272,7 +274,7 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
   <div class="hero-sub"><span>Automação com IA & interfaces que convertem.</span></div>
   <div class="hero-cta">
     <a class="btn btn-ghost" href="#projects"><span>VER PROJETOS</span></a>
-    <a class="btn btn-solid" href="portfolio.html"><span>VER PORTFÓLIO</span></a>
+    <a class="btn btn-solid" href="curriculo.html"><span>VER CURRÍCULO</span></a>
   </div>
   <div class="hero-scroll">SCROLL</div>
 </section>
@@ -415,7 +417,7 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
 
 <footer>
   <span>KL COM — 2026 · Praia Grande, SP</span>
-  <a href="portfolio.html">PORTFÓLIO</a>
+  <a href="curriculo.html">CURRÍCULO</a>
   <a href="#top">VOLTAR AO TOPO</a>
 </footer>
 
@@ -474,7 +476,7 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
   /* ════ REVEALS ════ */
   document.querySelectorAll("[data-left]").forEach(el=>{gsap.from(el,{x:-60,opacity:0,duration:1.1,ease:"expo.out",scrollTrigger:{trigger:el,start:"top 85%"}})});
   document.querySelectorAll("[data-right]").forEach(el=>{gsap.from(el,{x:60,opacity:0,duration:1.1,ease:"expo.out",scrollTrigger:{trigger:el,start:"top 85%"}})});
-  document.querySelectorAll(".svc").forEach((el,i)=>{gsap.from(el,{x:i%2===0?-50:50,opacity:0,duration:.9,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"},delay:(i%2)*.15})});
+  document.querySelectorAll(".svc").forEach((el,i)=>{gsap.from(el,{y:40,opacity:0,duration:.9,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"},delay:(i%2)*.1})});
   document.querySelectorAll(".proj").forEach((el,i)=>{gsap.to(el,{opacity:1,y:0,duration:.8,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 90%",onEnter:()=>el.classList.add("revealed")},delay:i*.1})});
   gsap.to(".contact h2 .line span",{y:0,duration:1,ease:"expo.out",stagger:.12,scrollTrigger:{trigger:".contact",start:"top 70%"}});
   document.querySelectorAll(".contact-links a").forEach((el,i)=>{gsap.to(el,{opacity:1,y:0,duration:.7,ease:"power2.out",scrollTrigger:{trigger:".contact-links",start:"top 85%"},delay:i*.1})});
@@ -563,7 +565,7 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
 
   /* ── Screen content system ── */
   const sCtx=screenCanvas.getContext("2d");
-  const totalViews=6;
+  const totalViews=5;
   let viewTransition=0;let prevView=-1;
 
   function drawRR(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath()}
@@ -572,30 +574,107 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
   function gradBar(ctx,x,y,w,h,c1,c2){const g=ctx.createLinearGradient(x,y,x+w,y);g.addColorStop(0,c1);g.addColorStop(1,c2);ctx.fillStyle=g;drawRR(ctx,x,y,w,h,h/2);ctx.fill()}
 
   const screens=[
-    /* 0: GitHub Profile */
+    /* 0: GitHub Profile - REAL DATA */
     function(ctx,w,h,t){
       ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
       ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,160);
       ctx.fillStyle="#58a6ff";ctx.beginPath();ctx.arc(70,80,34,0,Math.PI*2);ctx.fill();
       ctx.fillStyle="#e6edf3";ctx.font="bold 28px monospace";ctx.fillText("@klcombr",120,72);
-      ctx.fillStyle="#8b949e";ctx.font="16px monospace";ctx.fillText("Full Stack Dev",120,100);
-      ctx.fillStyle="#30363d";ctx.font="14px monospace";ctx.fillText("São Paulo, BR",120,125);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Contributions",30,200);
-      for(let i=0;i<20;i++)for(let j=0;j<7;j++){
-        const v=Math.random()>.3?0:Math.random()>.5?1:2;
-        ctx.fillStyle=v===0?"#161b22":v===1?"#0e4429":"#26a641";
-        ctx.fillRect(30+i*24,220+j*24,18,18);
-      }
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Repositories",30,430);
-      [{n:"OpenJarvis",d:"AI agent",l:"Python"},{n:"schoolflow",d:"Education",l:"TypeScript"},{n:"Opallium",d:"Work env",l:"Python"},{n:"openbridge",d:"Integration",l:"Go"}].forEach((r,i)=>{
-        const ry=460+i*100;
-        drawRR(ctx,25,ry,w-50,80,8);ctx.fillStyle="#161b22";ctx.fill();
-        ctx.fillStyle="#58a6ff";ctx.font="bold 18px monospace";ctx.fillText(r.n,40,ry+28);
-        ctx.fillStyle="#8b949e";ctx.font="14px monospace";ctx.fillText(r.d,40,ry+52);
-        ctx.fillStyle="#30363d";ctx.font="12px monospace";ctx.fillText(r.l,40,ry+70);
+      ctx.fillStyle="#8b949e";ctx.font="16px monospace";ctx.fillText("Full Stack Dev · IA & Automação",120,100);
+      ctx.fillStyle="#30363d";ctx.font="14px monospace";ctx.fillText("Praia Grande, SP · Brasil",120,125);
+      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Repositórios públicos",30,200);
+      ctx.fillStyle="#8b949e";ctx.font="14px monospace";ctx.fillText("43 repositórios · Desde set/2024",30,225);
+      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Linguagens principais",30,270);
+      [{n:"Python",c:"#3572A5",count:12},{n:"JavaScript",c:"#f1e05a",count:8},{n:"TypeScript",c:"#3178c6",count:3},{n:"CSS",c:"#563d7c",count:5},{n:"HTML",c:"#e34c26",count:4},{n:"Go",c:"#00ADD8",count:1}].forEach((l,i)=>{
+        const y=300+i*30;
+        ctx.fillStyle=l.c;ctx.fillRect(30,y,16,16);
+        ctx.fillStyle="#e6edf3";ctx.font="14px monospace";ctx.fillText(l.n,54,y+12);
+        ctx.fillStyle="#8b949e";ctx.font="13px monospace";ctx.fillText(l.count+" repos",140,y+12);
+      });
+      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Projetos em destaque",30,500);
+      [{n:"schoolflow",l:"TypeScript",d:"SaaS NestJS+Next.js+SQLite"},{n:"Opallium",l:"CSS",d:"Workspace premium"},{n:"openbridge",l:"JavaScript",d:"PWA Node 0 deps"},{n:"analytics-agent",l:"Python",d:"Agente autônomo"}].forEach((r,i)=>{
+        const ry=530+i*80;
+        drawRR(ctx,25,ry,w-50,70,8);ctx.fillStyle="#161b22";ctx.fill();
+        ctx.fillStyle="#58a6ff";ctx.font="bold 16px monospace";ctx.fillText(r.n,40,ry+24);
+        ctx.fillStyle="#8b949e";ctx.font="12px monospace";ctx.fillText(r.d,40,ry+44);
+        ctx.fillStyle=r.l==="TypeScript"?"#3178c6":r.l==="CSS"?"#563d7c":r.l==="JavaScript"?"#f1e05a":r.l==="Python"?"#3572A5":"#00ADD8";
+        ctx.font="11px monospace";ctx.fillText(r.l,w-100,ry+24);
       });
     },
-    /* 1: Code Editor */
+    /* 1: Repositórios Reais */
+    function(ctx,w,h,t){
+      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
+      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,60);
+      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Repositórios · klcombr",30,40);
+      const repos=[
+        {n:"schoolflow",l:"TypeScript",d:"SaaS gestão escolar · NestJS+Next.js+SQLite",stars:1},
+        {n:"Opallium",l:"CSS",d:"Workspace premium · Interface focada",stars:0},
+        {n:"openbridge",l:"JavaScript",d:"Hub celular↔PC · Node 0 deps · PWA",stars:1},
+        {n:"analytics-agent",l:"Python",d:"Agente analytics autônomo · LLM + ferramentas",stars:0},
+        {n:"security-scanner",l:"TypeScript",d:"CLI scanner deps/secrets/config",stars:0},
+        {n:"realtime-dashboard",l:"TypeScript",d:"Dashboard WebSocket tempo real",stars:0},
+        {n:"inventory-saas",l:"TypeScript",d:"SaaS inventário · RBAC + API REST",stars:0},
+        {n:"cli-scaffold",l:"TypeScript",d:"CLI scaffolding opinativo",stars:0},
+        {n:"econimize",l:"JavaScript",d:"Comparador de preços de produtos",stars:0},
+        {n:"foco",l:"HTML",d:"Site estudos monocromático · Pomodoro",stars:1},
+      ];
+      repos.forEach((r,i)=>{
+        const ry=70+i*98;
+        drawRR(ctx,20,ry,w-40,88,8);ctx.fillStyle="#161b22";ctx.fill();
+        ctx.fillStyle=r.l==="TypeScript"?"#3178c6":r.l==="JavaScript"?"#f1e05a":r.l==="Python"?"#3572A5":r.l==="CSS"?"#563d7c":r.l==="HTML"?"#e34c26":"#8b949e";
+        ctx.fillRect(30,ry+10,12,12);
+        ctx.fillStyle="#e6edf3";ctx.font="bold 16px monospace";ctx.fillText(r.n,50,ry+28);
+        ctx.fillStyle="#8b949e";ctx.font="12px monospace";ctx.fillText(r.d,50,ry+48);
+        if(r.stars>0){ctx.fillStyle="#e3b341";ctx.font="bold 13px monospace";ctx.fillText("★ "+r.stars,w-60,ry+28);}
+      });
+    },
+    /* 2: Distribuição de Linguagens - REAL */
+    function(ctx,w,h,t){
+      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
+      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,60);
+      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Stack · Linguagens",30,40);
+      const langs=[
+        {n:"Python",c:"#3572A5",count:12,pct:28},
+        {n:"JavaScript",c:"#f1e05a",count:8,pct:19},
+        {n:"CSS",c:"#563d7c",count:5,pct:12},
+        {n:"HTML",c:"#e34c26",count:4,pct:9},
+        {n:"TypeScript",c:"#3178c6",count:3,pct:7},
+        {n:"Go",c:"#00ADD8",count:1,pct:2},
+      ];
+      langs.forEach((l,i)=>{
+        const cy=80+i*68;
+        ctx.fillStyle=l.c;drawRR(ctx,30,cy,12,12,4);ctx.fill();
+        ctx.fillStyle="#e6edf3";ctx.font="bold 16px monospace";ctx.fillText(l.n,55,cy+10);
+        ctx.fillStyle="#8b949e";ctx.font="13px monospace";ctx.fillText(l.count+" repos · "+l.pct+"%",55,cy+32);
+        const bw=(w-180)*l.pct/28;
+        ctx.fillStyle=l.c;drawRR(ctx,180,cy+6,bw,16,8);ctx.fill();
+      });
+      ctx.fillStyle="#30363d";ctx.font="11px monospace";ctx.fillText("Base: 43 repos públicos GitHub API",30,h-40);
+    },
+    /* 3: Status & Contato - REAL */
+    function(ctx,w,h,t){
+      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
+      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,60);
+      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Status",30,40);
+      const status=[
+        {k:"Disponibilidade",v:"Aberto a projetos",c:"#3fb950"},
+        {k:"Localização",v:"Praia Grande, SP",c:"#58a6ff"},
+        {k:"Fuso",v:"UTC-3 (BRT)",c:"#8b949e"},
+        {k:"Email",v:"mxlsc@proton.me",c:"#8b949e"},
+        {k:"WhatsApp",v:"+55 13 97414-0538",c:"#8b949e"},
+        {k:"GitHub",v:"@klcombr",c:"#8b949e"},
+        {k:"Stack principal",v:"Python · TypeScript · Go",c:"#ff2222"},
+        {k:"Foco",v:"Agentes IA · Automação · Interfaces",c:"#ff2222"},
+      ];
+      status.forEach((s,i)=>{
+        const cy=80+i*62;
+        ctx.fillStyle=s.c;ctx.beginPath();ctx.arc(30,cy+6,6,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#8b949e";ctx.font="12px monospace";ctx.fillText(s.k,50,cy+10);
+        ctx.fillStyle="#e6edf3";ctx.font="14px monospace";ctx.fillText(s.v,50,cy+32);
+      });
+      ctx.fillStyle="#30363d";ctx.font="11px monospace";ctx.fillText("Sistemas que rodam enquanto você dorme",30,h-40);
+    },
+    /* 4: Código Real - Padrão de Agente */
     function(ctx,w,h,t){
       ctx.fillStyle="#1e1e2e";ctx.fillRect(0,0,w,h);
       ctx.fillStyle="#181825";ctx.fillRect(0,0,w,44);
@@ -606,19 +685,21 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
       ctx.fillStyle="#45475a";ctx.font="14px monospace";
       for(let i=0;i<22;i++)ctx.fillText(""+(i+1),10,66+i*26);
       const code=[
-        ["#cba6f7","import"],["#cdd6f4"," "],["#89b4fa","openai"],
+        ["#cba6f7","import"],["#cdd6f4"," "],["#89b4fa","asyncio"],
+        ["#cdd6f4","\n"],["#cba6f7","import"],["#cdd6f4"," "],["#89b4fa","json"],
         [""],["#cba6f7","class"],["#f9e2af"," Agent:"],
-        [""],["#cdd6f4","  "],["#cba6f7","def"],["#a6e3a1"," __init__(self)"],
-        [""],["#cdd6f4","    self."],["#89b4fa","model"],["#cdd6f4"," = "],["#a6e3a1",'"gpt-4"'],
-        [""],["#cdd6f4","    self."],["#89b4fa","tools"],["#cdd6f4"," = []"],
-        [""],["#cdd6f4","  "],["#cba6f7","def"],["#a6e3a1"," run(self, task)"],
+        [""],["#cdd6f4","  "],["#cba6f7","async def"],["#a6e3a1"," run"],["#cdd6f4","(self, task: str) -> dict:"],
         [""],["#cdd6f4","    "],["#cba6f7","if"],["#cdd6f4"," task."],["#89b4fa","needs_tools"],["#cdd6f4",":"],
-        [""],["#cdd6f4","      self."],["#89b4fa","activate"],["#cdd6f4","(task)"],
-        [""],["#cdd6f4","    "],["#cba6f7","return"],["#cdd6f4"," self."],["#89b4fa","run"],["#cdd6f4","(task)"],
+        [""],["#cdd6f4","      "],["#cba6f7","await"],["#cdd6f4"," self."],["#89b4fa","execute_tools"],["#cdd6f4","(task)"],
+        [""],["#cdd6f4","    "],["#cba6f7","return"],["#cdd6f4"," {"],["#89b4fa","result"],["#cdd6f4",": "],["#a6e3a1","self.result"],["#cdd6f4","}"],
+        [""],["#cba6f7","async def"],["#a6e3a1"," execute_tools"],["#cdd6f4","(self, task):"],
+        [""],["#cdd6f4","    "],["#cba6f7","for"],["#cdd6f4"," tool "],["#cba6f7","in"],["#cdd6f4"," self.tools:"],
+        [""],["#cdd6f4","      "],["#cba6f7","if"],["#cdd6f4"," await "],["#89b4fa","tool.can_handle"],["#cdd6f4","(task):"],
+        [""],["#cdd6f4","        "],["#cba6f7","return"],["#cdd6f4"," await "],["#89b4fa","tool.run"],["#cdd6f4","(task)"],
       ];
       let cx=36,cy=66;const lh=26;
       const totalChars=code.reduce((a,c)=>a+(c[1]||"").length,0);
-      const typed=Math.min(totalChars,Math.floor(t*10));
+      const typed=Math.min(totalChars,Math.floor(t*12));
       let cc=0;
       code.forEach(line=>{
         if(line.length===1){cx=36;cy+=lh;return}
@@ -626,115 +707,13 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
           const col=line[i],txt=line[i+1]||"";
           for(let j=0;j<txt.length;j++){
             if(cc>=typed)return;
-            ctx.fillStyle=col;ctx.font="14px monospace";ctx.fillText(txt[j],cx,cy);
+            ctx.fillStyle=col;ctx.font="13px monospace";ctx.fillText(txt[j],cx,cy);
             cx+=ctx.measureText(txt[j]).width;cc++;
           }
         }
         cx=36;cy+=lh;
       });
       if(Math.sin(t*4)>.3){ctx.fillStyle="#cdd6f4";ctx.fillRect(cx,cy-14,8,18)}
-    },
-    /* 2: Project Detail */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,110);
-      ctx.fillStyle="#58a6ff";ctx.font="bold 24px monospace";ctx.fillText("OpenJarvis",30,40);
-      ctx.fillStyle="#8b949e";ctx.font="14px monospace";ctx.fillText("AI Agent Framework",30,68);
-      const stats=[{l:"★ 247",c:"#e3b341"},{l:"⑂ 42",c:"#8b949e"},{l:"🐛 12",c:"#f85149"}];
-      stats.forEach((s,i)=>{ctx.fillStyle=s.c;ctx.font="bold 14px monospace";ctx.fillText(s.l,30+i*120,100)});
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 16px monospace";ctx.fillText("README.md",30,145);
-      ctx.fillStyle="#8b949e";ctx.font="13px monospace";
-      ["# OpenJarvis","","Autonomous AI agent that","executes complex tasks","","## Features","- Multi-tool orchestration","- Context-aware decisions","- 24/7 autonomous ops","","## Quick Start","from openjarvis import Agent","agent = Agent(model='gpt-4')","agent.run('analyze data')"].forEach((l,i)=>{
-        if(i>14)return;
-        ctx.fillStyle=l.startsWith("#")?"#f0f6fc":l.startsWith("-")?"#a6e3a1":"#8b949e";
-        ctx.fillText(l,30,170+i*24);
-      });
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 14px monospace";ctx.fillText("Activity",30,530);
-      for(let i=0;i<24;i++){
-        const bh=10+Math.sin(t*.4+i*.6)*18+18;
-        ctx.fillStyle=`rgba(63,185,80,${.2+Math.abs(Math.sin(t*.2+i))*.8})`;
-        drawRR(ctx,30+i*20,580-bh,14,bh,3);ctx.fill();
-      }
-    },
-    /* 3: Terminal */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0a0a0a";ctx.fillRect(0,0,w,h);
-      const lines=[
-        ["#a6e3a1","$ git clone github.com/klcombr"],
-        ["#cdd6f4","Cloning into 'OpenJarvis'..."],
-        ["#89b4fa","remote: Enumerating: 1247"],
-        ["#a6e3a1","Receiving: 100% (1247/1247)"],
-        ["#cdd6f4","Resolving deltas: 100%"],
-        ["#a6e3a1","$ cd OpenJarvis"],
-        ["#a6e3a1","$ pip install -r requirements"],
-        ["#89b4fa","Collecting openai>=1.0.0"],
-        ["#89b4fa","Collecting fastapi>=0.104"],
-        ["#cdd6f4","Installing 3 packages..."],
-        ["#a6e3a1","$ python main.py"],
-        ["#f9e2af","Running on :8000"],
-        ["#a6e3a1","$ pytest tests/ -v"],
-        ["#3fb950","✓ 12 tests passed"],
-        ["#a6e3a1","$ docker build -t jarvis ."],
-        ["#89b4fa","Step 1/8 : FROM python:3.11"],
-        ["#3fb950","Successfully built a3f2c1"],
-        ["#a6e3a1","$ _"],
-      ];
-      ctx.font="13px monospace";
-      const vis=Math.min(lines.length,Math.floor(t*.7)+4);
-      lines.slice(0,vis).forEach(([c,txt],i)=>{ctx.fillStyle=c;ctx.fillText(txt,16,28+i*26)});
-      if(Math.sin(t*3)>.3){ctx.fillStyle="#cdd6f4";ctx.fillRect(16,28+vis*26,8,16)}
-    },
-    /* 4: Stats Dashboard */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Dashboard",30,50);
-      ctx.fillStyle="#8b949e";ctx.font="13px monospace";ctx.fillText("Project Overview",30,75);
-      [{l:"Commits",v:"1,247",c:"#3fb950",d:"+12%"},{l:"PRs Merged",v:"89",c:"#58a6ff",d:"+5%"},{l:"Releases",v:"23",c:"#d2a8ff",d:"v2.1"}].forEach((c,i)=>{
-        const cy=95+i*78;
-        drawRR(ctx,25,cy,w-50,65,8);ctx.fillStyle="#161b22";ctx.fill();
-        ctx.fillStyle=c.c;ctx.font="bold 28px monospace";ctx.fillText(c.v,40,cy+38);
-        ctx.fillStyle="#8b949e";ctx.font="11px monospace";ctx.fillText(c.l,40,cy+55);
-        ctx.fillStyle="#3fb950";ctx.font="bold 12px monospace";ctx.fillText(c.d,w-75,cy+38);
-      });
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 14px monospace";ctx.fillText("This Year",30,355);
-      for(let i=0;i<22;i++)for(let j=0;j<7;j++){
-        const v=Math.random()>.35?0:Math.random()>.5?1:2;
-        ctx.fillStyle=v===0?"#161b22":v===1?"#0e4429":"#26a641";
-        ctx.fillRect(30+i*22,375+j*22,17,17);
-      }
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 14px monospace";ctx.fillText("Languages",30,560);
-      let lx=30;
-      [{n:"Python",p:62,c:"#3572A5"},{n:"TS",p:22,c:"#3178c6"},{n:"Go",p:16,c:"#00ADD8"}].forEach(l=>{
-        const lw=(w-60)*l.p/100;ctx.fillStyle=l.c;drawRR(ctx,lx,580,lw,12,6);ctx.fill();
-        ctx.fillStyle="#e6edf3";ctx.font="11px monospace";ctx.fillText(l.n,lx+4,608);lx+=lw+8;
-      });
-    },
-    /* 5: Live Metrics */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Live Metrics",30,50);
-      [{l:"UPTIME",v:(99.9+Math.sin(t*.1)*.09).toFixed(2)+"%",c:"#3fb950"},
-       {l:"RESPONSE",v:Math.floor(42+Math.sin(t*.3)*8)+"ms",c:"#58a6ff"},
-       {l:"REQUESTS/s",v:""+Math.floor(1240+Math.sin(t*.5)*200),c:"#d2a8ff"}].forEach((c,i)=>{
-        const cy=75+i*72;
-        drawRR(ctx,25,cy,w-50,58,8);ctx.fillStyle="#161b22";ctx.fill();
-        ctx.fillStyle="#8b949e";ctx.font="11px monospace";ctx.fillText(c.l,40,cy+22);
-        ctx.fillStyle=c.c;ctx.font="bold 26px monospace";ctx.fillText(c.v,40,cy+48);
-      });
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 14px monospace";ctx.fillText("Throughput",30,320);
-      ctx.strokeStyle="#238636";ctx.lineWidth=2;ctx.beginPath();
-      for(let i=0;i<35;i++){
-        const x=30+i*14;const y=370+Math.sin(t*.8+i*.3)*35+Math.sin(t*.3+i*.7)*18;
-        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-      }
-      ctx.stroke();ctx.lineTo(30+34*14,430);ctx.lineTo(30,430);ctx.closePath();
-      ctx.fillStyle="rgba(35,134,54,.1)";ctx.fill();
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 14px monospace";ctx.fillText("Latency",30,470);
-      [15,35,60,80,95,70,40,20].forEach((v,i)=>{
-        const bh=v*1.8+Math.sin(t+i)*6;
-        ctx.fillStyle=i<3?"#3fb950":i<5?"#e3b341":"#f85149";
-        drawRR(ctx,30+i*62,570-bh,48,bh,4);ctx.fill();
-      });
     }
   ];
 
