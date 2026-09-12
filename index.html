@@ -2,17 +2,68 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
 <meta http-equiv="X-Frame-Options" content="DENY">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="description" content="KL COM — desenvolvedor full-stack em Praia Grande, SP. Agentes autônomos de IA, interfaces premium e automação que rodam 24/7. Python, TypeScript, Go.">
+<meta name="author" content="Kauê Monteiro — KL COM">
+<meta name="keywords" content="desenvolvedor full-stack, automação com IA, agentes de IA, interfaces premium, criação de sites, Python, TypeScript, Go, Praia Grande, São Paulo, portfólio, KL COM">
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark">
-<title>KL Com</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='38' fill='%23ff2222' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<meta name="geo.region" content="BR-SP">
+<meta name="geo.placename" content="Praia Grande, São Paulo">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://klcom.netlify.app/">
+<title>KL COM — Automação com IA & Interfaces que Convertem</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KL COM">
+<meta property="og:title" content="KL COM — Automação com IA & Interfaces que Convertem">
+<meta property="og:description" content="Desenvolvedor full-stack (Praia Grande, SP). Agentes autônomos, interfaces premium e automação que rodam 24/7 sem depender de ninguém.">
+<meta property="og:url" content="https://klcom.netlify.app/">
+<meta property="og:image" content="https://klcom.netlify.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KL COM — Automação com IA & Interfaces que Convertem">
+<meta name="twitter:description" content="Agentes autônomos, interfaces premium e automação que rodam 24/7.">
+<meta name="twitter:image" content="https://klcom.netlify.app/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://klcom.netlify.app/#website",
+      "url": "https://klcom.netlify.app/",
+      "name": "KL COM",
+      "description": "Automação com IA & interfaces que convertem.",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://klcom.netlify.app/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://klcom.netlify.app/#person",
+      "name": "Kauê Monteiro",
+      "alternateName": "KL COM",
+      "jobTitle": "Desenvolvedor Full-Stack & Automação com IA",
+      "url": "https://klcom.netlify.app/",
+      "email": "mailto:mxlsc@proton.me",
+      "image": "https://klcom.netlify.app/og-image.png",
+      "address": { "@type": "PostalAddress", "addressLocality": "Praia Grande", "addressRegion": "SP", "addressCountry": "BR" },
+      "sameAs": ["https://github.com/klcombr", "https://wa.me/5513974140538"],
+      "knowsAbout": ["Inteligência Artificial", "Automação", "Desenvolvimento Full-Stack", "Python", "TypeScript", "Go", "Design de Interface"]
+    }
+  ]
+}
+</script>
 <link rel="preload" href="fonts/geist-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geist-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geist-latin-800.woff2" as="font" type="font/woff2" crossorigin>
@@ -23,8 +74,11 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#000;--fg:#e8e8e8;--red:#ff2222;--dim:#555;--sans:"Geist",-apple-system,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);--r:28px}
-html{color-scheme:dark;scroll-behavior:smooth}
+html{color-scheme:dark;scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--fg);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+section{scroll-margin-top:80px}
+.skip-link{position:fixed;top:12px;left:12px;z-index:10002;padding:10px 18px;background:var(--red);color:#000;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:12px;transform:translateY(-200%);transition:transform .3s var(--ease)}
+.skip-link:focus{transform:none}
 ::selection{background:var(--red);color:#000}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:9px}
 a{color:inherit;text-decoration:none}
@@ -48,9 +102,14 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
 
 /* ═══ NAV ═══ */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);mix-blend-mode:difference}
-nav a{color:#fff;font-weight:600;position:relative}
+nav .brand{color:#fff;font-weight:800;letter-spacing:.22em}
+.nav-links{display:flex;gap:26px;align-items:center}
+nav a{color:#fff;font-weight:600;position:relative;cursor:none}
 nav a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--red);transition:width .4s var(--ease)}
 nav a:hover::after{width:100%}
+nav a.nav-cta{padding:9px 16px;border:1px solid rgba(255,255,255,.14);border-radius:14px;transition:.3s var(--ease)}
+nav a.nav-cta::after{display:none}
+nav a.nav-cta:hover{background:var(--red);color:#000;border-color:var(--red)}
 
 /* ═══ LAYOUT: LEFT CONTENT + RIGHT PHONE ═══ */
 .content-zone{max-width:72vw;padding-right:4vw}
@@ -67,9 +126,13 @@ section{position:relative;width:100%;overflow:hidden}
 .hero h1 .dot{color:var(--red)}
 .hero-sub{font-size:clamp(15px,2vw,20px);color:var(--dim);margin-top:20px;overflow:hidden;position:relative;z-index:2}
 .hero-sub span{display:inline-block;transform:translateY(110%)}
-.hero-cta{margin-top:40px;overflow:hidden;position:relative;z-index:2}
-.hero-cta span{display:inline-block;padding:16px 40px;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:.4s var(--ease);cursor:none;background:transparent;color:var(--fg);transform:translateY(110%)}
-.hero-cta span:hover{background:var(--red);color:#000;border-color:var(--red)}
+.hero-cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:2}
+.hero-cta .btn{display:inline-block;overflow:hidden;border-radius:var(--r)}
+.hero-cta .btn span{display:inline-block;padding:16px 36px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:.4s var(--ease);transform:translateY(110%)}
+.btn-ghost span{border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--fg)}
+.btn-ghost:hover span{background:rgba(255,34,34,.1);border-color:var(--red);color:#fff}
+.btn-solid span{background:var(--red);color:#000;border:1px solid var(--red);box-shadow:0 8px 30px rgba(255,34,34,.25)}
+.btn-solid:hover span{background:transparent;color:#fff;border-color:var(--red);box-shadow:none}
 .hero-scroll{position:absolute;bottom:36px;left:8vw;font-size:10px;letter-spacing:.3em;color:var(--dim);opacity:.4;z-index:2}
 .hero-scroll::after{content:"";display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--red),transparent);margin:12px auto 0;animation:scrollPulse 2s ease-in-out infinite}
 @keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:.8;transform:scaleY(1.3)}}
@@ -120,6 +183,9 @@ section{position:relative;width:100%;overflow:hidden}
 .proj a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--red);transition:width .3s var(--ease)}
 .proj a:hover{opacity:1}
 .proj a:hover::after{width:100%}
+.proj-art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.proj-tags span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:99px;font-weight:600}
 
 /* ═══ CONTACT ═══ */
 .contact{min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:120px 8vw;position:relative}
@@ -137,7 +203,7 @@ section{position:relative;width:100%;overflow:hidden}
 .contact-links p{font-size:15px;color:#ccc;font-weight:500;margin:0}
 
 /* ═══ FOOTER ═══ */
-footer{padding:40px 8vw;border-top:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.1em}
+footer{padding:40px 8vw;border-top:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.1em}
 footer a{transition:color .3s}footer a:hover{color:var(--red)}
 
 /* ═══ PAGE LOADER ═══ */
@@ -147,17 +213,36 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
 .page-loader .loader-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--red);width:0%}
 
 @media(max-width:768px){
-  nav{padding:16px 20px;font-size:10px}
+  nav{padding:14px 20px;font-size:10px}
+  .nav-links{gap:16px}
+  nav a.nav-cta{padding:7px 12px}
   .content-zone{max-width:100vw;padding-right:0}
+  .hero{padding:0 22px}
+  .hero-sub{margin-top:14px}
+  .hero-cta{flex-direction:column;align-items:stretch;max-width:340px;width:100%}
+  .hero-cta .btn span{display:block;text-align:center;padding:16px 20px}
+  .manifesto,.services,.projects,.contact{padding:90px 22px}
   .svc-row{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
-  #phoneCanvas{width:100vw;height:40vh;top:auto;bottom:0;opacity:.4}
+  #phoneCanvas{width:110vw;height:52vh;top:auto;bottom:-3vh;opacity:.3;z-index:0}
+  .hero,.manifesto,.services,.projects,.contact,footer{position:relative;z-index:1}
+  .proj-art{height:150px}
+  .contact h2{font-size:clamp(44px,15vw,90px)}
+  .contact-links a{min-width:0;width:100%}
   .cursor,.cursor-dot{display:none}
   body{cursor:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .page-loader{display:none}
+  .hero h1 .line span,.hero-sub span,.hero-cta .btn span,.manifesto-text .big .word span,.contact h2 .line span{transform:none!important;opacity:1}
+  .proj{opacity:1!important;transform:none!important}
 }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#projects">Pular para projetos</a>
 
 <div class="page-loader" id="loader">
   <div class="loader-text"><span>KL COM.</span></div>
@@ -168,11 +253,15 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="scroll-prog" id="scrollProg"></div>
 
-<canvas id="phoneCanvas"></canvas>
+<canvas id="phoneCanvas" aria-hidden="true"></canvas>
 
 <nav>
-  <div>KL COM</div>
-  <a href="#contact">FALAR</a>
+  <span class="brand">KL COM</span>
+  <div class="nav-links">
+    <a href="portfolio.html">PORTFÓLIO</a>
+    <a href="#projects">PROJETOS</a>
+    <a href="#contact" class="nav-cta">FALAR</a>
+  </div>
 </nav>
 
 <section class="hero" id="top">
@@ -182,7 +271,10 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
     <span class="line"><span>COM<span class="dot">.</span></span></span>
   </h1>
   <div class="hero-sub"><span>Automação com IA & interfaces que convertem.</span></div>
-  <div class="hero-cta"><span>VER PROJETOS</span></div>
+  <div class="hero-cta">
+    <a class="btn btn-ghost" href="#projects"><span>VER PROJETOS</span></a>
+    <a class="btn btn-solid" href="portfolio.html"><span>VER PORTFÓLIO</span></a>
+  </div>
   <div class="hero-scroll">SCROLL</div>
 </section>
 
@@ -230,29 +322,70 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
   <h2 data-left>PROJETOS</h2>
   <div class="proj-grid">
     <article class="proj">
-      <div class="proj-art"><span class="num">02</span></div>
+      <div class="proj-art"><span class="num">01</span>
+        <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="sfg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff2222" stop-opacity=".7"/><stop offset="1" stop-color="#ff2222" stop-opacity="0"/></linearGradient></defs>
+          <g fill="none" stroke="#262626"><path d="M30 90 H140"/><path d="M260 90 H370"/><path d="M172 90 H228"/><path d="M60 36 v108 M140 36 v108" opacity=".5"/></g>
+          <g fill="#161616" stroke="#3a3a3a"><rect x="30" y="64" width="110" height="52" rx="12"/><rect x="260" y="64" width="110" height="52" rx="12"/><rect x="228" y="64" width="32" height="52" rx="10" fill="#141414"/></g>
+          <g fill="none" stroke="#ff2222" stroke-width="1.5"><rect x="30" y="64" width="110" height="52" rx="12" opacity=".35"/><rect x="260" y="64" width="110" height="52" rx="12" opacity=".35"/></g>
+          <path d="M34 88 H136 M34 100 H136" stroke="#333" opacity=".8"/>
+          <path d="M264 88 H366 M264 100 H366" stroke="#333" opacity=".8"/>
+          <circle cx="85" cy="90" r="4" fill="#ff2222"/>
+          <circle cx="315" cy="90" r="4" fill="#ff2222" opacity=".5"/>
+          <path d="M228 78 h6 v24 M228 78 l-4 4 M228 78 l4 4 M228 102 l-4 -4 M228 102 l4 -4" stroke="#ff2222" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <div class="proj-label">GESTÃO</div>
         <h3>SchoolFlow</h3>
-        <p>Plataforma que organiza processos educacionais complexos em fluxos simples e automatizados.</p>
+        <p>Sistema SaaS para a gestão operacional de escolas — fluxos administrativos e acadêmicos automatizados de ponta a ponta.</p>
+        <div class="proj-tags"><span>TypeScript</span><span>NestJS</span><span>Next.js</span><span>SQLite</span></div>
         <a href="https://github.com/klcombr/schoolflow" rel="noopener noreferrer" target="_blank">VER CÓDIGO →</a>
       </div>
     </article>
     <article class="proj">
-      <div class="proj-art"><span class="num">03</span></div>
+      <div class="proj-art"><span class="num">02</span>
+        <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g stroke="#262626" fill="none"><rect x="40" y="26" width="200" height="90" rx="12"/><rect x="40" y="128" width="96" height="40" rx="12"/><rect x="148" y="128" width="92" height="40" rx="12"/><rect x="252" y="26" width="108" height="142" rx="12"/></g>
+          <g fill="#161616" stroke="#3a3a3a"><rect x="40" y="26" width="200" height="90" rx="12"/><rect x="40" y="128" width="96" height="40" rx="12"/><rect x="148" y="128" width="92" height="40" rx="12"/><rect x="252" y="26" width="108" height="142" rx="12"/></g>
+          <g fill="#333"><rect x="52" y="38" width="10" height="6" rx="3"/><rect x="66" y="38" width="10" height="6" rx="3"/><rect x="80" y="38" width="10" height="6" rx="3"/></g>
+          <path d="M54 60 h120 M54 70 h96 M54 80 h110 M54 90 h72" stroke="#2c2c2c"/>
+          <path d="M266 40 h80 M266 52 h64 M266 64 h76 M266 76 h48 M266 88 h70 M266 100 h56 M266 112 h62" stroke="#2c2c2c"/>
+          <rect x="52" y="140" width="72" height="16" rx="8" fill="none" stroke="#2c2c2c"/>
+          <rect x="160" y="140" width="66" height="16" rx="8" fill="none" stroke="#2c2c2c"/>
+          <rect x="52" y="60" width="4" height="4" fill="#ff2222" opacity=".8"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <div class="proj-label">INTERFACE</div>
         <h3>Opallium</h3>
-        <p>Ambiente de trabalho que reduz ruído e aumenta foco — feito para quem produz de verdade.</p>
+        <p>Seu workspace, sua estrutura, seu código. Ambiente de trabalho que reduz ruído e aumenta foco — feito para quem produz de verdade.</p>
+        <div class="proj-tags"><span>Workspace</span><span>Interface</span><span>Python</span></div>
         <a href="https://github.com/klcombr/Opallium" rel="noopener noreferrer" target="_blank">INSPECIONAR →</a>
       </div>
     </article>
     <article class="proj">
-      <div class="proj-art"><span class="num">04</span></div>
+      <div class="proj-art"><span class="num">03</span>
+        <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g stroke="#262626" fill="none"><rect x="50" y="40" width="70" height="100" rx="12"/><rect x="280" y="40" width="70" height="100" rx="12"/><path d="M120 90 H280"/><path d="M150 74 H250 M150 106 H250"/></g>
+          <g fill="#161616" stroke="#3a3a3a"><rect x="50" y="40" width="70" height="100" rx="12"/><rect x="280" y="40" width="70" height="100" rx="12"/></g>
+          <path d="M120 90 H280" stroke="#3a3a3a"/>
+          <path d="M150 74 H250 M150 106 H250" stroke="#3a3a3a"/>
+          <g stroke="#ff2222" fill="none"><path d="M148 72 H252 M148 108 H252" stroke-width="1.5" opacity="0"/></g>
+          <rect x="132" y="70" width="4" height="4" fill="#ff2222"/>
+          <rect x="264" y="106" width="4" height="4" fill="#ff2222" opacity=".6"/>
+          <circle cx="85" cy="90" r="12" fill="none" stroke="#ff2222" stroke-width="1.5" opacity=".6"/>
+          <circle cx="315" cy="90" r="12" fill="none" stroke="#ff2222" stroke-width="1.5" opacity=".6"/>
+          <path d="M310 84 l-6 6 8 6" stroke="#3a3a3a" fill="none" opacity="0"/>
+          <circle cx="200" cy="82" r="6" fill="#ff2222" opacity=".9"/>
+          <circle cx="216" cy="98" r="4" fill="#c0392b" opacity=".5"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <div class="proj-label">INTEGRAÇÃO</div>
         <h3>OpenBridge</h3>
-        <p>Conecta sistemas que antes não conversavam — dados fluem em tempo real, sem atrito.</p>
+        <p>Hub pessoal celular ↔ PC, minimalista. Node puro, zero dependências, PWA — dados fluem sem atrito.</p>
+        <div class="proj-tags"><span>Node.js</span><span>PWA</span><span>0 deps</span></div>
         <a href="https://github.com/klcombr/openbridge" rel="noopener noreferrer" target="_blank">VER README →</a>
       </div>
     </article>
@@ -282,7 +415,8 @@ footer a{transition:color .3s}footer a:hover{color:var(--red)}
 </section>
 
 <footer>
-  <span>KL COM — 2026</span>
+  <span>KL COM — 2026 · Praia Grande, SP</span>
+  <a href="portfolio.html">PORTFÓLIO</a>
   <a href="#top">VOLTAR AO TOPO</a>
 </footer>
 
