@@ -1,20 +1,44 @@
+# Netlify custom headers.
+#
+# This file is authoritative for the deployed site. The equivalent
+# <meta http-equiv="Content-Security-Policy"> tags in the HTML are a
+# defence-in-depth fallback for anyone opening the files straight from
+# disk; keep the two in sync if you change either.
+#
+# Every asset here is same-origin and there are no third-party requests:
+# fonts are self-hosted, there is no analytics, and the WebGL scene
+# makes no network calls. That is what lets script-src drop
+# 'unsafe-inline' — the previous version needed it for an inline
+# bootstrap script and an inline onclick handler, and both are gone —
+# and lets connect-src stay 'none'.
+
 /*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
-  Strict-Transport-Security: max-age=63072000
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+# Source files are not fingerprinted, so revalidate instead of caching
+# forever — otherwise an edit to base.css would not reach visitors.
+/assets/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
 
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Pinned library versions that effectively never change. If you upgrade
+# one, either rename the file or purge the cache in the Netlify UI.
 /vendor/*
   Cache-Control: public, max-age=31536000, immutable
 
-/*.png
-  Cache-Control: public, max-age=31536000, immutable
-
-/*.svg
+/favicon.svg
   Cache-Control: public, max-age=86400
 
 /og-image.png

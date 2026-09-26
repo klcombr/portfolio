@@ -1,0 +1,257 @@
+/* ============================================================
+   KL COM — résumé
+   ATS-safe single-column document. The markup is plain semantic
+   HTML with no JS-dependent hiding, so a PDF export, a screen
+   reader and a recruiter's parser all read the same content.
+   ============================================================ */
+
+.doc{padding-top:7rem}
+/* A document wants a narrower measure than a landing page: 80rem gave
+   body copy a ~140-character line, well past the comfortable 45-75. */
+.doc .shell{max-width:64rem}
+.doc-header{padding-bottom:3rem;border-bottom:1px solid var(--line)}
+.doc-header h1{
+  font-size:clamp(2.5rem,1.5rem + 4.5vw,4.5rem);
+  line-height:.95;
+  text-transform:uppercase;
+  letter-spacing:-.04em;
+}
+.doc-header h1 .dot{color:var(--accent)}
+.doc-title{
+  margin-top:1rem;
+  font-size:var(--t-lg);
+  font-weight:600;
+  color:var(--fg);
+}
+.doc-loc{margin-top:.4rem;font-family:var(--mono);font-size:var(--t-sm);color:var(--fg-muted)}
+
+.contact-line{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.75rem 1.5rem;
+  margin-top:1.75rem;
+  font-family:var(--mono);
+  font-size:var(--t-sm);
+}
+.contact-line a{
+  display:inline-flex;
+  align-items:center;
+  min-height:24px; /* WCAG 2.2 target size */
+  color:var(--accent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease);
+}
+.contact-line a:hover{border-bottom-color:var(--accent)}
+.contact-line .sep{color:var(--fg-subtle)}
+
+/* ---------- Blocks ---------- */
+.doc-section{padding-block:clamp(3rem,2rem + 3vw,4.5rem);border-bottom:1px solid var(--line)}
+.doc-section:last-of-type{border-bottom:0}
+/* Free-standing section paragraphs (the summary) need a measure too. */
+.doc-section > .shell > p{max-width:68ch;color:var(--fg-muted);line-height:1.75}
+.doc-section > .shell > p strong{color:var(--fg);font-weight:600}
+.doc-section__head{margin-bottom:2rem}
+.sec-num{
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.5rem;
+}
+.sec-num::before{content:"// ";opacity:.5}
+.doc-section h2{
+  font-size:var(--t-xl);
+  text-transform:uppercase;
+  letter-spacing:-.03em;
+}
+
+/* ---------- Entries ---------- */
+.entry{padding-left:1.25rem;border-left:2px solid var(--line-strong);margin-bottom:2.25rem}
+.entry:last-child{margin-bottom:0}
+.entry__head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.35rem 1.25rem;
+}
+.entry h3{font-size:var(--t-lg);font-weight:600;text-transform:none;letter-spacing:-.02em}
+.entry__date{
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--fg-subtle);
+  white-space:nowrap;
+}
+.entry__role{
+  margin:.35rem 0 .85rem;
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.entry p{color:var(--fg-muted);max-width:68ch;line-height:1.7}
+
+.points{display:grid;gap:.5rem;margin-top:1rem}
+.points li{
+  display:flex;
+  gap:.65rem;
+  max-width:68ch;
+  font-size:var(--t-sm);
+  line-height:1.65;
+  color:var(--fg-muted);
+}
+.points li::before{content:"→";color:var(--accent);flex:none}
+
+.entry .tags{margin:1rem 0 0}
+.entry__link{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  min-height:24px;
+  margin-top:.85rem;
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease);
+}
+.entry__link:hover{border-bottom-color:var(--accent)}
+
+/* ---------- Skills: plain prose, no meters ---------- */
+.skills{margin-bottom:1.75rem}
+.skills:last-child{margin-bottom:0}
+.skills h3{
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.5rem;
+}
+.skills p{color:var(--fg);max-width:72ch;line-height:1.75;font-size:var(--t-sm)}
+.skills p + p{color:var(--fg-muted);margin-top:.35rem}
+
+/* ---------- Education ---------- */
+.edu{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.35rem 1.25rem;
+  margin-bottom:1.5rem;
+}
+.edu:last-child{margin-bottom:0}
+.edu h3{font-size:var(--t-base);font-weight:600;text-transform:none}
+.edu p{margin-top:.3rem;font-size:var(--t-sm);color:var(--fg-muted);max-width:60ch}
+
+/* ---------- Contact panel ---------- */
+.doc-contact{
+  padding:clamp(1.75rem,1.25rem + 2vw,3rem);
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  background:
+    radial-gradient(42rem 20rem at 85% 0%,rgba(255,34,34,.05),transparent 70%),
+    var(--bg-elev);
+}
+.doc-contact h2{font-size:var(--t-2xl);text-transform:uppercase;letter-spacing:-.04em}
+.doc-contact h2 .dot{color:var(--accent)}
+.doc-contact__sub{margin:1.25rem 0 2rem;max-width:52ch;color:var(--fg-muted);line-height:1.7}
+.print-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1rem;
+  margin-top:2.5rem;
+  padding-top:1.75rem;
+  border-top:1px solid var(--line);
+}
+.print-actions .note{font-family:var(--mono);font-size:var(--t-xs);color:var(--fg-subtle)}
+
+/* ============================================================
+   PRINT / PDF — a clean single-column document
+   ============================================================ */
+@media print{
+  @page{margin:14mm}
+
+  html{color-scheme:light}
+
+  body{
+    background:#fff;
+    color:#111;
+    font-size:10.5pt;
+  }
+  body::after{display:none}
+
+  .masthead,
+  .progress,
+  .skip-link,
+  .print-actions,
+  .entry__link,
+  .footer{display:none!important}
+
+  .doc{padding-top:0}
+  .doc-header{padding-bottom:6mm}
+  .doc-header h1{font-size:22pt;color:#111}
+  .doc-title{font-size:11pt;color:#111}
+  .doc-loc{font-size:9pt;color:#444}
+  .contact-line{color:#111;font-size:9pt}
+  .contact-line a{color:#b00;border:0}
+
+  .doc-section{padding:4mm 0;border-color:#ddd;break-inside:auto}
+  .doc-section h2{font-size:12pt;color:#111}
+  .sec-num{font-size:7.5pt;color:#b00}
+  .sec-num::before{opacity:1}
+
+  .entry{border-color:#bbb;margin-bottom:5mm;break-inside:avoid}
+  .entry h3{font-size:11pt;color:#111}
+  .entry__role{font-size:7.5pt;color:#b00}
+  .entry p{color:#333;font-size:9.5pt;line-height:1.4}
+  .points li{color:#333;font-size:9pt;line-height:1.4}
+  .points li::before{color:#b00}
+  .entry__date{color:#666;font-size:8pt}
+  .tags li{border-color:#ddd!important;color:#333!important}
+
+  .skills{margin-bottom:3mm}
+  .skills h3{font-size:8pt;color:#b00}
+  .skills p{color:#111;font-size:9.5pt;line-height:1.4}
+  .skills p + p{color:#444}
+
+  .edu{margin-bottom:3mm}
+  .edu h3{font-size:10pt;color:#111}
+  .edu p{color:#333;font-size:9pt}
+  .edu__date{color:#666}
+
+  .doc-contact{
+    background:none;
+    border-color:#ddd;
+    padding:6mm;
+    break-inside:avoid;
+  }
+  .doc-contact h2{font-size:16pt;color:#111}
+  .doc-contact__sub{color:#333;font-size:9.5pt}
+
+  /* Print the destination of every external link, since a printed
+     URL is not clickable. */
+  .entry a[href^="http"]::after,
+  .contact-line a[href^="http"]::after{
+    content:" (" attr(href) ")";
+    font-size:7.5pt;
+    color:#666;
+    word-break:break-all;
+  }
+}
+
+@media (max-width:640px){
+  .doc{padding-top:6rem}
+  .contact-line{flex-direction:column;align-items:flex-start;gap:.35rem}
+  .contact-line .sep{display:none}
+  .print-actions .btn{width:100%}
+}
