@@ -3,37 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="description" content="KL COM — desenvolvedor full-stack em Praia Grande, SP. Agentes autônomos de IA, interfaces premium e automação que rodam 24/7. Python, TypeScript, Go.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+<meta name="description" content="KL COM — Kauê Monteiro, desenvolvedor full-stack em Praia Grande, SP. Agentes autônomos de IA, interfaces premium e automação que rodam 24/7. Python, TypeScript, Go.">
 <meta name="author" content="Kauê Monteiro — KL COM">
-<meta name="keywords" content="desenvolvedor full-stack, automação com IA, agentes de IA, interfaces premium, criação de sites, Python, TypeScript, Go, Praia Grande, São Paulo, portfólio, KL COM">
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="Praia Grande, São Paulo">
 <meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://klcom.netlify.app/">
-<title>KL COM — Automação com IA & Interfaces que Convertem</title>
+<title>KL COM — Automação com IA &amp; Interfaces que Convertem</title>
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KL COM">
-<meta property="og:title" content="KL COM — Automação com IA & Interfaces que Convertem">
+<meta property="og:title" content="KL COM — Automação com IA &amp; Interfaces que Convertem">
 <meta property="og:description" content="Desenvolvedor full-stack (Praia Grande, SP). Agentes autônomos, interfaces premium e automação que rodam 24/7 sem depender de ninguém.">
 <meta property="og:url" content="https://klcom.netlify.app/">
 <meta property="og:image" content="https://klcom.netlify.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KL COM — Kauê Monteiro, desenvolvedor full-stack em Praia Grande, SP.">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="KL COM — Automação com IA & Interfaces que Convertem">
+<meta name="twitter:title" content="KL COM — Automação com IA &amp; Interfaces que Convertem">
 <meta name="twitter:description" content="Agentes autônomos, interfaces premium e automação que rodam 24/7.">
 <meta name="twitter:image" content="https://klcom.netlify.app/og-image.png">
+<meta name="twitter:image:alt" content="KL COM — Kauê Monteiro, desenvolvedor full-stack em Praia Grande, SP.">
+
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/geist-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Geist 600 is only used below the fold here (service titles, project
+     titles, contact values), so it is fetched on demand rather than
+     competing with the hero for bandwidth. The résumé preloads it,
+     where it appears above the fold. -->
+<link rel="preload" href="fonts/geist-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/home.css">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -43,7 +52,7 @@
       "@id": "https://klcom.netlify.app/#website",
       "url": "https://klcom.netlify.app/",
       "name": "KL COM",
-      "description": "Automação com IA & interfaces que convertem.",
+      "description": "Automação com IA e interfaces que convertem.",
       "inLanguage": "pt-BR",
       "publisher": { "@id": "https://klcom.netlify.app/#person" }
     },
@@ -56,702 +65,317 @@
       "url": "https://klcom.netlify.app/",
       "email": "mailto:mxlsc@proton.me",
       "image": "https://klcom.netlify.app/og-image.png",
-      "address": { "@type": "PostalAddress", "addressLocality": "Praia Grande", "addressRegion": "SP", "addressCountry": "BR" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Praia Grande",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
       "sameAs": ["https://github.com/klcombr", "https://wa.me/5513974140538"],
-      "knowsAbout": ["Inteligência Artificial", "Automação", "Desenvolvimento Full-Stack", "Python", "TypeScript", "Go", "Design de Interface"]
+      "knowsAbout": [
+        "Inteligência Artificial",
+        "Automação",
+        "Desenvolvimento Full-Stack",
+        "Python",
+        "TypeScript",
+        "Go",
+        "Design de Interface"
+      ]
     }
   ]
 }
 </script>
-<link rel="preload" href="fonts/geist-latin-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/geist-latin-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/geist-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-@font-face{font-family:"Geist";font-weight:400;font-display:swap;src:url("fonts/geist-latin-400.woff2")format("woff2")}
-@font-face{font-family:"Geist";font-weight:600;font-display:swap;src:url("fonts/geist-latin-600.woff2")format("woff2")}
-@font-face{font-family:"Geist";font-weight:800;font-display:swap;src:url("fonts/geist-latin-800.woff2")format("woff2")}
-
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#000;--fg:#e8e8e8;--red:#ff2222;--dim:#555;--sans:"Geist",-apple-system,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);--r:28px}
-html{color-scheme:dark;scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--fg);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
-section{scroll-margin-top:80px}
-.skip-link{position:fixed;top:12px;left:12px;z-index:10002;padding:10px 18px;background:var(--red);color:#000;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:12px;transform:translateY(-200%);transition:transform .3s var(--ease)}
-.skip-link:focus{transform:none}
-::selection{background:var(--red);color:#000}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:9px}
-a{color:inherit;text-decoration:none}
-img{-webkit-user-drag:none;user-select:none}
-
-h1,h2,h3{font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.88}
-p{color:var(--dim);max-width:50ch;line-height:1.65}
-
-/* ═══ NOISE ═══ */
-body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px 128px}
-
-/* ═══ CURSOR ═══ */
-.cursor{position:fixed;top:0;left:0;width:20px;height:20px;border:1.5px solid var(--red);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),border-color .25s,background .25s,opacity .15s;mix-blend-mode:difference;opacity:0}
-.cursor.visible{opacity:1}
-.cursor.hover{width:50px;height:50px;background:rgba(255,34,34,.08);border-color:rgba(255,34,34,.4)}
-.cursor-dot{position:fixed;top:0;left:0;width:5px;height:5px;background:var(--red);border-radius:50%;pointer-events:none;z-index:10001;transform:translate(-50%,-50%);opacity:0;transition:opacity .15s}
-.cursor-dot.visible{opacity:1}
-
-/* ═══ SCROLL PROGRESS ═══ */
-.scroll-prog{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:200;width:0%;transition:width .1s linear}
-
-/* ═══ NAV ═══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);mix-blend-mode:difference}
-nav .brand{color:#fff;font-weight:800;letter-spacing:.22em}
-.nav-links{display:flex;gap:26px;align-items:center}
-nav a{color:#fff;font-weight:600;position:relative;cursor:none}
-nav a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--red);transition:width .4s var(--ease)}
-nav a:hover::after{width:100%}
-nav a.nav-cta{padding:9px 16px;border:1px solid rgba(255,255,255,.14);border-radius:14px;transition:.3s var(--ease)}
-nav a.nav-cta::after{display:none}
-nav a.nav-cta:hover{background:var(--red);color:#000;border-color:var(--red)}
-
-/* ═══ LAYOUT: LEFT CONTENT + RIGHT PHONE ═══ */
-.content-zone{max-width:72vw;padding-right:4vw}
-
-section{position:relative;width:100%;overflow:hidden}
-
-/* ═══ HERO ═══ */
-.hero{height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 8vw 0 8vw;position:relative}
-.hero-bg{position:absolute;inset:0;overflow:hidden}
-.hero-glow{position:absolute;top:50%;left:40%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,34,34,.06) 0%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none}
-.hero h1{font-size:clamp(60px,16vw,200px);position:relative;z-index:2}
-.hero h1 .line{display:block;overflow:hidden}
-.hero h1 .line span{display:inline-block;transform:translateY(110%)}
-.hero h1 .dot{color:var(--red)}
-.hero-sub{font-size:clamp(15px,2vw,20px);color:var(--dim);margin-top:20px;overflow:hidden;position:relative;z-index:2}
-.hero-sub span{display:inline-block;transform:translateY(110%)}
-.hero-cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:2}
-.hero-cta .btn{display:inline-block;overflow:hidden;border-radius:var(--r)}
-.hero-cta .btn span{display:inline-block;padding:16px 36px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:.4s var(--ease);transform:translateY(110%)}
-.btn-ghost span{border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--fg)}
-.btn-ghost:hover span{background:rgba(255,34,34,.1);border-color:var(--red);color:#fff}
-.btn-solid span{background:var(--red);color:#000;border:1px solid var(--red);box-shadow:0 8px 30px rgba(255,34,34,.25)}
-.btn-solid:hover span{background:transparent;color:#fff;border-color:var(--red);box-shadow:none}
-.hero-scroll{position:absolute;bottom:36px;left:8vw;font-size:10px;letter-spacing:.3em;color:var(--dim);opacity:.4;z-index:2}
-.hero-scroll::after{content:"";display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--red),transparent);margin:12px auto 0;animation:scrollPulse 2s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:.8;transform:scaleY(1.3)}}
-
-/* ═══ PHONE CANVAS ═══ */
-#phoneCanvas{position:fixed;top:0;right:0;width:28vw;height:100vh;pointer-events:none;z-index:50}
-
-/* ═══ MANIFESTO ═══ */
-.manifesto{min-height:80vh;display:flex;align-items:center;padding:120px 8vw}
-.manifesto-inner{max-width:600px;margin:0 auto 0 0;width:100%}
-.manifesto-text .big{font-size:clamp(28px,4vw,48px);color:var(--fg);font-weight:800;line-height:1.05;margin-bottom:32px}
-.manifesto-text .big .word{display:inline-block;overflow:hidden}
-.manifesto-text .big .word span{display:inline-block;transform:translateY(110%)}
-.manifesto-text p{font-size:16px;margin-bottom:16px}
-
-/* ═══ SERVICES ═══ */
-.services{padding:120px 8vw}
-.services h2{font-size:clamp(32px,4vw,56px);margin-bottom:60px}
-.svc-row{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;max-width:700px}
-.svc{padding:32px;border-radius:var(--r);transition:transform .4s var(--ease);position:relative;cursor:none;background:#0d0d0d;z-index:0}
-.svc::before{content:"";position:absolute;inset:0;border-radius:var(--r);background:conic-gradient(from var(--angle,0deg) at var(--mx,50%) var(--my,50%),rgba(255,34,34,.8),rgba(255,34,34,.1) 30%,rgba(255,255,255,.03) 50%,rgba(255,34,34,.1) 70%,rgba(255,34,34,.8));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;opacity:0;transition:opacity .4s;pointer-events:none;z-index:1}
-.svc:hover::before{opacity:1}
-.svc:hover{transform:scale(1.03)}
-.svc>*{position:relative;z-index:2}
-.svc-num{font-size:11px;color:var(--red);letter-spacing:.25em;opacity:.7;margin-bottom:12px}
-  .svc-num::before{content:"// ";opacity:.4;font-size:.85em}
-  .svc h3{font-size:20px;margin-bottom:10px;font-weight:700;text-transform:none;letter-spacing:-.02em;line-height:1.15;color:var(--fg)}
-  .svc p{font-size:13px;line-height:1.55}
-
-/* ═══ PROJECTS ═══ */
-.projects{padding:120px 8vw}
-.projects h2{font-size:clamp(32px,4vw,56px);margin-bottom:60px}
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:700px}
-.proj{border-radius:var(--r);transition:transform .4s var(--ease),opacity .8s;opacity:0;transform:translateY(40px);cursor:none;position:relative;background:#0d0d0d;z-index:0}
-.proj::before{content:"";position:absolute;inset:0;border-radius:var(--r);background:conic-gradient(from var(--angle,0deg) at var(--mx,50%) var(--my,50%),rgba(255,34,34,.8),rgba(255,34,34,.1) 30%,rgba(255,255,255,.03) 50%,rgba(255,34,34,.1) 70%,rgba(255,34,34,.8));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;opacity:0;transition:opacity .4s;pointer-events:none;z-index:1}
-.proj:hover::before{opacity:1}
-.proj:hover{opacity:1!important;transform:scale(1.03) translateY(-4px)}
-.proj.revealed{opacity:1;transform:none}
-.proj>*{position:relative;z-index:2}
-.proj-art{height:180px;background:linear-gradient(135deg,#111,#0a0a0a);position:relative;overflow:hidden;border-radius:var(--r) var(--r) 0 0}
-.proj-art::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,34,34,.3),transparent)}
-.proj-art .num{position:absolute;right:20px;bottom:-6px;font-size:100px;font-weight:800;line-height:1;color:rgba(255,255,255,.02);-webkit-text-stroke:1px rgba(255,255,255,.04);transition:color .5s}
-.proj:hover .proj-art .num{color:rgba(255,34,34,.05);-webkit-text-stroke-color:rgba(255,34,34,.1)}
-.proj-body{padding:24px}
-.proj-label{font-size:10px;color:var(--red);letter-spacing:.25em;opacity:.6;margin-bottom:8px}
-  .proj-label::before{content:"// ";opacity:.4}
-.proj h3{font-size:22px;margin-bottom:8px}
-.proj p{font-size:12px;line-height:1.5;margin-bottom:12px}
-.proj a{font-size:11px;color:var(--red);font-weight:600;letter-spacing:.08em;opacity:.7;transition:.3s;position:relative;display:inline-block}
-.proj a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--red);transition:width .3s var(--ease)}
-.proj a:hover{opacity:1}
-.proj a:hover::after{width:100%}
-.proj-art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.proj-tags span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:99px;font-weight:600}
-
-/* ═══ CONTACT ═══ */
-.contact{min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:120px 8vw;position:relative}
-.contact-glow{position:absolute;top:50%;left:30%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,34,34,.04) 0%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none}
-.contact h2{font-size:clamp(48px,10vw,140px);margin-bottom:48px;overflow:hidden;position:relative;z-index:2}
-.contact h2 .line{display:block;overflow:hidden}
-.contact h2 .line span{display:inline-block;transform:translateY(110%)}
-.contact-links{display:flex;gap:16px;flex-wrap:wrap;position:relative;z-index:2}
-.contact-links a{padding:32px 28px;border-radius:var(--r);min-width:200px;transition:transform .4s var(--ease),opacity .8s;opacity:0;transform:translateY(20px);position:relative;cursor:none;background:#0d0d0d;z-index:0}
-.contact-links a::before{content:"";position:absolute;inset:0;border-radius:var(--r);background:conic-gradient(from var(--angle,0deg) at var(--mx,50%) var(--my,50%),rgba(255,34,34,.8),rgba(255,34,34,.1) 30%,rgba(255,255,255,.03) 50%,rgba(255,34,34,.1) 70%,rgba(255,34,34,.8));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;opacity:0;transition:opacity .4s;pointer-events:none;z-index:1}
-.contact-links a:hover::before{opacity:1}
-.contact-links a:hover{opacity:1!important;transform:scale(1.03) translateY(-4px)}
-.contact-links a>*{position:relative;z-index:2}
-.contact-links h4{font-size:10px;color:var(--red);letter-spacing:.2em;margin-bottom:10px;font-weight:400}
-.contact-links p{font-size:15px;color:#ccc;font-weight:500;margin:0}
-
-/* ═══ FOOTER ═══ */
-footer{padding:40px 8vw;border-top:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.1em}
-footer a{transition:color .3s}footer a:hover{color:var(--red)}
-
-/* ═══ PAGE LOADER ═══ */
-.page-loader{position:fixed;inset:0;background:var(--bg);z-index:99998;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.page-loader .loader-text{font-size:clamp(24px,4vw,48px);font-weight:800;color:var(--fg);overflow:hidden}
-.page-loader .loader-text span{display:inline-block;transform:translateY(110%)}
-.page-loader .loader-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--red);width:0%}
-
-@media(max-width:768px){
-  nav{padding:14px 20px;font-size:10px}
-  .nav-links{gap:16px}
-  nav a.nav-cta{padding:7px 12px}
-  .content-zone{max-width:100vw;padding-right:0}
-  .hero{padding:0 22px}
-  .hero-sub{margin-top:14px}
-  .hero-cta{flex-direction:column;align-items:stretch;max-width:340px;width:100%}
-  .hero-cta .btn span{display:block;text-align:center;padding:16px 20px}
-  .manifesto,.services,.projects,.contact{padding:90px 22px}
-  .svc-row{grid-template-columns:1fr}
-  .proj-grid{grid-template-columns:1fr}
-  #phoneCanvas{width:110vw;height:52vh;top:auto;bottom:0;opacity:.3;z-index:0}
-  .hero,.manifesto,.services,.projects,.contact,footer{position:relative;z-index:1}
-  .proj-art{height:150px}
-  .contact h2{font-size:clamp(44px,15vw,90px)}
-  .contact-links a{min-width:0;width:100%}
-  .cursor,.cursor-dot{display:none}
-  body{cursor:auto}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-  .page-loader{display:none}
-  .hero h1 .line span,.hero-sub span,.hero-cta .btn span,.manifesto-text .big .word span,.contact h2 .line span{transform:none!important;opacity:1}
-  .proj{opacity:1!important;transform:none!important}
-}
-</style>
 </head>
+
 <body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
 
-<a class="skip-link" href="#projects">Pular para projetos</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-<div class="page-loader" id="loader">
-  <div class="loader-text"><span>KL COM.</span></div>
-  <div class="loader-bar" id="loaderBar"></div>
-</div>
+<header class="masthead" id="masthead">
+  <a class="brand" href="/">KL COM</a>
+  <nav class="masthead__nav" aria-label="Principal">
+    <a href="#sobre" data-optional>Sobre</a>
+    <a href="#servicos" data-optional>Serviços</a>
+    <a href="#projetos">Projetos</a>
+    <a href="curriculo.html">Currículo</a>
+    <a href="#contato" class="cta">Falar</a>
+  </nav>
+</header>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="scroll-prog" id="scrollProg"></div>
+<main id="main">
 
-<canvas id="phoneCanvas" aria-hidden="true"></canvas>
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero" id="top">
+    <div class="hero__inner shell">
 
-<nav>
-  <span class="brand">KL COM</span>
-  <div class="nav-links">
-    <a href="curriculo.html">CURRÍCULO</a>
-    <a href="#projects">PROJETOS</a>
-    <a href="#contact" class="nav-cta">FALAR</a>
-  </div>
-</nav>
+      <p class="hero__kicker" data-hero="kicker">
+        <b>Kauê Monteiro</b>
+        <span>Desenvolvedor Full-Stack</span>
+        <span>Praia Grande, SP</span>
+        <span class="status"><i class="status__dot" aria-hidden="true"></i>Aberto a projetos</span>
+      </p>
 
-<section class="hero" id="top">
-  <div class="hero-bg"><div class="hero-glow"></div></div>
-  <h1 id="h1">
-    <span class="line"><span>K.L</span></span>
-    <span class="line"><span>COM<span class="dot">.</span></span></span>
-  </h1>
-  <div class="hero-sub"><span>Automação com IA & interfaces que convertem.</span></div>
-  <div class="hero-cta">
-    <a class="btn btn-ghost" href="#projects"><span>VER PROJETOS</span></a>
-    <a class="btn btn-solid" href="curriculo.html"><span>VER CURRÍCULO</span></a>
-  </div>
-  <div class="hero-scroll">SCROLL</div>
-</section>
+      <h1 class="hero__title">
+        <span class="mask"><span data-hero="line">Sistemas que</span></span>
+        <span class="mask"><span data-hero="line">rodam <em>sozinhos</em>.</span></span>
+      </h1>
 
-<section class="manifesto" id="about">
-  <div class="manifesto-inner">
-    <div class="manifesto-text" data-left>
-      <div class="big" id="manifestoBig">
-        <div class="word"><span>Eu</span></div> <div class="word"><span>não</span></div> <div class="word"><span>construo</span></div> <div class="word"><span>sites.</span></div><br>
-        <div class="word"><span>Eu</span></div> <div class="word"><span>construo</span></div> <div class="word"><span>sistemas.</span></div>
+      <p class="hero__lede" data-hero="lede">
+        Agentes que atendem, automações que decidem, interfaces que vendem —
+        tudo conectado, tudo funcionando enquanto eu durmo.
+      </p>
+
+      <div class="hero__actions" data-hero="actions">
+        <a class="btn btn--solid" href="#projetos">
+          Ver projetos <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="btn btn--ghost" href="curriculo.html">Ver currículo</a>
       </div>
-      <p>Cada projeto começa com uma pergunta: como isso pode rodar sem mim?</p>
-      <p>Agentes que atendem, automações que decidem, interfaces que vendem — tudo conectado, tudo funcionando enquanto eu durmo.</p>
-      <p>Isso não é tecnologia por tecnologia. É liberdade.</p>
+
+      <p class="hero__cue" data-hero="cue">Role</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="services" id="services">
-  <h2 data-left>SERVIÇOS</h2>
-  <div class="svc-row">
-    <div class="svc">
-      <div class="svc-num">01</div>
-      <h3>Agentes Autônomos</h3>
-      <p>Sistemas que pensam e agem sozinhos. Atendimento, operações, decisões — escaláveis 24/7 sem depender de ninguém.</p>
+  <!-- ══════════════ 3D BAND ══════════════
+       One contained 3D moment. The Three.js bundle is fetched only
+       when this section approaches the viewport, and the render loop
+       stops when it leaves. -->
+  <section class="band" id="band" aria-labelledby="band-heading">
+    <canvas class="band__canvas" id="band-canvas" aria-hidden="true"></canvas>
+    <div class="band__caption">
+      <h2 id="band-heading" class="visually-hidden">Sistemas em execução</h2>
+      <p>Cada projeto começa com uma pergunta:<br><strong>como isso pode rodar sem mim?</strong></p>
+      <strong class="band__meta">Agente · Orquestração · 24/7</strong>
     </div>
-    <div class="svc">
-      <div class="svc-num">02</div>
-      <h3>Interfaces Premium</h3>
-      <p>Design que converte antes do usuário entender por quê. Cada pixel com motivo, cada animação com propósito.</p>
-    </div>
-    <div class="svc">
-      <div class="svc-num">03</div>
-      <h3>Automação</h3>
-      <p>Processos manuais viram automáticos. Horas viram segundos. O que você fazia todo dia, o sistema faz melhor.</p>
-    </div>
-    <div class="svc">
-      <div class="svc-num">04</div>
-      <h3>Integração</h3>
-      <p>Conectar o que está solto. APIs, bancos, ferramentas — tudo sincronizado, tudo falando a mesma língua.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="projects" id="projects">
-  <h2 data-left>PROJETOS</h2>
-  <div class="proj-grid">
-    <article class="proj">
-      <div class="proj-art"><span class="num">01</span>
-        <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs><linearGradient id="sfg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff2222" stop-opacity=".7"/><stop offset="1" stop-color="#ff2222" stop-opacity="0"/></linearGradient></defs>
-          <g fill="none" stroke="#262626"><path d="M30 90 H140"/><path d="M260 90 H370"/><path d="M172 90 H228"/><path d="M60 36 v108 M140 36 v108" opacity=".5"/></g>
-          <g fill="#161616" stroke="#3a3a3a"><rect x="30" y="64" width="110" height="52" rx="12"/><rect x="260" y="64" width="110" height="52" rx="12"/><rect x="228" y="64" width="32" height="52" rx="10" fill="#141414"/></g>
-          <g fill="none" stroke="#ff2222" stroke-width="1.5"><rect x="30" y="64" width="110" height="52" rx="12" opacity=".35"/><rect x="260" y="64" width="110" height="52" rx="12" opacity=".35"/></g>
-          <path d="M34 88 H136 M34 100 H136" stroke="#333" opacity=".8"/>
-          <path d="M264 88 H366 M264 100 H366" stroke="#333" opacity=".8"/>
-          <circle cx="85" cy="90" r="4" fill="#ff2222"/>
-          <circle cx="315" cy="90" r="4" fill="#ff2222" opacity=".5"/>
-          <path d="M228 78 h6 v24 M228 78 l-4 4 M228 78 l4 4 M228 102 l-4 -4 M228 102 l4 -4" stroke="#ff2222" stroke-width="1.5" fill="none"/>
-        </svg>
+  <!-- ══════════════ SOBRE ══════════════ -->
+  <section class="statement" id="sobre" aria-labelledby="sobre-heading">
+    <div class="statement__grid shell">
+      <p class="eyebrow"><span class="eyebrow__index">01</span> Sobre</p>
+      <div>
+        <h2 class="statement__lead" id="sobre-heading" data-reveal>
+          Eu não construo sites.<br>Eu construo <em>sistemas</em>.
+        </h2>
+        <div class="statement__body">
+          <p data-reveal>Cada projeto nasce de uma pergunta: o que essa coisa faz quando eu não estou olhando?</p>
+          <p data-reveal>Base sólida em Python, TypeScript e Go, com 52 repositórios públicos no GitHub desde setembro de 2024 — a maioria deles um sistema inteiro, não um exercício.</p>
+          <p data-reveal>Isso não é tecnologia por tecnologia. É liberdade.</p>
+        </div>
       </div>
-      <div class="proj-body">
-        <div class="proj-label">GESTÃO</div>
-        <h3>SchoolFlow</h3>
-        <p>Sistema SaaS para a gestão operacional de escolas — fluxos administrativos e acadêmicos automatizados de ponta a ponta.</p>
-        <div class="proj-tags"><span>TypeScript</span><span>NestJS</span><span>Next.js</span><span>SQLite</span></div>
-        <a href="https://github.com/klcombr/schoolflow" rel="noopener noreferrer" target="_blank">VER CÓDIGO →</a>
-      </div>
-    </article>
-    <article class="proj">
-      <div class="proj-art"><span class="num">02</span>
-        <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <g stroke="#262626" fill="none"><rect x="40" y="26" width="200" height="90" rx="12"/><rect x="40" y="128" width="96" height="40" rx="12"/><rect x="148" y="128" width="92" height="40" rx="12"/><rect x="252" y="26" width="108" height="142" rx="12"/></g>
-          <g fill="#161616" stroke="#3a3a3a"><rect x="40" y="26" width="200" height="90" rx="12"/><rect x="40" y="128" width="96" height="40" rx="12"/><rect x="148" y="128" width="92" height="40" rx="12"/><rect x="252" y="26" width="108" height="142" rx="12"/></g>
-          <g fill="#333"><rect x="52" y="38" width="10" height="6" rx="3"/><rect x="66" y="38" width="10" height="6" rx="3"/><rect x="80" y="38" width="10" height="6" rx="3"/></g>
-          <path d="M54 60 h120 M54 70 h96 M54 80 h110 M54 90 h72" stroke="#2c2c2c"/>
-          <path d="M266 40 h80 M266 52 h64 M266 64 h76 M266 76 h48 M266 88 h70 M266 100 h56 M266 112 h62" stroke="#2c2c2c"/>
-          <rect x="52" y="140" width="72" height="16" rx="8" fill="none" stroke="#2c2c2c"/>
-          <rect x="160" y="140" width="66" height="16" rx="8" fill="none" stroke="#2c2c2c"/>
-          <rect x="52" y="60" width="4" height="4" fill="#ff2222" opacity=".8"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-label">INTERFACE</div>
-        <h3>Opallium</h3>
-        <p>Seu workspace, sua estrutura, seu código. Ambiente de trabalho que reduz ruído e aumenta foco — feito para quem produz de verdade.</p>
-        <div class="proj-tags"><span>Workspace</span><span>Interface</span><span>Python</span></div>
-        <a href="https://github.com/klcombr/Opallium" rel="noopener noreferrer" target="_blank">INSPECIONAR →</a>
-      </div>
-    </article>
-    <article class="proj">
-      <div class="proj-art"><span class="num">03</span>
-        <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <g stroke="#262626" fill="none"><rect x="50" y="40" width="70" height="100" rx="12"/><rect x="280" y="40" width="70" height="100" rx="12"/><path d="M120 90 H280"/><path d="M150 74 H250 M150 106 H250"/></g>
-          <g fill="#161616" stroke="#3a3a3a"><rect x="50" y="40" width="70" height="100" rx="12"/><rect x="280" y="40" width="70" height="100" rx="12"/></g>
-          <path d="M120 90 H280" stroke="#3a3a3a"/>
-          <path d="M150 74 H250 M150 106 H250" stroke="#3a3a3a"/>
-          <g stroke="#ff2222" fill="none"><path d="M148 72 H252 M148 108 H252" stroke-width="1.5" opacity="0"/></g>
-          <rect x="132" y="70" width="4" height="4" fill="#ff2222"/>
-          <rect x="264" y="106" width="4" height="4" fill="#ff2222" opacity=".6"/>
-          <circle cx="85" cy="90" r="12" fill="none" stroke="#ff2222" stroke-width="1.5" opacity=".6"/>
-          <circle cx="315" cy="90" r="12" fill="none" stroke="#ff2222" stroke-width="1.5" opacity=".6"/>
-          <path d="M310 84 l-6 6 8 6" stroke="#3a3a3a" fill="none" opacity="0"/>
-          <circle cx="200" cy="82" r="6" fill="#ff2222" opacity=".9"/>
-          <circle cx="216" cy="98" r="4" fill="#c0392b" opacity=".5"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-label">INTEGRAÇÃO</div>
-        <h3>OpenBridge</h3>
-        <p>Hub pessoal celular ↔ PC, minimalista. Node puro, zero dependências, PWA — dados fluem sem atrito.</p>
-        <div class="proj-tags"><span>Node.js</span><span>PWA</span><span>0 deps</span></div>
-        <a href="https://github.com/klcombr/openbridge" rel="noopener noreferrer" target="_blank">VER README →</a>
-      </div>
-    </article>
-  </div>
-</section>
+    </div>
+  </section>
 
-<section class="contact" id="contact">
-  <div class="contact-glow"></div>
-  <h2>
-    <span class="line"><span>VAMOS</span></span>
-    <span class="line"><span>CONVERSAR.</span></span>
-  </h2>
-  <div class="contact-links">
-    <a href="mailto:mxlsc@proton.me">
-      <h4>EMAIL</h4>
-      <p>mxlsc@proton.me</p>
-    </a>
-    <a href="https://wa.me/5513974140538" rel="noopener noreferrer" target="_blank">
-      <h4>WHATSAPP</h4>
-      <p>+55 13 97414-0538</p>
-    </a>
-    <a href="https://github.com/klcombr" rel="noopener noreferrer" target="_blank">
-      <h4>GITHUB</h4>
-      <p>@klcombr</p>
-    </a>
-  </div>
-</section>
+  <!-- ══════════════ SERVIÇOS ══════════════ -->
+  <section class="section" id="servicos" aria-labelledby="servicos-heading">
+    <div class="shell">
+      <div class="section__head">
+        <h2 class="section__title" id="servicos-heading" data-reveal>Serviços</h2>
+        <p class="eyebrow"><span class="eyebrow__index">02</span> O que eu entrego</p>
+      </div>
 
-<footer>
-  <span>KL COM — 2026 · Praia Grande, SP</span>
-  <a href="curriculo.html">CURRÍCULO</a>
-  <a href="#top">VOLTAR AO TOPO</a>
+      <ol class="svc-list">
+        <li class="svc" data-reveal>
+          <span class="svc__num">01</span>
+          <div>
+            <h3 class="svc__title">Agentes autônomos</h3>
+            <p class="svc__body">Sistemas que pensam e agem sozinhos. Atendimento, operações, decisões — escaláveis 24/7 sem depender de ninguém.</p>
+          </div>
+        </li>
+        <li class="svc" data-reveal>
+          <span class="svc__num">02</span>
+          <div>
+            <h3 class="svc__title">Interfaces premium</h3>
+            <p class="svc__body">Design que converte antes do usuário entender por quê. Cada pixel com motivo, cada animação com propósito.</p>
+          </div>
+        </li>
+        <li class="svc" data-reveal>
+          <span class="svc__num">03</span>
+          <div>
+            <h3 class="svc__title">Automação</h3>
+            <p class="svc__body">Processos manuais viram automáticos. Horas viram segundos. O que você fazia todo dia, o sistema faz melhor.</p>
+          </div>
+        </li>
+        <li class="svc" data-reveal>
+          <span class="svc__num">04</span>
+          <div>
+            <h3 class="svc__title">Integração</h3>
+            <p class="svc__body">Conectar o que está solto. APIs, bancos, ferramentas — tudo sincronizado, tudo falando a mesma língua.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══════════════ PROJETOS ══════════════ -->
+  <section class="section" id="projetos" aria-labelledby="projetos-heading">
+    <div class="shell">
+      <div class="section__head">
+        <h2 class="section__title" id="projetos-heading" data-reveal>Projetos</h2>
+        <p class="eyebrow"><span class="eyebrow__index">03</span> Código aberto</p>
+      </div>
+
+      <div class="proj-grid">
+
+        <article class="proj" data-reveal>
+          <div class="proj__art">
+            <span class="visually-hidden">Diagrama de fluxo administrativo</span>
+            <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="#262626">
+                <path d="M30 90 H140"/><path d="M260 90 H370"/><path d="M172 90 H228"/>
+                <path d="M60 36 v108 M140 36 v108" opacity=".5"/>
+              </g>
+              <g fill="#161616" stroke="#3a3a3a">
+                <rect x="30" y="64" width="110" height="52" rx="12"/>
+                <rect x="260" y="64" width="110" height="52" rx="12"/>
+                <rect x="228" y="64" width="32" height="52" rx="10" fill="#141414"/>
+              </g>
+              <g fill="none" stroke="#ff2222" stroke-width="1.5" opacity=".35">
+                <rect x="30" y="64" width="110" height="52" rx="12"/>
+                <rect x="260" y="64" width="110" height="52" rx="12"/>
+              </g>
+              <path d="M34 88 H136 M34 100 H136" stroke="#333" opacity=".8"/>
+              <path d="M264 88 H366 M264 100 H366" stroke="#333" opacity=".8"/>
+              <circle cx="85" cy="90" r="4" fill="#ff2222"/>
+              <circle cx="315" cy="90" r="4" fill="#ff2222" opacity=".5"/>
+              <path d="M228 78 h6 v24 M228 78 l-4 4 M228 78 l4 4 M228 102 l-4 -4 M228 102 l4 -4" stroke="#ff2222" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="proj__body">
+            <p class="proj__label">Gestão</p>
+            <h3 class="proj__title">SchoolFlow</h3>
+            <p class="proj__desc">Sistema SaaS para a gestão operacional de escolas — fluxos administrativos e acadêmicos automatizados de ponta a ponta.</p>
+            <ul class="tags">
+              <li>TypeScript</li><li>NestJS</li><li>Next.js</li><li>SQLite</li>
+            </ul>
+            <a class="proj__link" href="https://github.com/klcombr/schoolflow" rel="noopener noreferrer" target="_blank">
+              Ver código <span class="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj" data-reveal>
+          <div class="proj__art">
+            <span class="visually-hidden">Composição de uma interface de workspace</span>
+            <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <g stroke="#262626" fill="none">
+                <rect x="40" y="26" width="200" height="90" rx="12"/>
+                <rect x="40" y="128" width="96" height="40" rx="12"/>
+                <rect x="148" y="128" width="92" height="40" rx="12"/>
+                <rect x="252" y="26" width="108" height="142" rx="12"/>
+              </g>
+              <g fill="#161616" stroke="#3a3a3a">
+                <rect x="40" y="26" width="200" height="90" rx="12"/>
+                <rect x="40" y="128" width="96" height="40" rx="12"/>
+                <rect x="148" y="128" width="92" height="40" rx="12"/>
+                <rect x="252" y="26" width="108" height="142" rx="12"/>
+              </g>
+              <g fill="#333">
+                <rect x="52" y="38" width="10" height="6" rx="3"/>
+                <rect x="66" y="38" width="10" height="6" rx="3"/>
+                <rect x="80" y="38" width="10" height="6" rx="3"/>
+              </g>
+              <path d="M54 60 h120 M54 70 h96 M54 80 h110 M54 90 h72" stroke="#2c2c2c"/>
+              <path d="M266 40 h80 M266 52 h64 M266 64 h76 M266 76 h48 M266 88 h70 M266 100 h56 M266 112 h62" stroke="#2c2c2c"/>
+              <rect x="52" y="140" width="72" height="16" rx="8" fill="none" stroke="#2c2c2c"/>
+              <rect x="160" y="140" width="66" height="16" rx="8" fill="none" stroke="#2c2c2c"/>
+              <rect x="52" y="60" width="4" height="4" fill="#ff2222" opacity=".8"/>
+            </svg>
+          </div>
+          <div class="proj__body">
+            <p class="proj__label">Interface</p>
+            <h3 class="proj__title">Opallium</h3>
+            <p class="proj__desc">Seu workspace, sua estrutura, seu código. Ambiente de trabalho que reduz ruído e aumenta foco — feito para quem produz de verdade.</p>
+            <ul class="tags">
+              <li>Workspace</li><li>Interface</li><li>Python</li>
+            </ul>
+            <a class="proj__link" href="https://github.com/klcombr/Opallium" rel="noopener noreferrer" target="_blank">
+              Inspecionar <span class="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj" data-reveal>
+          <div class="proj__art">
+            <span class="visually-hidden">Diagrama de sincronização entre dois dispositivos</span>
+            <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <g stroke="#262626" fill="none">
+                <rect x="50" y="40" width="70" height="100" rx="12"/>
+                <rect x="280" y="40" width="70" height="100" rx="12"/>
+                <path d="M120 90 H280"/>
+              </g>
+              <g fill="#161616" stroke="#3a3a3a">
+                <rect x="50" y="40" width="70" height="100" rx="12"/>
+                <rect x="280" y="40" width="70" height="100" rx="12"/>
+              </g>
+              <path d="M120 90 H280" stroke="#3a3a3a"/>
+              <rect x="132" y="70" width="4" height="4" fill="#ff2222"/>
+              <rect x="264" y="106" width="4" height="4" fill="#ff2222" opacity=".6"/>
+              <circle cx="85" cy="90" r="12" fill="none" stroke="#ff2222" stroke-width="1.5" opacity=".6"/>
+              <circle cx="315" cy="90" r="12" fill="none" stroke="#ff2222" stroke-width="1.5" opacity=".6"/>
+              <circle cx="200" cy="82" r="6" fill="#ff2222" opacity=".9"/>
+              <circle cx="216" cy="98" r="4" fill="#c0392b" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="proj__body">
+            <p class="proj__label">Integração</p>
+            <h3 class="proj__title">OpenBridge</h3>
+            <p class="proj__desc">Hub pessoal celular ↔ PC, minimalista. Node puro, zero dependências, PWA — dados fluem sem atrito.</p>
+            <ul class="tags">
+              <li>Node.js</li><li>PWA</li><li>0 deps</li>
+            </ul>
+            <a class="proj__link" href="https://github.com/klcombr/openbridge" rel="noopener noreferrer" target="_blank">
+              Ver readme <span class="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CONTATO ══════════════ -->
+  <section class="contact" id="contato" aria-labelledby="contato-heading">
+    <div class="shell">
+      <h2 class="contact__title" id="contato-heading" data-reveal>
+        Vamos<br>conversar<em>.</em>
+      </h2>
+      <div class="contact__grid">
+        <a class="contact__card" href="mailto:mxlsc@proton.me" data-reveal>
+          <span class="contact__label">Email</span>
+          <span class="contact__value">mxlsc@proton.me</span>
+          <span class="contact__hint">Resposta em até 24h</span>
+        </a>
+        <a class="contact__card" href="https://wa.me/5513974140538" rel="noopener noreferrer" target="_blank" data-reveal>
+          <span class="contact__label">WhatsApp</span>
+          <span class="contact__value">+55 13 97414-0538</span>
+          <span class="contact__hint">Brasil · UTC-3</span>
+        </a>
+        <a class="contact__card" href="https://github.com/klcombr" rel="noopener noreferrer" target="_blank" data-reveal>
+          <span class="contact__label">GitHub</span>
+          <span class="contact__value">@klcombr</span>
+          <span class="contact__hint">Código aberto</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <span>KL COM — 2026 · Praia Grande, SP</span>
+    <nav class="footer__links" aria-label="Rodapé">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="curriculo.html">Currículo</a>
+      <a href="https://github.com/klcombr" rel="noopener noreferrer" target="_blank">GitHub</a>
+    </nav>
+  </div>
 </footer>
 
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="vendor/three.min.js"></script>
-<script>
-(function(){
-  if(typeof gsap==="undefined")return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  /* ════ LOADER ════ */
-  const loader=document.getElementById("loader");
-  const loaderBar=document.getElementById("loaderBar");
-  gsap.timeline({onComplete:()=>{loader.style.display="none"}})
-    .to(".loader-text span",{y:0,duration:.6,ease:"expo.out"})
-    .to(loaderBar,{width:"100%",duration:.8,ease:"power2.inOut"},"-=.2")
-    .to(loader,{opacity:0,duration:.3},"+=.1");
-
-  /* ════ CURSOR ════ */
-  const cur=document.getElementById("cursor");
-  const dot=document.getElementById("cursorDot");
-  let mx=0,my=0,curX=0,curY=0;
-  document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cur.classList.add("visible");dot.classList.add("visible")});
-  document.addEventListener("mouseleave",()=>{cur.classList.remove("visible");dot.classList.remove("visible")});
-  (function uC(){curX+=(mx-curX)*.12;curY+=(my-curY)*.12;cur.style.transform="translate("+(curX-10)+"px,"+(curY-10)+"px)";dot.style.transform="translate("+(mx-2.5)+"px,"+(my-2.5)+"px)";requestAnimationFrame(uC)})();
-  document.querySelectorAll("a,button,.svc,.proj,.contact-links a").forEach(el=>{el.addEventListener("mouseenter",()=>cur.classList.add("hover"));el.addEventListener("mouseleave",()=>cur.classList.remove("hover"))});
-
-  /* ════ GLOW FOLLOW MOUSE ════ */
-  document.querySelectorAll(".svc,.proj,.contact-links a").forEach(el=>{
-    el.addEventListener("mousemove",e=>{
-      const r=el.getBoundingClientRect();
-      el.style.setProperty("--mx",((e.clientX-r.left)/r.width*100)+"%");
-      el.style.setProperty("--my",((e.clientY-r.top)/r.height*100)+"%");
-      const cx=r.left+r.width/2,cy=r.top+r.height/2;
-      el.style.setProperty("--angle",(Math.atan2(e.clientY-cy,e.clientX-cx)*180/Math.PI+180)+"deg");
-    });
-  });
-
-  /* ════ SCROLL PROGRESS ════ */
-  const scrollProg=document.getElementById("scrollProg");
-  window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;scrollProg.style.width=(h>0?scrollY/h*100:0)+"%"},{passive:true});
-
-  /* ════ HERO ════ */
-  const heroTl=gsap.timeline({delay:.8});
-  heroTl.to(".hero h1 .line span",{y:0,duration:1.4,ease:"expo.out",stagger:.18})
-    .to(".hero-sub span",{y:0,duration:1,ease:"expo.out"},"-=.7")
-    .to(".hero-cta span",{y:0,duration:.8,ease:"expo.out"},"-=.5")
-    .from(".hero-glow",{scale:.5,opacity:0,duration:2,ease:"power2.out"},"-=1.5");
-
-  /* ════ MANIFESTO WORDS ════ */
-  document.querySelectorAll("#manifestoBig .word span").forEach((span,i)=>{
-    gsap.to(span,{y:0,duration:1,ease:"expo.out",scrollTrigger:{trigger:"#manifestoBig",start:"top 75%"},delay:i*.08});
-  });
-
-  /* ════ REVEALS ════ */
-  document.querySelectorAll("[data-left]").forEach(el=>{gsap.from(el,{x:-60,opacity:0,duration:1.1,ease:"expo.out",scrollTrigger:{trigger:el,start:"top 85%"}})});
-  document.querySelectorAll("[data-right]").forEach(el=>{gsap.from(el,{x:60,opacity:0,duration:1.1,ease:"expo.out",scrollTrigger:{trigger:el,start:"top 85%"}})});
-  document.querySelectorAll(".svc").forEach((el,i)=>{gsap.from(el,{y:40,opacity:0,duration:.9,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"},delay:(i%2)*.1})});
-  document.querySelectorAll(".proj").forEach((el,i)=>{gsap.to(el,{opacity:1,y:0,duration:.8,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 90%",onEnter:()=>el.classList.add("revealed")},delay:i*.1})});
-  gsap.to(".contact h2 .line span",{y:0,duration:1,ease:"expo.out",stagger:.12,scrollTrigger:{trigger:".contact",start:"top 70%"}});
-  document.querySelectorAll(".contact-links a").forEach((el,i)=>{gsap.to(el,{opacity:1,y:0,duration:.7,ease:"power2.out",scrollTrigger:{trigger:".contact-links",start:"top 85%"},delay:i*.1})});
-  gsap.to(".hero-glow",{y:100,scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:1}});
-  gsap.to(".contact-glow",{y:-80,scrollTrigger:{trigger:".contact",start:"top bottom",end:"bottom top",scrub:1}});
-
-  /* ════ TILT ════ */
-  if(matchMedia("(hover:hover)and(pointer:fine)").matches){
-    const t=document.getElementById("h1");
-    gsap.set(t,{transformPerspective:900});
-    const qx=gsap.quickTo(t,"x",{duration:.5,ease:"power3"});
-    const qy=gsap.quickTo(t,"y",{duration:.5,ease:"power3"});
-    const qrx=gsap.quickTo(t,"rotateX",{duration:.5,ease:"power3"});
-    const qry=gsap.quickTo(t,"rotateY",{duration:.5,ease:"power3"});
-    let p=null;
-    document.addEventListener("mousemove",e=>{p=e;if(p._q)return;p._q=true;requestAnimationFrame(()=>{const{clientX:x,clientY:y}=p;p._q=false;qx((x-innerWidth/2)/(innerWidth/2)*18);qy((y-innerHeight/2)/(innerHeight/2)*18);qry((x-innerWidth/2)/(innerWidth/2)*7);qrx(-(y-innerHeight/2)/(innerHeight/2)*7)})});
-    document.querySelectorAll(".svc,.proj,.contact-links a").forEach(el=>{el.addEventListener("mousemove",e=>{const r=el.getBoundingClientRect();gsap.to(el,{rotateY:((e.clientX-r.left)/r.width-.5)*8,rotateX:-((e.clientY-r.top)/r.height-.5)*8,duration:.4,ease:"power2.out",transformPerspective:800})});el.addEventListener("mouseleave",()=>{gsap.to(el,{rotateY:0,rotateX:0,duration:.6,ease:"power2.out"})})});
-  }
-
-  /* ═══════════════════════════════════════
-     3D PHONE
-     ═══════════════════════════════════════ */
-  if(typeof THREE==="undefined")return;
-
-  let sp=0;
-  window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;sp=h>0?scrollY/h:0},{passive:true});
-
-  const cv=document.getElementById("phoneCanvas");
-  const W=()=>cv.clientWidth,H=()=>cv.clientHeight;
-  const R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
-  R.setPixelRatio(Math.min(devicePixelRatio,2));R.setSize(W(),H());
-
-  const sc=new THREE.Scene();
-  const cm=new THREE.PerspectiveCamera(40,W()/H(),.1,200);
-  cm.position.set(0,0,12);
-
-  sc.add(new THREE.AmbientLight(0xffffff,.4));
-  const dl=new THREE.DirectionalLight(0xffffff,.8);dl.position.set(5,8,10);sc.add(dl);
-  const pl=new THREE.PointLight(0xff2222,.3,30);pl.position.set(-4,3,5);sc.add(pl);
-
-  /* ── Phone body ── */
-  const phoneGroup=new THREE.Group();sc.add(phoneGroup);
-
-  const bodyW=2.4,bodyH=5,bodyD=.2;
-
-  /* back + sides */
-  const bodyGeo=new THREE.BoxGeometry(bodyW,bodyH,bodyD);
-  const bodyMat=new THREE.MeshStandardMaterial({color:0x111111,roughness:.2,metalness:.8});
-  const phoneBody=new THREE.Mesh(bodyGeo,bodyMat);
-  phoneGroup.add(phoneBody);
-
-  /* front bezel ring */
-  const bezelShape=new THREE.Shape();
-  const cr=.3;
-  bezelShape.moveTo(-bodyW/2+cr,-bodyH/2);
-  bezelShape.lineTo(bodyW/2-cr,-bodyH/2);
-  bezelShape.quadraticCurveTo(bodyW/2,-bodyH/2,bodyW/2,-bodyH/2+cr);
-  bezelShape.lineTo(bodyW/2,bodyH/2-cr);
-  bezelShape.quadraticCurveTo(bodyW/2,bodyH/2,bodyW/2-cr,bodyH/2);
-  bezelShape.lineTo(-bodyW/2+cr,bodyH/2);
-  bezelShape.quadraticCurveTo(-bodyW/2,bodyH/2,-bodyW/2,bodyH/2-cr);
-  bezelShape.lineTo(-bodyW/2,-bodyH/2+cr);
-  bezelShape.quadraticCurveTo(-bodyW/2,-bodyH/2,-bodyW/2+cr,-bodyH/2);
-  const hole=new THREE.Path();
-  const sw=bodyW-.2,sh=bodyH-.3;
-  hole.moveTo(-sw/2+cr,-sh/2);hole.lineTo(sw/2-cr,-sh/2);
-  hole.quadraticCurveTo(sw/2,-sh/2,sw/2,-sh/2+cr);hole.lineTo(sw/2,sh/2-cr);
-  hole.quadraticCurveTo(sw/2,sh/2,sw/2-cr,sh/2);hole.lineTo(-sw/2+cr,sh/2);
-  hole.quadraticCurveTo(-sw/2,sh/2,-sw/2,sh/2-cr);hole.lineTo(-sw/2,-sh/2+cr);
-  hole.quadraticCurveTo(-sw/2,-sh/2,-sw/2+cr,-sh/2);
-  bezelShape.holes.push(hole);
-  const bezelGeo=new THREE.ShapeGeometry(bezelShape);
-  const bezelMat=new THREE.MeshStandardMaterial({color:0x1a1a1a,roughness:.15,metalness:.9});
-  const bezel=new THREE.Mesh(bezelGeo,bezelMat);
-  bezel.position.z=bodyD/2+.01;
-  phoneGroup.add(bezel);
-
-  /* screen */
-  const screenGeo=new THREE.PlaneGeometry(sw,sh);
-  const screenCanvas=document.createElement("canvas");
-  screenCanvas.width=540;screenCanvas.height=1100;
-  const screenMat=new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(screenCanvas)});
-  const screenMesh=new THREE.Mesh(screenGeo,screenMat);
-  screenMesh.position.z=bodyD/2+.02;
-  phoneGroup.add(screenMesh);
-
-  /* ── Screen content system ── */
-  const sCtx=screenCanvas.getContext("2d");
-  const totalViews=5;
-  let viewTransition=0;let prevView=-1;
-
-  function drawRR(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath()}
-
-  /* helper: gradient bar */
-  function gradBar(ctx,x,y,w,h,c1,c2){const g=ctx.createLinearGradient(x,y,x+w,y);g.addColorStop(0,c1);g.addColorStop(1,c2);ctx.fillStyle=g;drawRR(ctx,x,y,w,h,h/2);ctx.fill()}
-
-  const screens=[
-    /* 0: GitHub Profile - REAL DATA */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,160);
-      ctx.fillStyle="#58a6ff";ctx.beginPath();ctx.arc(70,80,34,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle="#e6edf3";ctx.font="bold 28px monospace";ctx.fillText("@klcombr",120,72);
-      ctx.fillStyle="#8b949e";ctx.font="16px monospace";ctx.fillText("Full Stack Dev · IA & Automação",120,100);
-      ctx.fillStyle="#30363d";ctx.font="14px monospace";ctx.fillText("Praia Grande, SP · Brasil",120,125);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Repositórios públicos",30,200);
-      ctx.fillStyle="#8b949e";ctx.font="14px monospace";ctx.fillText("43 repositórios · Desde set/2024",30,225);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Linguagens principais",30,270);
-      [{n:"Python",c:"#3572A5",count:12},{n:"JavaScript",c:"#f1e05a",count:8},{n:"TypeScript",c:"#3178c6",count:3},{n:"CSS",c:"#563d7c",count:5},{n:"HTML",c:"#e34c26",count:4},{n:"Go",c:"#00ADD8",count:1}].forEach((l,i)=>{
-        const y=300+i*30;
-        ctx.fillStyle=l.c;ctx.fillRect(30,y,16,16);
-        ctx.fillStyle="#e6edf3";ctx.font="14px monospace";ctx.fillText(l.n,54,y+12);
-        ctx.fillStyle="#8b949e";ctx.font="13px monospace";ctx.fillText(l.count+" repos",140,y+12);
-      });
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 18px monospace";ctx.fillText("Projetos em destaque",30,500);
-      [{n:"schoolflow",l:"TypeScript",d:"SaaS NestJS+Next.js+SQLite"},{n:"Opallium",l:"CSS",d:"Workspace premium"},{n:"openbridge",l:"JavaScript",d:"PWA Node 0 deps"},{n:"analytics-agent",l:"Python",d:"Agente autônomo"}].forEach((r,i)=>{
-        const ry=530+i*80;
-        drawRR(ctx,25,ry,w-50,70,8);ctx.fillStyle="#161b22";ctx.fill();
-        ctx.fillStyle="#58a6ff";ctx.font="bold 16px monospace";ctx.fillText(r.n,40,ry+24);
-        ctx.fillStyle="#8b949e";ctx.font="12px monospace";ctx.fillText(r.d,40,ry+44);
-        ctx.fillStyle=r.l==="TypeScript"?"#3178c6":r.l==="CSS"?"#563d7c":r.l==="JavaScript"?"#f1e05a":r.l==="Python"?"#3572A5":"#00ADD8";
-        ctx.font="11px monospace";ctx.fillText(r.l,w-100,ry+24);
-      });
-    },
-    /* 1: Repositórios Reais */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,60);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Repositórios · klcombr",30,40);
-      const repos=[
-        {n:"schoolflow",l:"TypeScript",d:"SaaS gestão escolar · NestJS+Next.js+SQLite",stars:1},
-        {n:"Opallium",l:"CSS",d:"Workspace premium · Interface focada",stars:0},
-        {n:"openbridge",l:"JavaScript",d:"Hub celular↔PC · Node 0 deps · PWA",stars:1},
-        {n:"analytics-agent",l:"Python",d:"Agente analytics autônomo · LLM + ferramentas",stars:0},
-        {n:"security-scanner",l:"TypeScript",d:"CLI scanner deps/secrets/config",stars:0},
-        {n:"realtime-dashboard",l:"TypeScript",d:"Dashboard WebSocket tempo real",stars:0},
-        {n:"inventory-saas",l:"TypeScript",d:"SaaS inventário · RBAC + API REST",stars:0},
-        {n:"cli-scaffold",l:"TypeScript",d:"CLI scaffolding opinativo",stars:0},
-        {n:"econimize",l:"JavaScript",d:"Comparador de preços de produtos",stars:0},
-        {n:"foco",l:"HTML",d:"Site estudos monocromático · Pomodoro",stars:1},
-      ];
-      repos.forEach((r,i)=>{
-        const ry=70+i*98;
-        drawRR(ctx,20,ry,w-40,88,8);ctx.fillStyle="#161b22";ctx.fill();
-        ctx.fillStyle=r.l==="TypeScript"?"#3178c6":r.l==="JavaScript"?"#f1e05a":r.l==="Python"?"#3572A5":r.l==="CSS"?"#563d7c":r.l==="HTML"?"#e34c26":"#8b949e";
-        ctx.fillRect(30,ry+10,12,12);
-        ctx.fillStyle="#e6edf3";ctx.font="bold 16px monospace";ctx.fillText(r.n,50,ry+28);
-        ctx.fillStyle="#8b949e";ctx.font="12px monospace";ctx.fillText(r.d,50,ry+48);
-        if(r.stars>0){ctx.fillStyle="#e3b341";ctx.font="bold 13px monospace";ctx.fillText("★ "+r.stars,w-60,ry+28);}
-      });
-    },
-    /* 2: Distribuição de Linguagens - REAL */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,60);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Stack · Linguagens",30,40);
-      const langs=[
-        {n:"Python",c:"#3572A5",count:12,pct:28},
-        {n:"JavaScript",c:"#f1e05a",count:8,pct:19},
-        {n:"CSS",c:"#563d7c",count:5,pct:12},
-        {n:"HTML",c:"#e34c26",count:4,pct:9},
-        {n:"TypeScript",c:"#3178c6",count:3,pct:7},
-        {n:"Go",c:"#00ADD8",count:1,pct:2},
-      ];
-      langs.forEach((l,i)=>{
-        const cy=80+i*68;
-        ctx.fillStyle=l.c;drawRR(ctx,30,cy,12,12,4);ctx.fill();
-        ctx.fillStyle="#e6edf3";ctx.font="bold 16px monospace";ctx.fillText(l.n,55,cy+10);
-        ctx.fillStyle="#8b949e";ctx.font="13px monospace";ctx.fillText(l.count+" repos · "+l.pct+"%",55,cy+32);
-        const bw=(w-180)*l.pct/28;
-        ctx.fillStyle=l.c;drawRR(ctx,180,cy+6,bw,16,8);ctx.fill();
-      });
-      ctx.fillStyle="#30363d";ctx.font="11px monospace";ctx.fillText("Base: 43 repos públicos GitHub API",30,h-40);
-    },
-    /* 3: Status & Contato - REAL */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#0d1117";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#161b22";ctx.fillRect(0,0,w,60);
-      ctx.fillStyle="#f0f6fc";ctx.font="bold 22px monospace";ctx.fillText("Status",30,40);
-      const status=[
-        {k:"Disponibilidade",v:"Aberto a projetos",c:"#3fb950"},
-        {k:"Localização",v:"Praia Grande, SP",c:"#58a6ff"},
-        {k:"Fuso",v:"UTC-3 (BRT)",c:"#8b949e"},
-        {k:"Email",v:"mxlsc@proton.me",c:"#8b949e"},
-        {k:"WhatsApp",v:"+55 13 97414-0538",c:"#8b949e"},
-        {k:"GitHub",v:"@klcombr",c:"#8b949e"},
-        {k:"Stack principal",v:"Python · TypeScript · Go",c:"#ff2222"},
-        {k:"Foco",v:"Agentes IA · Automação · Interfaces",c:"#ff2222"},
-      ];
-      status.forEach((s,i)=>{
-        const cy=80+i*62;
-        ctx.fillStyle=s.c;ctx.beginPath();ctx.arc(30,cy+6,6,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle="#8b949e";ctx.font="12px monospace";ctx.fillText(s.k,50,cy+10);
-        ctx.fillStyle="#e6edf3";ctx.font="14px monospace";ctx.fillText(s.v,50,cy+32);
-      });
-      ctx.fillStyle="#30363d";ctx.font="11px monospace";ctx.fillText("Sistemas que rodam enquanto você dorme",30,h-40);
-    },
-    /* 4: Código Real - Padrão de Agente */
-    function(ctx,w,h,t){
-      ctx.fillStyle="#1e1e2e";ctx.fillRect(0,0,w,h);
-      ctx.fillStyle="#181825";ctx.fillRect(0,0,w,44);
-      ctx.fillStyle="#f38ba8";ctx.beginPath();ctx.arc(18,22,6,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle="#a6e3a1";ctx.beginPath();ctx.arc(36,22,6,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle="#f9e2af";ctx.beginPath();ctx.arc(54,22,6,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle="#6c7086";ctx.font="13px monospace";ctx.fillText("agent.py",72,26);
-      ctx.fillStyle="#45475a";ctx.font="14px monospace";
-      for(let i=0;i<22;i++)ctx.fillText(""+(i+1),10,66+i*26);
-      const code=[
-        ["#cba6f7","import"],["#cdd6f4"," "],["#89b4fa","asyncio"],
-        ["#cdd6f4","\n"],["#cba6f7","import"],["#cdd6f4"," "],["#89b4fa","json"],
-        [""],["#cba6f7","class"],["#f9e2af"," Agent:"],
-        [""],["#cdd6f4","  "],["#cba6f7","async def"],["#a6e3a1"," run"],["#cdd6f4","(self, task: str) -> dict:"],
-        [""],["#cdd6f4","    "],["#cba6f7","if"],["#cdd6f4"," task."],["#89b4fa","needs_tools"],["#cdd6f4",":"],
-        [""],["#cdd6f4","      "],["#cba6f7","await"],["#cdd6f4"," self."],["#89b4fa","execute_tools"],["#cdd6f4","(task)"],
-        [""],["#cdd6f4","    "],["#cba6f7","return"],["#cdd6f4"," {"],["#89b4fa","result"],["#cdd6f4",": "],["#a6e3a1","self.result"],["#cdd6f4","}"],
-        [""],["#cba6f7","async def"],["#a6e3a1"," execute_tools"],["#cdd6f4","(self, task):"],
-        [""],["#cdd6f4","    "],["#cba6f7","for"],["#cdd6f4"," tool "],["#cba6f7","in"],["#cdd6f4"," self.tools:"],
-        [""],["#cdd6f4","      "],["#cba6f7","if"],["#cdd6f4"," await "],["#89b4fa","tool.can_handle"],["#cdd6f4","(task):"],
-        [""],["#cdd6f4","        "],["#cba6f7","return"],["#cdd6f4"," await "],["#89b4fa","tool.run"],["#cdd6f4","(task)"],
-      ];
-      let cx=36,cy=66;const lh=26;
-      const totalChars=code.reduce((a,c)=>a+(c[1]||"").length,0);
-      const typed=Math.min(totalChars,Math.floor(t*12));
-      let cc=0;
-      code.forEach(line=>{
-        if(line.length===1){cx=36;cy+=lh;return}
-        for(let i=0;i<line.length;i+=2){
-          const col=line[i],txt=line[i+1]||"";
-          for(let j=0;j<txt.length;j++){
-            if(cc>=typed)return;
-            ctx.fillStyle=col;ctx.font="13px monospace";ctx.fillText(txt[j],cx,cy);
-            cx+=ctx.measureText(txt[j]).width;cc++;
-          }
-        }
-        cx=36;cy+=lh;
-      });
-      if(Math.sin(t*4)>.3){ctx.fillStyle="#cdd6f4";ctx.fillRect(cx,cy-14,8,18)}
-    }
-  ];
-
-  function renderScreen(t){
-    const idx=Math.floor(t/4)%totalViews;
-    sCtx.clearRect(0,0,screenCanvas.width,screenCanvas.height);
-    if(prevView!==idx){prevView=idx;viewTransition=0}
-    viewTransition=Math.min(viewTransition+.06,1);
-    sCtx.globalAlpha=viewTransition;
-    screens[idx](sCtx,screenCanvas.width,screenCanvas.height,t);
-    sCtx.globalAlpha=1;
-    screenMat.map.needsUpdate=true;
-  }
-
-  /* ── Phone animation ── */
-  const clk=new THREE.Clock();
-  (function loop(){
-    requestAnimationFrame(loop);
-    const el=clk.getElapsedTime();
-    const targetRotY=-.25+Math.sin(el*.3)*.06;
-    const targetRotX=.06+Math.sin(el*.2)*.03;
-    const targetY=Math.sin(el*.4)*.06;
-    const scrollFactor=Math.min(sp*3,1);
-    const scrollRotX=scrollFactor*-.15;
-    const scrollZoom=12-scrollFactor*1.2;
-    phoneGroup.rotation.y+=(targetRotY-phoneGroup.rotation.y)*.03;
-    phoneGroup.rotation.x+=(targetRotX+scrollRotX-phoneGroup.rotation.x)*.03;
-    phoneGroup.position.y+=(targetY-phoneGroup.position.y)*.03;
-    phoneGroup.position.x=0;
-    cm.position.z+=(scrollZoom-cm.position.z)*.03;
-    cm.position.y+=(-scrollFactor*.6-cm.position.y)*.03;
-    renderScreen(el);
-    R.render(sc,cm);
-  })();
-
-  window.addEventListener("resize",()=>{R.setSize(W(),H());cm.aspect=W()/H();cm.updateProjectionMatrix()});
-
-})();
-</script>
+<script type="module" src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,399 @@
+/* ============================================================
+   KL COM — home
+   ============================================================ */
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-block:7rem clamp(3.5rem,2rem + 6vw,6rem);
+}
+
+/* A single, contained light source low and left, sitting behind the
+   calls to action. Deliberately small: the previous 60rem wash read
+   as a brown smudge across the lower half of the hero rather than as
+   intentional lighting. */
+.hero::before{
+  content:"";
+  position:absolute;
+  top:62%;
+  left:-12%;
+  width:min(34rem,64vw);
+  aspect-ratio:1;
+  background:radial-gradient(circle,rgba(255,34,34,.055),transparent 65%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.hero__inner{position:relative;z-index:1}
+
+.hero__kicker{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.75rem 1.25rem;
+  margin-bottom:clamp(1.75rem,1rem + 2vw,2.75rem);
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--fg-subtle);
+}
+.hero__kicker b{color:var(--fg);font-weight:400}
+/* No "·" separators here: they were absolutely positioned, so the
+   moment the kicker wraps to a second line on a narrow viewport the
+   dot detached and floated outside the container. The mono uppercase
+   treatment already separates the items. */
+
+.hero__title{
+  font-size:var(--t-display);
+  line-height:.92;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+  margin-bottom:clamp(1.5rem,1rem + 1.5vw,2.25rem);
+}
+.hero__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+/* Line-mask reveal scaffolding.
+   The negative margin cancels the padding so descenders and
+   diacritics are not clipped by overflow:hidden. */
+.mask{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.mask > span{display:block;will-change:transform}
+
+.hero__lede{
+  max-width:44ch;
+  font-size:var(--t-lg);
+  line-height:1.55;
+  color:var(--fg-muted);
+  margin-bottom:clamp(2rem,1.5rem + 2vw,3rem);
+}
+
+.hero__actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:clamp(2.5rem,2rem + 3vw,4rem);
+}
+
+/* Scroll cue */
+.hero__cue{
+  display:inline-flex;
+  align-items:center;
+  gap:.75rem;
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--fg-subtle);
+}
+.hero__cue::after{
+  content:"";
+  width:3.5rem;
+  height:1px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+}
+
+/* ============================================================
+   3D BAND — one contained moment, loaded only when it is near
+   ============================================================ */
+.band{
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:min(78svh,44rem);
+  padding-block:clamp(3rem,2rem + 4vw,6rem);
+  overflow:hidden;
+  border-block:1px solid var(--line);
+  background:
+    radial-gradient(120% 80% at 50% 50%,rgba(255,34,34,.05),transparent 60%),
+    var(--bg);
+}
+.band__canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+/* If WebGL is unavailable the canvas is simply empty; the copy
+   underneath carries the section on its own. */
+.band__caption{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  padding-inline:var(--gutter);
+  pointer-events:none;
+  mix-blend-mode:normal;
+}
+.band__caption p{
+  max-width:38ch;
+  margin-inline:auto;
+  font-size:var(--t-lg);
+  line-height:1.5;
+  color:var(--fg-muted);
+  text-shadow:0 2px 24px var(--bg);
+}
+.band__caption p strong{color:var(--fg);font-weight:600}
+.band__meta{
+  display:block;
+  margin-top:1.5rem;
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  font-weight:400;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--fg-subtle);
+}
+
+/* ============================================================
+   STATEMENT
+   ============================================================ */
+.statement{padding-block:var(--section-y)}
+.statement__grid{
+  display:grid;
+  grid-template-columns:minmax(0,14rem) minmax(0,1fr);
+  gap:clamp(2rem,1rem + 3vw,4.5rem);
+  align-items:start;
+}
+.statement__lead{
+  font-size:var(--t-2xl);
+  line-height:1.12;
+  letter-spacing:-.035em;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.statement__lead em{font-style:normal;color:var(--accent)}
+.statement__body{max-width:var(--measure);display:grid;gap:1.25rem;margin-top:clamp(1.5rem,1rem + 1.5vw,2.25rem)}
+.statement__body p{color:var(--fg-muted);font-size:var(--t-base);line-height:1.7}
+.statement__body p:last-child{color:var(--fg);font-weight:600}
+
+/* ============================================================
+   SERVICES — editorial rows, not glowing cards
+   ============================================================ */
+.section{padding-block:var(--section-y)}
+.section__head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:1rem 2rem;
+  margin-bottom:clamp(2.5rem,2rem + 2vw,4rem);
+}
+.section__title{
+  font-size:var(--t-2xl);
+  text-transform:uppercase;
+  letter-spacing:-.04em;
+}
+
+.svc-list{border-top:1px solid var(--line)}
+.svc{
+  display:grid;
+  grid-template-columns:5rem minmax(0,1fr);
+  gap:clamp(1rem,.5rem + 1.5vw,2.5rem);
+  align-items:start;
+  padding-block:clamp(1.75rem,1.25rem + 1.5vw,2.5rem);
+  border-bottom:1px solid var(--line);
+  transition:background .4s var(--ease);
+}
+.svc:hover{background:linear-gradient(90deg,var(--accent-soft),transparent 55%)}
+.svc__num{
+  font-family:var(--mono);
+  font-size:var(--t-sm);
+  color:var(--accent);
+  letter-spacing:.1em;
+  padding-top:.35em;
+  transition:transform .4s var(--ease);
+}
+.svc:hover .svc__num{transform:translateX(4px)}
+.svc__title{
+  font-size:var(--t-xl);
+  font-weight:600;
+  letter-spacing:-.02em;
+  text-transform:none;
+  margin-bottom:.6rem;
+}
+.svc__body{max-width:56ch;color:var(--fg-muted);line-height:1.65}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.proj-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));
+  gap:clamp(1.25rem,1rem + 1vw,2rem);
+}
+
+.proj{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg-elev);
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  /* Replaces the previous conic-gradient glow border + 3D tilt:
+     a quiet 2px lift and an accent border read as more professional
+     and do not fight the type. */
+  transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s var(--ease);
+}
+.proj:hover{
+  border-color:color-mix(in srgb,var(--accent) 45%,transparent);
+  transform:translateY(-3px);
+  background:var(--bg-elev-2);
+}
+.proj:focus-within{border-color:var(--accent)}
+
+.proj__art{
+  position:relative;
+  aspect-ratio:16/7;
+  background:linear-gradient(150deg,#0e0e0e,#080808);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.proj__art svg{position:absolute;inset:0;width:100%;height:100%}
+.proj__art::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,34,34,.5),transparent);
+  opacity:.5;
+  transition:opacity .35s var(--ease);
+}
+.proj:hover .proj__art::after{opacity:1}
+
+.proj__body{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  gap:.85rem;
+  padding:clamp(1.25rem,1rem + .5vw,1.75rem);
+}
+.proj__label{
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.proj__title{font-size:var(--t-lg);font-weight:600;letter-spacing:-.02em;text-transform:none}
+.proj__desc{color:var(--fg-muted);font-size:var(--t-sm);line-height:1.65}
+
+.proj__body{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  gap:.85rem;
+  padding:clamp(1.25rem,1rem + .5vw,1.75rem);
+}
+.proj__body .tags{margin-top:auto}
+
+.proj__link{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  align-self:flex-start;
+  min-height:24px; /* WCAG 2.2 target size */
+  padding-block:.25rem;
+  margin-top:.1rem;
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--fg-muted);
+  transition:color .3s var(--ease);
+}
+/* Stretches the hit area across the whole card. The containing block is
+   .proj (position:relative), not the link, which is why the link itself
+   must stay unpositioned. */
+.proj__link::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+}
+.proj:hover .proj__link{color:var(--accent)}
+.proj__link .btn__arrow{transition:transform .35s var(--ease)}
+.proj:hover .proj__link .btn__arrow{transform:translate(3px,-3px)}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact{
+  position:relative;
+  padding-block:var(--section-y);
+  border-top:1px solid var(--line);
+  overflow:hidden;
+}
+.contact__title{
+  font-size:var(--t-display);
+  line-height:.92;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+  margin-bottom:clamp(2.5rem,2rem + 2vw,4rem);
+}
+.contact__title em{font-style:normal;color:var(--accent)}
+
+.contact__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));
+  gap:clamp(.75rem,.5rem + .8vw,1.25rem);
+}
+.contact__card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  padding:clamp(1.25rem,1rem + .6vw,1.75rem);
+  background:var(--bg-elev);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  transition:border-color .35s var(--ease),background .35s var(--ease),transform .35s var(--ease);
+}
+.contact__card:hover{
+  border-color:color-mix(in srgb,var(--accent) 50%,transparent);
+  background:var(--bg-elev-2);
+  transform:translateY(-3px);
+}
+.contact__card:hover .contact__value{color:var(--accent)}
+.contact__label{
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.contact__value{
+  font-size:var(--t-base);
+  font-weight:600;
+  color:var(--fg);
+  word-break:break-word;
+  transition:color .3s var(--ease);
+}
+.contact__hint{
+  font-family:var(--mono);
+  font-size:var(--t-xs);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--fg-subtle);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  .statement__grid{grid-template-columns:1fr;gap:1.5rem}
+}
+@media (max-width:640px){
+  .hero{padding-block:6rem 3rem}
+  .svc{grid-template-columns:3rem minmax(0,1fr);gap:1rem}
+  .band{min-height:60svh}
+  .hero__actions{flex-direction:column;align-items:stretch}
+}

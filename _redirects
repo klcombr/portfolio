@@ -1,11 +1,29 @@
-/curriculo      /curriculo.html        200
-/curriculo/     /curriculo.html        200
-/curriculum     /curriculo.html        200
-/cv             /curriculo.html        200
-/portfolio      /curriculo.html        301
-/portfolio/     /curriculo.html        301
-/portfolio.html /curriculo.html        301
-/portifolio     /curriculo.html        301
-/index          /                      200
-/contato        /#contact              302
-/projetos       /#projects             302
+# Netlify redirects / rewrites
+#
+# /portfolio previously 301'd to /curriculo.html, so the most obvious
+# URL for this site — the repo is literally named "portfolio" — sent
+# visitors to the résumé and cached that permanently. It now resolves
+# to the home page, and the résumé keeps its own short paths.
+
+# Home page aliases
+/portfolio      /              301
+/portfolio/     /              301
+/portfolio.html /              301
+/portifolio     /              301
+/home           /              301
+/index          /              200
+
+# Résumé aliases
+/curriculo      /curriculo.html   200
+/curriculo/     /curriculo.html   200
+/curriculum     /curriculo.html   200
+/cv             /curriculo.html   200
+/resumo         /curriculo.html   301
+
+# In-page anchors, for links shared from elsewhere.
+# These must match the real section ids in index.html:
+# #sobre, #servicos, #projetos, #contato
+/contato        /#contato     302
+/projetos       /#projetos    302
+/servicos       /#servicos    302
+/sobre          /#sobre       302
