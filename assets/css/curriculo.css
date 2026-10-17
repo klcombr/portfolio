@@ -125,6 +125,9 @@
 .entry__link:hover{border-bottom-color:var(--accent)}
 
 /* ---------- Skills: plain prose, no meters ---------- */
+/* The availability block follows a free-standing paragraph, and the global
+   reset zeroes every margin — without this it butts right up against it. */
+.doc-section > .shell > p + .skills{margin-top:1.75rem}
 .skills{margin-bottom:1.75rem}
 .skills:last-child{margin-bottom:0}
 .skills h3{
@@ -179,7 +182,10 @@
    PRINT / PDF — a clean single-column document
    ============================================================ */
 @media print{
-  @page{margin:14mm}
+  /* 12mm, not 14mm: at 14mm the closing contact block always spilled onto a
+     fourth page that was 75% empty. Both are far inside any printer's
+     unprintable-edge limit. */
+  @page{margin:12mm}
 
   html{color-scheme:light}
 
@@ -198,22 +204,28 @@
   .footer{display:none!important}
 
   .doc{padding-top:0}
-  .doc-header{padding-bottom:6mm}
+  .doc-header{padding-bottom:4mm}
   .doc-header h1{font-size:22pt;color:#111}
   .doc-title{font-size:11pt;color:#111}
   .doc-loc{font-size:9pt;color:#444}
   .contact-line{color:#111;font-size:9pt}
   .contact-line a{color:#b00;border:0}
 
-  .doc-section{padding:4mm 0;border-color:#ddd;break-inside:auto}
+  .doc-section{padding:3mm 0;border-color:#ddd;break-inside:auto}
   .doc-section h2{font-size:12pt;color:#111}
+  /* The dark theme sets this paragraph to --fg-muted, which lands at 3.45:1
+     on white — below the 4.5:1 floor. Nothing else here overrides it. */
+  .doc-section > .shell > p{color:#333}
+  .doc-section > .shell > p strong{color:#111}
   .sec-num{font-size:7.5pt;color:#b00}
   .sec-num::before{opacity:1}
 
-  .entry{border-color:#bbb;margin-bottom:5mm;break-inside:avoid}
+  .entry{border-color:#bbb;margin-bottom:4mm;break-inside:avoid}
   .entry h3{font-size:11pt;color:#111}
   .entry__role{font-size:7.5pt;color:#b00}
   .entry p{color:#333;font-size:9.5pt;line-height:1.4}
+  /* 18 bullets x .5rem of gap was ~144px of dead space per export. */
+  .points{gap:.25rem}
   .points li{color:#333;font-size:9pt;line-height:1.4}
   .points li::before{color:#b00}
   .entry__date{color:#666;font-size:8pt}
@@ -232,14 +244,17 @@
   .doc-contact{
     background:none;
     border-color:#ddd;
-    padding:6mm;
+    padding:4mm;
     break-inside:avoid;
   }
   .doc-contact h2{font-size:16pt;color:#111}
-  .doc-contact__sub{color:#333;font-size:9.5pt}
+  /* The screen rule leaves 1.25rem/2rem here — 35pt of internal air that the
+     print block never overrode, and it is what pushed this box to page 4. */
+  .doc-contact__sub{margin:0 0 8pt;color:#333;font-size:9.5pt}
 
   /* Print the destination of every external link, since a printed
-     URL is not clickable. */
+     URL is not clickable. Skipped where the visible text already is
+     the URL — otherwise it prints "github.com/klcombr(https://github.com/klcombr)". */
   .entry a[href^="http"]::after,
   .contact-line a[href^="http"]::after{
     content:" (" attr(href) ")";
@@ -247,6 +262,8 @@
     color:#666;
     word-break:break-all;
   }
+  /* Specificity must beat `.contact-line a[href^="http"]::after`. */
+  .contact-line a.print-no-url::after{content:none}
 }
 
 @media (max-width:640px){

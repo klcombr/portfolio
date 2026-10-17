@@ -1,6 +1,6 @@
 # klcombr/portfolio
 
-Personal site for **Kauê Monteiro (KL COM)** — full-stack developer in Praia Grande, SP, working on
+Personal site for **Kauê Leandro (KL COM)** — full-stack developer in Praia Grande, SP, working on
 AI agents, automation and interface engineering.
 
 Static site. No build step, no framework, no third-party requests. Deployed on Netlify.

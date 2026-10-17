@@ -1,6 +1,6 @@
 # DESIGN.md — KL COM
 
-Direção visual reutilizável para o site pessoal de **Kauê Monteiro (KL COM)**.
+Direção visual reutilizável para o site pessoal de **Kauê Leandro (KL COM)**.
 Fonte de verdade para qualquer implementação, restyle ou página nova neste repo.
 
 Gobernado pela skill `redline` (modo **Experience**: o trabalho lidera, a interface
@@ -28,7 +28,7 @@ Textura de superfície (custo zero, muito identitária):
 - Índices numéricos — `01` `02` `03`
 - Separadores `//` na navegação e no rodapé
 - Legendas entre colchetes — `[ carregando ]`
-- Nomes `Kauê Monteiro` / `KL COM` coexistem: o primeiro é a pessoa, o
+- Nomes `Kauê Leandro` / `KL COM` coexistem: o primeiro é a pessoa, o
   segundo é a marca. Não trocar um pelo outro.
 
 ## 2. Color
@@ -190,7 +190,7 @@ commit message.
 
 | Campo | Valor |
 |---|---|
-| Nome | Kauê Monteiro |
+| Nome | Kauê Leandro |
 | Marca | KL COM |
 | Papel | Desenvolvedor Full-Stack & Automação com IA |
 | Local | Praia Grande, São Paulo — Brasil · remoto · UTC-3 |

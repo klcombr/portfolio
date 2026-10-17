@@ -7,7 +7,7 @@ deve conseguir executar sem adivinhar e sem inventar.
 
 ## 1. Objetivo e artefato-alvo
 
-Reescrever **do zero** o site pessoal estático de Kauê Monteiro (KL COM),
+Reescrever **do zero** o site pessoal estático de Kauê Leandro (KL COM),
 mantendo o tema black+red padrão dele e o deploy no Netlify
 (`https://klcom.netlify.app/`). Artefato: `index.html` + CSS + JS vendorizado,
 sem build step. Currículo (`curriculo.html`) é página irmã, não o foco deste
