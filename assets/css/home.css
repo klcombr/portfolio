@@ -240,6 +240,13 @@
   border-block:1px solid var(--line);
   padding-block:var(--section-y);
   background:var(--bg-elev);
+  /* Pinned as a whole by main.js, so it must be exactly one viewport tall and
+     vertically composed. Pinning only the inner <p> instead left a ~1100px
+     pin-spacer below the text: a tall dark block with the copy stranded at
+     the top of it. */
+  min-height:100svh;
+  display:grid;
+  align-content:center;
 }
 
 .statement .eyebrow{margin-bottom:clamp(2rem,4vw,3.5rem)}

@@ -109,7 +109,7 @@ reveals();
 
 /* ────────────────────── Statement, word by word ──────────────────────
    The single most memorable move borrowed from the references: a pinned
-   paragraph whose words illuminate in sequence as you scroll through it.
+   section whose words illuminate in sequence as you scroll through it.
    The pin is desktop-only — on a phone it is a plain readable block. */
 function statement() {
   const el = document.querySelector('[data-statement]');
@@ -124,11 +124,16 @@ function statement() {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: el,
-        start: 'center center',
+        /* Pin the SECTION, not the inner <p>. Pinning the <p> wraps it in a
+           pin-spacer and strands the copy at the top of ~1100px of dead
+           space — a tall dark block with nothing in it. The section is
+           min-height:100svh with the copy centred (home.css), so pinning it
+           yields a composed full-viewport frame. */
+        trigger: '.statement',
+        start: 'top top',
         /* 90% of a viewport of extra scroll. Longer reads as dead air. */
         end: '+=90%',
-        pin: true,
+        pin: '.statement',
         scrub: 0.6,
         anticipatePin: 1,
       },
