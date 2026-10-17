@@ -115,7 +115,7 @@
   </nav>
 
   <button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false">
-    <span class="motion-toggle__label">(Pausar motion)</span>
+    <span class="motion-toggle__label"><span class="mt-long">(Pausar motion)</span><span class="mt-short">(Pausar)</span></span>
   </button>
 </header>
 
@@ -150,7 +150,81 @@
         </div>
       </div>
 
+      <!-- The cue sits before the portrait in DOM order so it stays above the
+           fold on mobile, where the portrait would otherwise push it down.
+           Desktop is unaffected: every hero child is placed by named grid area. -->
       <p class="hero__cue" data-intro><span aria-hidden="true">↓</span> Role, devagar</p>
+
+      <div class="hero__art" data-intro>
+        <!-- Retrato recuperado do stash pre-rebuild (stash@{0}, 2026-10-02).
+             Arte fixa de 100x63 em Geist Mono, servida inline porque o CSP
+             proíbe fetch(); <pre> é HTML, então não toca em script-src. -->
+<pre class="ascii-art" aria-label="Retrato em ASCII art">
+                                    .........................  .            .++++++++++++++=======--
+                                     . ...................        .         :++++++++++++++++=====--
+                                        .. .       .... .                   :+******+++++++++++++==-
+                                           .    ..   ........   ......      :+******++++++++++++===-
+                               .           ... ........ ...........         :****++++++++++++++===--
+                                                ...................         :=++++++++++++++++==----
+                                                       ..........          .-====++++++++++++====---
+..                                           .:-==----:..........           :+++==++++**++*+++====--
+                      .......... .... ...:-==+<span class="lit">#%%%@%%%##%%</span>*+=:..            -*++***+********++====--
+                                     .-+<span class="lit">##</span>*<span class="lit">#@@@%%@@%#%%@@@@@%</span>*-:............-===+++++****+++++====--
+                                ....=<span class="lit">#</span>*<span class="lit">%%%#%@@@@@@@@@@@@@@@@@@%</span>-..                ...........::::::+
+                               .+++<span class="lit">#%%####%</span>*<span class="lit">#%%%@@@%%#</span>*<span class="lit">#%%@@@@@%</span>+-.                               .-
+                             ..:-<span class="lit">#%%%%</span>*=-=+--========---=++*<span class="lit">##%@@</span>*:....                           ..
+                             .:::<span class="lit">#%%</span>+-..:..:::::--------------+<span class="lit">%@@</span>-...........                     .
+                              .:=<span class="lit">##</span>=:........::::::-----------:=<span class="lit">%@</span>+.
+                               +<span class="lit">##</span>=:..........:::::::::::----::-*<span class="lit">%%</span>:
+                              -<span class="lit">%%</span>*=:.. ...::::-:::---==++++===-:=<span class="lit">%%</span>:
+                             .-<span class="lit">@%#</span>=..-==+***<span class="lit">##</span>*=---=+<span class="lit">#%###</span>****+--*<span class="lit">#</span>:
+                               +<span class="lit">##</span>-:-++++++**<span class="lit">##</span>*===+**+++====----*<span class="lit">#</span>.
+                               -<span class="lit">##</span>:.--===+***+++::-=*+**<span class="lit">###</span>**+=--+<span class="lit">#</span>.
+                               .<span class="lit">##</span>..-=++*<span class="lit">##</span>**++=:.:-+++++****+=--+<span class="lit">#</span>.                              .
+                                =*:...:-==--=--: .::==-=-====----=*=.                          .....
+                                --.:...:::::::. .::-:------------:==:                           ....
+                               :-:..::::::::::-==---=+-===-----:::-==                         .....
+                               :-:....::::::.:+*+===+*=------:::::=+-                         ......
+                               .::..:::::::..:-+++++*++=------::::==-                     ..........
+                                ..:.::::--=--======+++++**+=---::-==:                    ...........
+                                .:-.:::-=+***+++++++++++**+==----...                  ..............
+                                   .:::-===-----=============----.                  ................
+                                    :--:---::-==++++++===-==----:                   ................
+                                     :-::-:::::--=======--------                   .................
+                                      :-:::::...::-------------                    .................
+                                      .::::::::------------===:                    .................
+                                      .:--======+++++++++++===:              ..  . .................
+                                      :::-=+************++===-*<span class="lit">#</span>+:.          .......................
+                                  .-+<span class="lit">#</span>-::::-=++*****++++====--*<span class="lit">@@@#</span>- . .............................
+                                :+<span class="lit">%@@@</span>-:::::--================+<span class="lit">#@@@@</span>= ..............................
+                              .=<span class="lit">%@@@@</span>=.::::::-===============++*<span class="lit">#%@%#</span>:.  ...........................
+                             .+<span class="lit">%@@@@</span>+.:::::::--=============++***<span class="lit">#%%###</span>*=:..........................
+   ....  .      ...      .:-=-=*<span class="lit">%#</span>+*-.:::::::---========+*+*****<span class="lit">##%%#%@@@@##</span>+=-:....................
+...........   ..   ..:-=+**=:-=+*<span class="lit">##%#</span>*-:::::-=========*<span class="lit">%%%%%#</span>**<span class="lit">###%@@@@@@@@@@%%%#</span>*=-::..............
+.............  .:-=+**<span class="lit">###</span>=-:=+*<span class="lit">%%@@@@@@#</span>:::---=======-*<span class="lit">#%%%%%%%@@%@@@@@@%%%%%%%%%%%%%#</span>*-............
+.............:-+**<span class="lit">#####</span>*=++++<span class="lit">%@@@@@@@@@@</span>+:::--------==<span class="lit">#</span>*<span class="lit">###%%%@@@@@@@@@%%%%%%%%%%%%#%%#%</span>+...........
+...........:=**<span class="lit">#</span>**<span class="lit">#####</span>**<span class="lit">###%@@@@@@@@@@@</span>*.:::----::-+*<span class="lit">##</span>*<span class="lit">##%%@@@@@@@@@@%@@%%%%%%%%%%%##%%#</span>+-........
+..........=***<span class="lit">###########%#%@@@@@@@@@@@@</span>+:::::::...=<span class="lit">##%%#</span>*<span class="lit">#%%@@@@@@@@@%%@@%%%%%%%%%%%######%</span>*=:.....
+........:+<span class="lit">#</span>*<span class="lit">#</span>*<span class="lit">%%######%#%%%@@@@@@@@@%@@%</span>*=-:::.....+<span class="lit">%%%%%%%%@@@@@@@@@@%@@%%%%%%%%%%%%%%%#%%%%%</span>*:....
+.......:*<span class="lit">#%###@%%%%%#%%#%%%@@@@@@@@%@@%</span>*=---::.....=<span class="lit">@@@@%@%@@@@@@@@@@@%@@%%%%%%%%%%%%%%%%%%%%###</span>+...
+......-*<span class="lit">##%#</span>*<span class="lit">%@%%%%%#%%%@%%@@@@@@@@@@@#</span>=-:::-::::::-<span class="lit">%@@@%@@@@@@@@@@@@@@@@%%%%%%%%%%%@%%%%%%%%%##</span>*=:.
+.....=<span class="lit">#@</span>*<span class="lit">#@##%@%%%%#%@#%@##%%@@@@@@@@@#</span>=--::::::::::+<span class="lit">%@@@@@@@@@@@@@@%@@@%%%%%%%%%%%%@%%%%%%%%%%###</span>*-
+....=<span class="lit">#%@</span>*<span class="lit">#@%#%@%%%##%%%@%</span>*<span class="lit">####%%%%%%%%%#</span>+--:::::--=++<span class="lit">%%@@@@@@@@@@@@@%%%%%%%%%%%%%%%@%%%%%%%%%%%%%##</span>+
+...=<span class="lit">##@%#%@%%%@%%%#%%#%@#</span>*<span class="lit">####%%%#%%%%%%%</span>*+=-=+*<span class="lit">#%#</span>*<span class="lit">%%%%@@@@@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###</span>
+..-<span class="lit">###@%#@@%%%@%%%#%#%@%</span>*<span class="lit">#####%%###%%%%%%%%%%%@%</span>*<span class="lit">#</span>*<span class="lit">%%%%%%%%@@%@@@%%%%%%%%%%%%%%%%%@%%%%%%%%%%%%%%###</span>
+.-<span class="lit">##</span>*<span class="lit">%@%#%@#%@%%%##%#%@#</span>*<span class="lit">#####%%%##%%%%%%%%%%%%%#</span>+<span class="lit">%%%%%%%%@%%%@@%%%%%%%%%%%%%%%%%@@%%%%##%%%%%%%%%##</span>
+:*<span class="lit">##</span>*<span class="lit">%@%#%%#%%%%%####@%#</span>*<span class="lit">######%%##%%%%%%%%%%%%</span>:.::+<span class="lit">%%%%%@%%%%@%%%%%%%%%%%%%%%%%%@%%%%##%%%##%%%%%%#</span>
+*<span class="lit">##</span>*<span class="lit">#%@%#%%#%%%%%###%@%</span>**<span class="lit">%#####%%##%%%%%%%%%%@#</span>....=<span class="lit">%%%%%%%#%%%%%%%%%%%%%%%%%%%%%@%%%##%%##%%%%%%%##</span>
+<span class="lit">##</span>**<span class="lit">#%@%#%#%%%%%%###%%#</span>*<span class="lit">#%%####%%%##%%%%%%%%%%</span>+.. .*<span class="lit">@%%%%%%%%%%%%%%%%%%%%%%%%###%@%###%###%%#</span>*<span class="lit">#####%</span>
+<span class="lit">##</span>*<span class="lit">##%@@%%#%%%%%###%%%#</span>*<span class="lit">#%%####%%%###%%%%%%%%%##</span>**+<span class="lit">%%%%%%%%%%%%%%%%%%%%%%%%%%###%@%######%#</span>******<span class="lit">###</span>
+<span class="lit">#</span>**<span class="lit">##%@@%##%%%%%###%%%</span>**<span class="lit">#%%###</span>*<span class="lit">#%%####%%%%%%%%%%%%%%%%%%%%%%%%%##%%%%%%%%%%%#</span>*<span class="lit">##%@#</span>*<span class="lit">######</span>***<span class="lit">##</span>*****
+<span class="lit">#</span>*<span class="lit">###%@@%#%%%%%%###%%#</span>*<span class="lit">#%%%###</span>*<span class="lit">#%%%###%%%%%%%%%%%%%%%%%%%%%%%%%###%%%%%%%%##</span>**<span class="lit">##%%#####</span>*<span class="lit">#######</span>***<span class="lit">##</span>
+<span class="lit">#</span>*<span class="lit">###%%@%#%%%%%####%%#</span>*<span class="lit">#%%%###</span>*<span class="lit">#%%%%###%%%%%%%%%%%%%%%%%%%%%%%#</span>*==<span class="lit">#%%%%%%</span>+*+-*<span class="lit">#%%%#####</span>*<span class="lit">#####</span>*******
+<span class="lit">#####%%@%#%%%%%%##%%%#</span>+=<span class="lit">#%</span>*++++<span class="lit">########</span>*++<span class="lit">%%%%%%%#######%%%%##</span>++--*+***+====-+<span class="lit">#%%#</span>*<span class="lit">###</span>***<span class="lit">#####</span>******
+<span class="lit">###</span>**<span class="lit">%@@%%%%%##%##%%#</span>*=-**+--+=-+***+-=+<span class="lit">#</span>+******+++++++**<span class="lit">%%#</span>++-:---*=+=++=+=-+<span class="lit">#%%###</span>****<span class="lit">###</span>*<span class="lit">##</span>******
+<span class="lit">###</span>**<span class="lit">#%@%%%%######%#</span>----==+==+-:==*-=+==+==<span class="lit">#</span>===*+====+*<span class="lit">#</span>*<span class="lit">%#</span>=+=:.:--+==-=-=--=+<span class="lit">#%%###</span>****<span class="lit">#</span>*******<span class="lit">####</span>
+</pre>
+      </div>
     </div>
   </section>
 
@@ -272,10 +346,10 @@
   </section>
 
   <!-- ══════════════ STATEMENT ══════════════ -->
-  <section class="statement" id="sobre" aria-labelledby="sobre-heading">
+  <section class="statement" id="manifesto" aria-labelledby="manifesto-heading">
     <div class="shell">
       <p class="eyebrow"><span class="eyebrow__index">02</span> Manifesto</p>
-      <h2 class="visually-hidden" id="sobre-heading">Como eu trabalho</h2>
+      <h2 class="visually-hidden" id="manifesto-heading">Como eu trabalho</h2>
       <p class="statement__text" data-statement>
         Eu não construo sites. Eu construo sistemas que
         <em>continuam funcionando</em> quando eu fecho o notebook —
@@ -327,7 +401,7 @@
   </section>
 
   <!-- ══════════════ SOBRE ══════════════ -->
-  <section class="section about" aria-labelledby="about-heading">
+  <section class="section about" id="sobre" aria-labelledby="about-heading">
     <div class="shell about__grid">
       <div class="about__side">
         <p class="eyebrow"><span class="eyebrow__index">04</span> Sobre</p>
@@ -372,7 +446,7 @@
   <section class="contact" id="contato" aria-labelledby="contato-heading">
     <div class="shell">
       <h2 class="contact__title" id="contato-heading" data-reveal>
-        Vamos<br>conversar<em>.</em>
+        Vamos<br>conversar<span class="dot">.</span>
       </h2>
       <p class="contact__sub" data-reveal>
         Procurando alguém para construir sistemas que rodam sozinhos, ou uma
@@ -383,7 +457,7 @@
         <a class="contact__card" href="mailto:mxlsc@proton.me" data-reveal data-magnet data-cursor="Email">
           <span class="contact__label">Email</span>
           <span class="contact__value">mxlsc@proton.me</span>
-          <span class="contact__hint">Resposta em até 24h</span>
+          <span class="contact__hint">Trabalho remoto</span>
         </a>
         <a class="contact__card" href="https://wa.me/5513974140538" rel="noopener noreferrer" target="_blank" data-reveal data-magnet data-cursor="WhatsApp">
           <span class="contact__label">WhatsApp</span>

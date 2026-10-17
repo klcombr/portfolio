@@ -29,7 +29,9 @@
   opacity:.55;
   pointer-events:none;
 }
-/* Fallback tint if WebGL never boots — the hero must not look empty */
+/* Fallback tint if WebGL never boots — the hero must not look empty.
+   main.js sets data-gl once initScene succeeds, which retires the halo so
+   the point field is the only red glow in the hero. */
 .hero::before{
   content:"";
   position:absolute;
@@ -38,6 +40,7 @@
   background:radial-gradient(50% 50% at 50% 50%,var(--accent-soft),transparent 70%);
   pointer-events:none;
 }
+.hero[data-gl]::before{display:none}
 
 .hero__inner{
   position:relative;
@@ -65,14 +68,16 @@
   gap:clamp(1.5rem,3vw,2.5rem);
   align-items:end;
 }
-@media (min-width:900px){
-  .hero__foot{grid-template-columns:minmax(0,var(--measure)) auto;justify-content:space-between}
-}
 
+/* Single column, and this is not a phone-only fallback: the portrait takes
+   416px of the shell, leaving ~700-830px of copy column, while the foot needs
+   544 (lede) + 40 (gap) + 377 (buttons) = 961px to sit on one line. Side by
+   side it crushed the lede to ~278px at 2560. */
 .hero__lede{
   color:var(--fg-muted);
   font-size:var(--t-lg);
   line-height:1.5;
+  max-width:var(--measure);
 }
 
 .hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
@@ -87,6 +92,95 @@
   display:flex;
   align-items:center;
   gap:.6rem;
+}
+
+/* Short windows: with the foot stacked, the display type, the lede and the
+   cue have to share the viewport or the scroll hint falls off the bottom —
+   the hero measured 799px inside a 720px laptop window. Display type is
+   capped here rather than elsewhere because type that overflows its own
+   window is worse than type one step down; vw scaling is untouched above
+   this height. Mobile is excluded: it is a different composition. */
+@media (max-height:780px) and (min-width:900px){
+  .hero{padding-block:6rem 2rem}
+  .hero__inner{gap:1.5rem}
+  .hero__foot{gap:1.25rem}
+  .hero__title{font-size:clamp(2.5rem,1.1rem + 5.5vw,6rem)}
+}
+
+/* Wide, tall windows: --t-display caps at 7.5rem from ~1477px onward while
+   .hero stays bottom-anchored, which left 481px of void over 72px at
+   2560x1300. Centring it and evening the block padding restores symmetry
+   (277/277 measured). Deliberately exclusive with the rule above: on a short
+   wide window, fitting beats balancing. */
+@media (min-width:1600px) and (min-height:781px){
+  .hero{
+    align-items:center;
+    padding-block:clamp(6rem,10vh,8rem);
+  }
+}
+
+/* ══════════════════ ASCII PORTRAIT ══════════════════
+   Recovered from the pre-rebuild hero (stash@{0}, 2026-10-02) — the WIP that
+   was left uncommitted when the site was rebuilt from zero.
+
+   The art is a fixed 100x63 grid in Geist Mono (advance ~0.63em, line-height 1):
+      art width  = 100 * 0.63 * fs  ->  fs = W / 63
+      art height =  63 * 1.00 * fs  ->  fs = H / 63
+   So the largest size fitting BOTH axes is fs = min(W,H)/63 — the same
+   principle as object-fit:contain. Sizing on height alone (an earlier
+   attempt) let the grid shrink its column and produced ~8px art on a
+   1280x720 laptop. */
+.hero__art{
+  position:relative;
+  z-index:1;
+  justify-self:end;
+  width:min(30vw,26rem);
+  /* Floor at 6px: below that a glyph is a grey smudge, so on short
+     viewports clipping a few background columns beats illegibility. */
+  font-size:max(6px,min(min(30vw,26rem)/63,(100svh - 15rem)/63));
+  line-height:1;
+  overflow:hidden;
+}
+.ascii-art{
+  font-family:var(--mono);
+  color:var(--fg-muted);
+  font-size:1em;
+  line-height:1;
+  letter-spacing:0;
+  margin:0;
+  white-space:pre;
+  user-select:text;
+}
+.ascii-art .lit{color:var(--fg)}
+
+/* Desktop: copy left, portrait right. Named areas keep the cue on the
+   bottom-left of the copy column instead of under the art. */
+@media (min-width:900px){
+  .hero__inner{
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:
+      "status art"
+      "title  art"
+      "foot   art"
+      "cue    art";
+  }
+  .hero__status{grid-area:status}
+  .hero__title{grid-area:title}
+  .hero__foot{grid-area:foot}
+  .hero__cue{grid-area:cue}
+  .hero__art{grid-area:art;align-self:center}
+}
+
+/* Below 900px it drops under the copy, centred. The floor is 5px here rather
+   than 6: at 390px a 6px floor makes the art 378px wide inside a 350px
+   column and clips the face, while 5.55px fits exactly. */
+@media (max-width:899px){
+  .hero__art{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    font-size:max(5px,min(calc(100vw - 2*var(--gutter))/63,(100svh - 20rem)/63));
+  }
 }
 
 /* ══════════════════════ MARQUEE ══════════════════════ */
@@ -240,13 +334,21 @@
   border-block:1px solid var(--line);
   padding-block:var(--section-y);
   background:var(--bg-elev);
-  /* Pinned as a whole by main.js, so it must be exactly one viewport tall and
-     vertically composed. Pinning only the inner <p> instead left a ~1100px
-     pin-spacer below the text: a tall dark block with the copy stranded at
-     the top of it. */
-  min-height:100svh;
-  display:grid;
-  align-content:center;
+}
+
+/* Pinned as a whole by main.js, so it must be exactly one viewport tall and
+   vertically composed. Pinning only the inner <p> instead left a ~1100px
+   pin-spacer below the text: a tall dark block with the copy stranded at
+   the top of it.
+   Scoped to the pin's own breakpoint — the pin only exists at >=900px
+   (gsap.matchMedia in main.js), and below that a forced 100svh just adds
+   ~280px of empty dark around ~420px of copy. */
+@media (min-width:900px){
+  .statement{
+    min-height:100svh;
+    display:grid;
+    align-content:center;
+  }
 }
 
 .statement .eyebrow{margin-bottom:clamp(2rem,4vw,3.5rem)}

@@ -239,6 +239,8 @@ function motionToggle() {
   if (!btn || !hasGsap) return;
 
   const label = btn.querySelector('.motion-toggle__label');
+  const long = label.querySelector('.mt-long');
+  const short = label.querySelector('.mt-short');
   let paused = false;
 
   btn.addEventListener('click', () => {
@@ -249,12 +251,14 @@ function motionToggle() {
       gsap.globalTimeline.pause();
       if (lenis) lenis.stop();
       root.style.scrollBehavior = 'auto';
-      label.textContent = '(Retomar motion)';
+      long.textContent = '(Retomar motion)';
+      short.textContent = '(Retomar)';
     } else {
       gsap.globalTimeline.resume();
       if (lenis) lenis.start();
       root.style.scrollBehavior = '';
-      label.textContent = '(Pausar motion)';
+      long.textContent = '(Pausar motion)';
+      short.textContent = '(Pausar)';
     }
 
     ScrollTrigger.refresh();
@@ -307,7 +311,12 @@ function loadScene() {
       if (!entry.isIntersecting) return;
       io.disconnect();
       import('./scene.js')
-        .then((mod) => mod.initScene(canvas))
+        .then((mod) => {
+          /* The CSS halo under .hero::before exists solely for the no-WebGL
+             case; with the point field drawing there would be two red glows,
+             and DESIGN.md keeps the halo on the contact section only. */
+          if (mod.initScene(canvas)) canvas.closest('.hero')?.setAttribute('data-gl', '');
+        })
         .catch(() => { /* decorative: a missing scene costs nothing */ });
     });
   }, { rootMargin: '200px' });

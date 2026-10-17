@@ -43,7 +43,7 @@ valores**, são a identidade:
 | `--bg-elev-2` | `#101010` | superfície elevada, 2º nível |
 | `--fg` | `#ededed` | texto primário (17.9:1) |
 | `--fg-muted` | `#8a8a8a` | texto secundário (6.1:1) |
-| `--fg-subtle` | `#6b6b6b` | metadado não essencial (3.9:1) |
+| `--fg-subtle` | `#7a7a7a` | metadado não essencial (4.9:1) |
 | `--accent` | `#ff2222` | **o único saturado do site** (5.5:1) |
 | `--accent-soft` | `rgba(255,34,34,.14)` | brilho/halo, nunca texto |
 | `--line` | `rgba(255,255,255,.09)` | fio padrão |

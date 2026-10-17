@@ -28,7 +28,7 @@
   /* Text — every value below is >= 4.5:1 on --bg unless marked decorative */
   --fg:#ededed;          /* 17.9:1 */
   --fg-muted:#8a8a8a;    /*  6.1:1 */
-  --fg-subtle:#6b6b6b;   /*  3.9:1 — non-essential meta only */
+  --fg-subtle:#7a7a7a;    /*  4.9:1 */
   --accent:#ff2222;      /*  5.5:1 — the only saturated colour on the site */
   --accent-soft:rgba(255,34,34,.14);
   /* Dark red for glow/gradient mixes. Never used as text: it fails contrast. */
@@ -353,6 +353,10 @@ body::after{
 }
 .motion-toggle:hover{color:var(--fg)}
 .motion-toggle[aria-pressed="true"]{color:var(--accent)}
+/* Two spans because the short form is the only one that fits a 390px row:
+   brand 56.5 + nav 163 = 219.5, leaving 127.7px for a 130.4px label — it
+   wrapped to an orphaned second line and grew the masthead to 105px. */
+.motion-toggle__label .mt-short{display:none}
 
 /* Read progress — thin, informative, not decorative */
 .progress{
@@ -503,13 +507,17 @@ html[data-motion] [data-reveal]{opacity:0}
 
 /* ---------- Responsive ---------- */
 @media (max-width:640px){
-  .masthead{padding:.85rem var(--gutter);gap:1rem;flex-wrap:wrap}
-  .masthead__nav{gap:1rem}
+  /* .75 rather than 1rem: brand 56.5 + nav 163 + "(Pausar)" 71.5 + two gaps
+     has to fit 318px of a 360px row, and at 1rem it overflowed by ~5px. */
+  .masthead{padding:.85rem var(--gutter);gap:.75rem;flex-wrap:wrap}
+  .masthead__nav{gap:.75rem}
   /* Drop the lowest-value link on very small screens */
   .masthead__nav a[data-optional]{display:none}
   .btn{width:100%}
   .footer__inner{flex-direction:column;align-items:flex-start}
   .motion-toggle{order:3}
+  .motion-toggle__label .mt-long{display:none}
+  .motion-toggle__label .mt-short{display:inline}
 }
 
 /* ---------- Reduced motion ----------
